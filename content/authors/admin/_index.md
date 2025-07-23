@@ -76,5 +76,5 @@ email: ''
 highlight_name: true
 ---
 
-Alice Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Kang Ziyue is an undergraduate student in Artificial Intelligence at Shaanxi University of Science & Technology. His research interests include embodied intelligence, large model fine-tuning, machine learning theory, and multimodal data analysis. As the student lead author, he directs a research project titled "Frequency-Adaptive Discrete Cosine-ViT-ResNet Architecture for Sparse-Data Vision". This research focuses on developing a dual-branch feature extractor based on ViT-B16 and ResNet50 pre-trained models and introduces an adaptive mechanism for selecting frequency coefficients in the discrete cosine transform to enhance the robustness of image features for sparse-data vision.
 {style="text-align: justify;"}
