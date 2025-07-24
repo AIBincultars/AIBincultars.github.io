@@ -58,42 +58,83 @@ sections:
           description: 10%
           icon: camera-retro
           icon_pack: fas
-  - block: experience
-    content:
-      title: Experience
-      date_format: Jan 2006
-      items:
-        - title: Project Lead
-          company: AI Image Compression Joint Innovation Lab, Shaanxi University of Science & Technology
-          company_url: ''
-          company_logo: ''
-          location: Xi'an, China
-          date_start: '2024-11-01'
-          date_end: ''
-          description: |2-
-              * Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes".
-              * Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent.
-              * Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy.
-        
-    design:
-      columns: '2'
+ - block: experience
+   content:
+     title: Experience
+     date_format: Jan 2006
+     items:
+       - title: Project Lead
+         company: AI Image Compression Joint Innovation Lab, Shaanxi University of Science & Technology
+         company_url: ''
+         company_logo: ''
+         location: Xi'an, China
+         date_start: '2024-11-01'
+         date_end: ''
+         description: |2-
+             * Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes".
+             * Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent.
+             * Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy.
+       - title: Student Lead
+         company: '"Core Intelligence Engine" AI Sharing Network Culture Studio'
+         company_url: ''
+         company_logo: ''
+         location: Xi'an, China
+         date_start: '2024-10-01'
+         date_end: ''
+         description: |2-
+             * Established the studio to optimize campus workflows using a Large Model RAG system.
+             * Developed an intelligent Q&A system to automate policy interpretation and improve the efficiency of academic and campus information services.
+             * The project won a National Third Prize in the "2025 National College Yiban Technology Innovation Competition". 
+       - title: Core Developer, Gesture Recognition System
+         company: The 26th China Robot and Artificial Intelligence Competition Project
+         company_url: ''
+         company_logo: ''
+         location: Remote
+         date_start: '2024-01-01'
+         date_end: '2024-08-01'
+         description: |2-
+             * Developed a real-time gesture recognition system using OpenCV and MediaPipe for an intelligent assistive application designed for the hearing and speech impaired.
+             * Utilized the MediaPipe Hands model to extract 21 key points for precise gesture identification.
+             * Designed and implemented a CNN-based algorithm to classify specific gestures.
+   design:
+     columns: '2'
 
-  - block: accomplishments
-    content:
-      title: 'Accomplish&shy;ments'
-      subtitle:
-      date_format: Jan 2006
-      items:
-        - date_start: '2024-01-01'
-          date_end: '2024-08-01'
-          description: 'Project: AI-powered Assistive Design for the Hearing and Speech Impaired'
-          organization: China Robot and Artificial Intelligence Competition
-          organization_url: ''
-          title: National First Prize
-          url: ''
-       
-    design:
-      columns: '2'
+ - block: accomplishments
+   content:
+     title: 'Accomplish&shy;ments'
+     subtitle:
+     date_format: Jan 2006
+     items:
+       - date_start: '2024-01-01'
+         date_end: '2024-08-01'
+         description: ''
+         organization: The 26th China Robot and Artificial Intelligence Competition
+         organization_url: ''
+         title: National First Prize
+         url: ''
+       - date_start: '2024-03-01'
+         date_end: '2024-06-01'
+         description: 'AI Track (Project-based Practical Competition)'
+         organization: The 15th Blue Bridge Cup Competition
+         organization_url: ''
+         title: National Third Prize
+         url: ''
+       - date_start: '2024-05-01'
+         date_end: '2024-09-01'
+         description: ''
+         organization: China International College Students'' Innovation Contest (2024)
+         organization_url: ''
+         title: Provincial Silver Award
+         url: ''
+       - date_start: '2022-09-01'
+         date_end: ''
+         description: 'Awarded for academic excellence (Ranked 1/60) and student leadership.
+         organization: Shaanxi University of Science & Technology
+         organization_url: 'https://www.sust.edu.cn/'
+         title: National Endeavor Scholarship & First-class Academic Scholarship
+         url: ''
+   design:
+     columns: '2'
   - block: collection
     id: posts
     content:
