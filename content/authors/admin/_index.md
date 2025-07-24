@@ -49,7 +49,7 @@ social:
     link: 'mailto:edu.kangziyue@gmail.com'
   - icon: twitter
     icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
+    link: https://x.com/Bincultars
     label: Follow me on Twitter
     display:
       header: true
