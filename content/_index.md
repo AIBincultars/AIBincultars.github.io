@@ -71,9 +71,9 @@ sections:
          date_start: '2024-11-01'
          date_end: ''
          description: |2-
-             * Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes".
-             * Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent.
-             * Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy.
+             * [cite_start]Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes". [cite: 15]
+             * [cite_start]Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent. [cite: 17]
+             * [cite_start]Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy. [cite: 17]
        - title: Student Lead
          company: '"Core Intelligence Engine" AI Sharing Network Culture Studio'
          company_url: ''
@@ -82,9 +82,9 @@ sections:
          date_start: '2024-10-01'
          date_end: ''
          description: |2-
-             * Established the studio to optimize campus workflows using a Large Model RAG system.
-             * Developed an intelligent Q&A system to automate policy interpretation and improve the efficiency of academic and campus information services.
-             * The project won a National Third Prize in the "2025 National College Yiban Technology Innovation Competition". 
+             * [cite_start]Established the studio to optimize campus workflows using a Large Model RAG system. [cite: 52]
+             * [cite_start]Developed an intelligent Q&A system to automate policy interpretation and improve the efficiency of academic and campus information services. [cite: 52]
+             * [cite_start]The project won a National Third Prize in the "2025 National College Yiban Technology Innovation Competition". [cite: 52]
        - title: Core Developer, Gesture Recognition System
          company: The 26th China Robot and Artificial Intelligence Competition Project
          company_url: ''
@@ -93,9 +93,9 @@ sections:
          date_start: '2024-01-01'
          date_end: '2024-08-01'
          description: |2-
-             * Developed a real-time gesture recognition system using OpenCV and MediaPipe for an intelligent assistive application designed for the hearing and speech impaired.
-             * Utilized the MediaPipe Hands model to extract 21 key points for precise gesture identification.
-             * Designed and implemented a CNN-based algorithm to classify specific gestures.
+             * [cite_start]Developed a real-time gesture recognition system using OpenCV and MediaPipe for an intelligent assistive application designed for the hearing and speech impaired. [cite: 34, 37]
+             * [cite_start]Utilized the MediaPipe Hands model to extract 21 key points for precise gesture identification. [cite: 37]
+             * [cite_start]Designed and implemented a CNN-based algorithm to classify specific gestures. [cite: 37]
    design:
      columns: '2'
 
@@ -110,25 +110,25 @@ sections:
          description: ''
          organization: The 26th China Robot and Artificial Intelligence Competition
          organization_url: ''
-         title: National First Prize
+         [cite_start]title: National First Prize [cite: 34]
          url: ''
        - date_start: '2024-03-01'
          date_end: '2024-06-01'
          description: 'AI Track (Project-based Practical Competition)'
          organization: The 15th Blue Bridge Cup Competition
          organization_url: ''
-         title: National Third Prize
+         [cite_start]title: National Third Prize [cite: 30]
          url: ''
        - date_start: '2024-05-01'
          date_end: '2024-09-01'
          description: ''
          organization: China International College Students'' Innovation Contest (2024)
          organization_url: ''
-         title: Provincial Silver Award
+         [cite_start]title: Provincial Silver Award [cite: 42]
          url: ''
        - date_start: '2022-09-01'
          date_end: ''
-         description: 'Awarded for academic excellence (Ranked 1/60) and student leadership.
+         [cite_start]description: 'Awarded for academic excellence (Ranked 1/60) and student leadership. [cite: 10, 12]'
          organization: Shaanxi University of Science & Technology
          organization_url: 'https://www.sust.edu.cn/'
          title: National Endeavor Scholarship & First-class Academic Scholarship
