@@ -30,22 +30,24 @@ experience:
     date_start: '2024-11-01'
     date_end: ''
     description: |2-
-        * [cite_start]负责“基于高斯过程的贝叶斯小样本细粒度图像分类研究”课题中的模型设计、对比实验、科技绘图及论文撰写 [cite: 15, 17]。
-        * [cite_start]设计并实现了适用于小样本学习的特征提取器，结合变分推断和镜像梯度下降等方法提升模型泛化能力 [cite: 17]。
-        * [cite_start]为高斯过程模型探索并设计了多种核函数（如RBF核、多项式核），以提高预测精度 [cite: 17]。
-        * [cite_start]引入求解伪逆方法保证了变分推断和后验预测的数值稳定性 [cite: 17]。
+        * 负责“基于高斯过程的贝叶斯小样本细粒度图像分类研究”课题中的模型设计、对比实验、科技绘图及论文撰写。
+        * 设计并实现了适用于小样本学习的特征提取器，结合变分推断和镜像梯度下降等方法提升模型泛化能力。
+        * 为高斯过程模型探索并设计了多种核函数（如RBF核、多项式核），以提高预测精度。
+        * 引入求解伪逆方法保证了变分推断和后验预测的数值稳定性。
 
   - title: 学生第一负责人 (Student Lead)
-    company: "芯智引擎"AI共享网络文化工作室 ("Core Intelligence Engine" AI Sharing Studio)
+    # --- FIX START: Corrected the quoting on the company line below ---
+    company: '"芯智引擎"AI共享网络文化工作室 ("Core Intelligence Engine" AI Sharing Studio)'
+    # --- FIX END ---
     company_url: ''
     company_logo: ''
     location: Xi'an, China
     date_start: '2024-10-01'
     date_end: ''
     description: |2-
-        * [cite_start]成立工作室，利用大模型RAG系统优化校园工作流程 [cite: 52]。
-        * [cite_start]构建以智能问答为核心的功能，实现政策解读自动化、教务办事高效化和校园信息服务智能化 [cite: 52]。
-        * [cite_start]该项目成功申报为校级网络文化工作室，并荣获“2025全国高校易班技术创新大赛”国家三等奖 [cite: 52]。
+        * 成立工作室，利用大模型RAG系统优化校园工作流程。
+        * 构建以智能问答为核心的功能，实现政策解读自动化、教务办事高效化和校园信息服务智能化。
+        * 该项目成功申报为校级网络文化工作室，并荣获“2025全国高校易班技术创新大赛”国家三等奖。
 
   - title: 项目核心开发者 (Core Developer)
     company: 第二十六届中国机器人及人工智能大赛 (The 26th China Robot and AI Competition)
@@ -55,17 +57,8 @@ experience:
     date_start: '2024-01-01'
     date_end: '2024-08-01'
     description: |2-
-        * [cite_start]负责“人工智能背景下听障失语人群智能辅助设计”项目 [cite: 34]。
-        * [cite_start]使用 OpenCV 和 MediaPipe 开发了基于计算机视觉的实时手势识别系统 [cite: 37]。
-        * [cite_start]利用 MediaPipe Hands 模型提取手部21个关键点坐标，并利用卷积神经网络（CNN）设计并实现了手势识别算法 [cite: 37]。
-
-  - title: 院学生会主席团成员 (Member of the Student Union Presidium)
-    company: 陕西科技大学 学院学生会 (College Student Union, SUST)
-    company_url: ''
-    company_logo: ''
-    location: Xi'an, China
-    date_start: '2024-09-01'
-    date_end: ''
-    description: '' # 您可以在此补充更多关于学生会工作的具体职责
+        * 负责“人工智能背景下听障失语人群智能辅助设计”项目。
+        * 使用 OpenCV 和 MediaPipe 开发了基于计算机视觉的实时手势识别系统。
+        * 利用 MediaPipe Hands 模型提取手部21个关键点坐标，并利用卷积神经网络（CNN）设计并实现了手势识别算法。
 
 ---
