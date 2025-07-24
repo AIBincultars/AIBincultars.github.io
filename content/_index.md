@@ -58,17 +58,10 @@ sections:
           description: 10%
           icon: camera-retro
           icon_pack: fas
- - block: experience
+  - block: experience
     content:
       title: Experience
-      # Date format for experience
-      #   Refer to https://wowchemy.com/docs/customization/#date-format
       date_format: Jan 2006
-      # Experiences.
-      #   Add/remove as many `experience` items below as you like.
-      #   Required fields are `title`, `company`, and `date_start`.
-      #   Leave `date_end` empty if it's your current employer.
-      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
         - title: Project Lead
           company: AI Image Compression Joint Innovation Lab, Shaanxi University of Science & Technology
@@ -78,75 +71,27 @@ sections:
           date_start: '2024-11-01'
           date_end: ''
           description: |2-
-              * [cite_start]Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes"[cite: 15].
-              * [cite_start]Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent[cite: 17].
-              * [cite_start]Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy[cite: 17].
-        - title: Student Lead
-          company: '"Core Intelligence Engine" AI Sharing Network Culture Studio'
-          company_url: ''
-          company_logo: ''
-          location: Xi'an, China
-          date_start: '2024-10-01'
-          date_end: ''
-          description: |2-
-              * [cite_start]Established the studio to optimize campus workflows using a Large Model RAG system[cite: 52].
-              * [cite_start]Developed an intelligent Q&A system to automate policy interpretation and improve the efficiency of academic and campus information services[cite: 52].
-              * [cite_start]The project successfully received university-level funding and won a National Third Prize in the "2025 National College Yiban Technology Innovation Competition"[cite: 52].
-        - title: Core Developer, Gesture Recognition System
-          company: The 26th China Robot and Artificial Intelligence Competition
-          company_url: ''
-          company_logo: ''
-          location: Remote
-          date_start: '2024-01-01'
-          date_end: '2024-08-01'
-          description: |2-
-              * [cite_start]Developed a real-time gesture recognition system using OpenCV and MediaPipe for an intelligent assistive application designed for the hearing and speech impaired[cite: 34, 37].
-              * [cite_start]Utilized the MediaPipe Hands model to extract 21 key points for precise gesture identification[cite: 37].
-              * [cite_start]Designed and implemented a CNN-based algorithm to classify specific gestures[cite: 37].
+              * Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes".
+              * Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent.
+              * Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy.
+        
     design:
       columns: '2'
 
   - block: accomplishments
     content:
-      # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
       title: 'Accomplish&shy;ments'
       subtitle:
-      # Date format: https://wowchemy.com/docs/customization/#date-format
       date_format: Jan 2006
-      # Accomplishments.
-      #   Add/remove as many `item` blocks below as you like.
-      #   `title`, `organization`, and `date_start` are the required parameters.
-      #   Leave other parameters empty if not required.
-      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
         - date_start: '2024-01-01'
           date_end: '2024-08-01'
           description: 'Project: AI-powered Assistive Design for the Hearing and Speech Impaired'
           organization: China Robot and Artificial Intelligence Competition
           organization_url: ''
-          [cite_start]title: National First Prize [cite: 34]
+          title: National First Prize
           url: ''
-        - date_start: '2024-03-01'
-          date_end: '2024-06-01'
-          description: 'Project: Machine Learning Model Development and Deployment'
-          organization: The 15th Blue Bridge Cup Competition
-          organization_url: ''
-          [cite_start]title: National Third Prize, AI Track [cite: 30]
-          url: ''
-        - date_start: '2024-05-01'
-          date_end: '2024-09-01'
-          description: 'Project: A Leader in New-Generation Remote Sensing Image Recognition and Monitoring'
-          organization: China International College Students'' Innovation Contest (2024)
-          organization_url: ''
-          [cite_start]title: Provincial Silver Award [cite: 42]
-          url: ''
-        - date_start: '2022-09-01' # Assuming the academic year start
-          date_end: ''
-          description: 'Awarded for academic excellence and leadership.'
-          organization: Shaanxi University of Science & Technology
-          organization_url: 'https://www.sust.edu.cn/'
-          [cite_start]title: National Endeavor Scholarship & First-class Academic Scholarship [cite: 12]
-          url: ''
+       
     design:
       columns: '2'
   - block: collection
