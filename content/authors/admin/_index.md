@@ -76,5 +76,7 @@ email: ''
 highlight_name: true
 ---
 
-I am a final-year undergraduate student at Shaanxi University of Science & Technology, ranking 1st in my major. My research focuses on enhancing model generalization and robustness in data-scarce scenarios, particularly within computer vision and multimodal learning. I have led several research projects, developing novel architectures that significantly outperform established baselines like ResNet50 and ViT-B16. My work also extends to the practical application of LLMs, where I have experience in parameter-efficient fine-tuning (PEFT) techniques and building end-to-end RAG systems. I am driven by the challenge of bridging theoretical innovations with high-impact, real-world applications.
+I am the first-ranked undergraduate (Class of 2026) in Artificial Intelligence at Shaanxi University of Science & Technology. 
+A recipient of five national-level awards and the National Endeavor Fellowship, my work has also resulted in first-author publications centered on Computer Vision and applied LLMs. 
+I have led research in developing novel architectures that significantly outperform established baselines and have hands-on experience in the full lifecycle of LLM fine-tuning and deployment.
 {style="text-align: justify;"}
