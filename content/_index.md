@@ -87,12 +87,12 @@ sections:
       #   Leave other parameters empty if not required.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - certificate_url: https://www.edx.org
+        - #certificate_url: https://www.edx.org
           date_end: '2025-05-01'
           date_start: '2025-07-01'
           description: 'Project Lead for "GuardianEye," an intelligent report generation system for endangered animals.Independently designed a novel data-driven adaptive DCT algorithm and a dual-branch fusion model to solve small-sample recognition challenges, boosting accuracy by 59%. '
-          organization: 'China Association for Artificial Intelligence'
-          organization_url: https://www.coursera.org
+          organization: '<img src="/images/craic.png" width="28" style="vertical-align: middle; margin-right: 8px;"> China Association for Artificial Intelligence'
+          organization_url: https://www.caairobot.com/
           title: National First Prize, China Robotics & AI Competition (AI Innovation)
           url: ''
         - certificate_url: https://www.edx.org
