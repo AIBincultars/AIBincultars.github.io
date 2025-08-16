@@ -42,7 +42,6 @@ sections:
         - title: Student Research Lead
           company: Joint Innovation Lab of AI Image Compression, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/37512.htm'
-          company_logo: org-sust
           location: Shaanxi, Xian
           date_start: '2024-11-01'
           date_end: ''
@@ -54,7 +53,6 @@ sections:
         - title: Team Member, LLM Engineering
           company: Complex Environment Intelligent Perception Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/37862.htm'
-          company_logo: org-sust
           location: Shaanxi, Xian
           date_start: '2023-09-01'
           date_end: ''
@@ -66,7 +64,6 @@ sections:
         - title: Team Member, Intelligent Acoustics
           company: Intelligent Acoustics & Immersive Communication Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/38002.htm'
-          company_logo: org-sust
           location: Shaanxi, Xian
           date_start: '2023-09-01'
           date_end: ''
