@@ -53,7 +53,7 @@ sections:
 
               **Sparse-Data Vision**: Designed a novel Frequency-Adaptive Discrete Cosine-ViT-ResNet architecture that outperformed ResNet50 by 59.51%.
 
-              * **Supervisor**: Prof. Weichuan Zhang, Head of the Lab. (Reference available upon request)
+              **Supervisor**: Prof. Weichuan Zhang, Head of the Lab. (Reference available upon request)
 
         - title: Team Member, LLM Engineering
           company: Complex Environment Intelligent Perception Team, SUSTech
@@ -64,6 +64,7 @@ sections:
           date_end: ''
           description: Responsible for the end-to-end workflow of LLM fine-tuning and on-premise deployment, including implementing PEFT techniques (LoRA), model quantization (GGUF), and building inference services with FastAPI.
               * **Supervisor**: Prof. Haiyang Yao, Head of the Team. (Reference available upon request)
+
         - title: Team Member, Intelligent Acoustics
           company: Intelligent Acoustics & Immersive Communication Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/38002.htm'
