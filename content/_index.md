@@ -58,83 +58,80 @@ sections:
           description: 10%
           icon: camera-retro
           icon_pack: fas
- - block: experience
-   content:
-     title: Experience
-     date_format: Jan 2006
-     items:
-       - title: Project Lead
-         company: AI Image Compression Joint Innovation Lab, Shaanxi University of Science & Technology
-         company_url: ''
-         company_logo: ''
-         location: Xi'an, China
-         date_start: '2024-11-01'
-         date_end: ''
-         description: |2-
-             * [cite_start]Led the research on "Bayesian Few-shot Fine-grained Image Classification based on Gaussian Processes". [cite: 15]
-             * [cite_start]Designed and implemented feature extractors suitable for few-shot learning tasks, improving model generalization with methods like variational inference and mirror gradient descent. [cite: 17]
-             * [cite_start]Explored and designed various kernel functions (e.g., RBF, polynomial) for the Gaussian process model to enhance predictive accuracy. [cite: 17]
-       - title: Student Lead
-         company: '"Core Intelligence Engine" AI Sharing Network Culture Studio'
-         company_url: ''
-         company_logo: ''
-         location: Xi'an, China
-         date_start: '2024-10-01'
-         date_end: ''
-         description: |2-
-             * [cite_start]Established the studio to optimize campus workflows using a Large Model RAG system. [cite: 52]
-             * [cite_start]Developed an intelligent Q&A system to automate policy interpretation and improve the efficiency of academic and campus information services. [cite: 52]
-             * [cite_start]The project won a National Third Prize in the "2025 National College Yiban Technology Innovation Competition". [cite: 52]
-       - title: Core Developer, Gesture Recognition System
-         company: The 26th China Robot and Artificial Intelligence Competition Project
-         company_url: ''
-         company_logo: ''
-         location: Remote
-         date_start: '2024-01-01'
-         date_end: '2024-08-01'
-         description: |2-
-             * [cite_start]Developed a real-time gesture recognition system using OpenCV and MediaPipe for an intelligent assistive application designed for the hearing and speech impaired. [cite: 34, 37]
-             * [cite_start]Utilized the MediaPipe Hands model to extract 21 key points for precise gesture identification. [cite: 37]
-             * [cite_start]Designed and implemented a CNN-based algorithm to classify specific gestures. [cite: 37]
-   design:
-     columns: '2'
+  - block: experience
+    content:
+      title: Experience
+      # Date format for experience
+      #   Refer to https://wowchemy.com/docs/customization/#date-format
+      date_format: Jan 2006
+      # Experiences.
+      #   Add/remove as many `experience` items below as you like.
+      #   Required fields are `title`, `company`, and `date_start`.
+      #   Leave `date_end` empty if it's your current employer.
+      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
+      items:
+        - title: CEO
+          company: GenCoin
+          company_url: ''
+          company_logo: org-gc
+          location: California
+          date_start: '2021-01-01'
+          date_end: ''
+          description: |2-
+              Responsibilities include:
 
- - block: accomplishments
-   content:
-     title: 'Accomplish&shy;ments'
-     subtitle:
-     date_format: Jan 2006
-     items:
-       - date_start: '2024-01-01'
-         date_end: '2024-08-01'
-         description: ''
-         organization: The 26th China Robot and Artificial Intelligence Competition
-         organization_url: ''
-         [cite_start]title: National First Prize [cite: 34]
-         url: ''
-       - date_start: '2024-03-01'
-         date_end: '2024-06-01'
-         description: 'AI Track (Project-based Practical Competition)'
-         organization: The 15th Blue Bridge Cup Competition
-         organization_url: ''
-         [cite_start]title: National Third Prize [cite: 30]
-         url: ''
-       - date_start: '2024-05-01'
-         date_end: '2024-09-01'
-         description: ''
-         organization: China International College Students'' Innovation Contest (2024)
-         organization_url: ''
-         [cite_start]title: Provincial Silver Award [cite: 42]
-         url: ''
-       - date_start: '2022-09-01'
-         date_end: ''
-         [cite_start]description: 'Awarded for academic excellence (Ranked 1/60) and student leadership. [cite: 10, 12]'
-         organization: Shaanxi University of Science & Technology
-         organization_url: 'https://www.sust.edu.cn/'
-         title: National Endeavor Scholarship & First-class Academic Scholarship
-         url: ''
-   design:
-     columns: '2'
+              * Analysing
+              * Modelling
+              * Deploying
+        - title: Professor of Semiconductor Physics
+          company: University X
+          company_url: ''
+          company_logo: org-x
+          location: California
+          date_start: '2016-01-01'
+          date_end: '2020-12-31'
+          description: Taught electronic engineering and researched semiconductor physics.
+    design:
+      columns: '2'
+  - block: accomplishments
+    content:
+      # Note: `&shy;` is used to add a 'soft' hyphen in a long heading.
+      title: 'Accomplish&shy;ments'
+      subtitle:
+      # Date format: https://wowchemy.com/docs/customization/#date-format
+      date_format: Jan 2006
+      # Accomplishments.
+      #   Add/remove as many `item` blocks below as you like.
+      #   `title`, `organization`, and `date_start` are the required parameters.
+      #   Leave other parameters empty if not required.
+      #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
+      items:
+        - certificate_url: https://www.coursera.org
+          date_end: ''
+          date_start: '2021-01-25'
+          description: ''
+          organization: Coursera
+          organization_url: https://www.coursera.org
+          title: Neural Networks and Deep Learning
+          url: ''
+        - certificate_url: https://www.edx.org
+          date_end: ''
+          date_start: '2021-01-01'
+          description: Formulated informed blockchain models, hypotheses, and use cases.
+          organization: edX
+          organization_url: https://www.edx.org
+          title: Blockchain Fundamentals
+          url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
+        - certificate_url: https://www.datacamp.com
+          date_end: '2020-12-21'
+          date_start: '2020-07-01'
+          description: ''
+          organization: DataCamp
+          organization_url: https://www.datacamp.com
+          title: 'Object-Oriented Programming in R'
+          url: ''
+    design:
+      columns: '2'
   - block: collection
     id: posts
     content:
