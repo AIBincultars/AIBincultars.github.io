@@ -91,10 +91,10 @@ sections:
           date_end: '2025-05-01'
           date_start: '2025-07-01'
           description: 'Project Lead for "GuardianEye," an intelligent report generation system for endangered animals.Independently designed a novel data-driven adaptive DCT algorithm and a dual-branch fusion model to solve small-sample recognition challenges, boosting accuracy by 59%. '
-          organization: '<img src="/images/craic.png" width="28" style="vertical-align: middle; margin-right: 8px;"> China Association for Artificial Intelligence'
-          organization_url: https://www.caairobot.com/
+          organization: 'China Association for Artificial Intelligence'
+          organization_url: https://www.caai.cn/index.php?s=/Home/Index/index.html
           title: National First Prize, China Robotics & AI Competition (AI Innovation)
-          url: ''
+          url: 'https://www.caairobot.com/'
         - certificate_url: https://www.edx.org
           date_end: ''
           date_start: '2021-01-01'
