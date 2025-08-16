@@ -92,29 +92,34 @@ sections:
           description: Project Lead for "GuardianEye," an intelligent report generation system for endangered animals.Independently designed a novel data-driven adaptive DCT algorithm and a dual-branch fusion model to solve small-sample recognition challenges, boosting accuracy by 59%.
           organization: China Association for Artificial Intelligence
           organization_url: https://www.caai.cn/index.php?s=/Home/Index/index.html
-          title: National First Prize, The 27th China Robotics & AI Competition
+          title: National First Prize, The 27th China Robotics & AI Competition (AI Innovation Track)
           url: https://www.caairobot.com/
         - date_end: '2024-08-01'
           date_start: '2024-01-01'
           description: Project Lead for "AnYuXinQiao," a real-time, bi-directional sign language translation engine.Innovated by extending MediaPipe keypoints and building a 4-layer LSTM encoder-decoder to achieve high-accuracy, real-time translation.
           organization: China Association for Artificial Intelligence
           organization_url: https://www.caai.cn/index.php?s=/Home/Index/index.html
-          title: National First Prize, The 26th China Robotics & AI Competition
+          title: National First Prize, The 26th China Robotics & AI Competition (New Quality Productive Forces Track)
           url: https://www.caairobot.com/
         - date_end: '2025-02-01'
           date_start: '2025-07-01'
           description: Project Lead for "Graph-RAG Tutor Assistant," a system combining Knowledge Graphs and RAG to mitigate LLM hallucination. Fine-tuned the DeepSeekR1-7B model using LoRA and Prefix-Tuning.
           organization: Talent exchange center of Ministry of industry and information technology
           organization_url: https://www.miitec.cn/
-          title: National Third Prize,The 16th Lanqiao Cup National Software Competition
+          title: National Third Prize,The 16th Lanqiao Cup National Software Competition (Digital Innovation Track)
           url: https://dasai.lanqiao.cn/
-        - date_end: '2025-02-01'
-          date_start: '2025-07-01'
-          description: Project Lead for "Graph-RAG Tutor Assistant," a system combining Knowledge Graphs and RAG to mitigate LLM hallucination. Fine-tuned the DeepSeekR1-7B model using LoRA and Prefix-Tuning.
+        - date_end: '2024-06-01'
+          date_start: '2024-03-01'
           organization: Talent exchange center of Ministry of industry and information technology
           organization_url: https://www.miitec.cn/
-          title: National Third Prize,The 16th Lanqiao Cup National Software Competition
+          title: National Third Prize,The 15th Lanqiao Cup National Software Competition (AI Project Practical Track)
           url: https://dasai.lanqiao.cn/
+        - date_end: '2024-09-01'
+          date_start: '2024-12-01'
+          organization: Talent exchange center of Ministry of industry and information technology
+          organization_url: https://www.miitec.cn/
+          title: National Third Prize, 2024 RAICOM Robot Developer Competition (Large Model Application Track)
+          url: https://www.raicom.com.cn/match.html
     design:
       columns: '2'
   - block: collection
