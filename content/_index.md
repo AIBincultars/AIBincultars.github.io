@@ -39,27 +39,35 @@ sections:
       #   Leave `date_end` empty if it's your current employer.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - title: CEO
-          company: GenCoin
-          company_url: ''
+        - title: Student Research Lead
+          company: Joint Innovation Lab of AI Image Compression, SUSTech
+          company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/37512.htm'
           company_logo: org-gc
-          location: California
-          date_start: '2021-01-01'
+          location: Shaanxi, Xian
+          date_start: '2024-11-01'
           date_end: ''
           description: |2-
-              Responsibilities include:
+              Served as the first student author and project lead for two key research papers:
+              **Few-Shot Learning**: Investigated Bayesian few-shot image classification using Gaussian Processes, enhancing model generalization in data-scarce scenarios.
+              **Sparse-Data Vision**: Designed a novel Frequency-Adaptive Discrete Cosine-ViT-ResNet architecture that outperformed ResNet50 by 59.51%.
 
-              * Analysing
-              * Modelling
-              * Deploying
-        - title: Professor of Semiconductor Physics
-          company: University X
+        - title: Team Member, LLM Engineering
+          company: Complex Environment Intelligent Perception Team, SUSTech
           company_url: ''
           company_logo: org-x
-          location: California
-          date_start: '2016-01-01'
-          date_end: '2020-12-31'
-          description: Taught electronic engineering and researched semiconductor physics.
+          location: Shaanxi, Xian
+          date_start: '2023-09-01'
+          date_end: ''
+          description: Responsible for the end-to-end workflow of LLM fine-tuning and on-premise deployment, including implementing PEFT techniques (LoRA), model quantization (GGUF), and building inference services with FastAPI.
+
+        - title: Team Member, Intelligent Acoustics
+          company: Intelligent Acoustics & Immersive Communication Team, SUSTech
+          company_url: ''
+          company_logo: org-x
+          location: Shaanxi, Xian
+          date_start: '2023-09-01'
+          date_end: ''
+          description: Developed feature extraction pipelines for environmental sound classification and re-engineered signal processing algorithms from MATLAB to high-performance Python code.
     design:
       columns: '2'
   - block: accomplishments
