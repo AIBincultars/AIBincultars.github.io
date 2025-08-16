@@ -48,13 +48,9 @@ sections:
           date_end: ''
           description: |2-
               Served as the first student author and project lead for two key research papers:
-
               **Few-Shot Learning**: Investigated Bayesian few-shot image classification using Gaussian Processes, enhancing model generalization in data-scarce scenarios.
-
               **Sparse-Data Vision**: Designed a novel Frequency-Adaptive Discrete Cosine-ViT-ResNet architecture that outperformed ResNet50 by 59.51%.
-
               **Supervisor**: Prof. Weichuan Zhang, Head of the Lab. (Reference available upon request)
-
         - title: Team Member, LLM Engineering
           company: Complex Environment Intelligent Perception Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/37862.htm'
@@ -62,9 +58,9 @@ sections:
           location: Shaanxi, Xian
           date_start: '2023-09-01'
           date_end: ''
-          description: Responsible for the end-to-end workflow of LLM fine-tuning and on-premise deployment, including implementing PEFT techniques (LoRA), model quantization (GGUF), and building inference services with FastAPI.
-              * **Supervisor**: Prof. Haiyang Yao, Head of the Team. (Reference available upon request)
-
+          description: |2-
+              Responsible for the end-to-end workflow of LLM fine-tuning and on-premise deployment, including implementing PEFT techniques (LoRA), model quantization (GGUF), and building inference services with FastAPI.
+              **Supervisor**: Prof. Haiyang Yao, Head of the Team. (Reference available upon request)
         - title: Team Member, Intelligent Acoustics
           company: Intelligent Acoustics & Immersive Communication Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/38002.htm'
@@ -72,7 +68,8 @@ sections:
           location: Shaanxi, Xian
           date_start: '2023-09-01'
           date_end: ''
-          description: Developed feature extraction pipelines for environmental sound classification and re-engineered signal processing algorithms from MATLAB to high-performance Python code.
+          description: |2-
+              Developed feature extraction pipelines for environmental sound classification and re-engineered signal processing algorithms from MATLAB to high-performance Python code.
     design:
       columns: '2'
   - block: accomplishments
