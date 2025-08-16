@@ -48,9 +48,9 @@ sections:
           date_end: ''
           description: |2-
               Served as the first student author and project lead for two key research papers:
-              **Few-Shot Learning**: Investigated Bayesian few-shot image classification using Gaussian Processes, enhancing model generalization in data-scarce scenarios.
-              **Sparse-Data Vision**: Designed a novel Frequency-Adaptive Discrete Cosine-ViT-ResNet architecture that outperformed ResNet50 by 59.51%.
-              **Supervisor**: Prof. Weichuan Zhang, Head of the Lab. (Reference available upon request)
+              * **Few-Shot Learning**: Investigated Bayesian few-shot image classification using Gaussian Processes, enhancing model generalization in data-scarce scenarios.
+              * **Sparse-Data Vision**: Designed a novel Frequency-Adaptive Discrete Cosine-ViT-ResNet architecture that outperformed ResNet50 by 59.51%.
+              * **Supervisor**: Prof. Weichuan Zhang, Head of the Lab. (Reference available upon request)
         - title: Team Member, LLM Engineering
           company: Complex Environment Intelligent Perception Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/37862.htm'
