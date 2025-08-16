@@ -59,7 +59,9 @@ sections:
           date_start: '2023-09-01'
           date_end: ''
           description: |2-
-              Responsible for the end-to-end workflow of LLM fine-tuning and on-premise deployment, including implementing PEFT techniques (LoRA), model quantization (GGUF), and building inference services with FastAPI.
+              Managed the end-to-end pipeline for applied large language model research, focusing on two key areas:
+              * **Efficient LLM Fine-Tuning:** Implemented Parameter-Efficient Fine-Tuning (PEFT) techniques, specifically LoRA, to adapt large models for specialized tasks while minimizing computational overhead.
+              * **On-Premise Deployment & Serving:** Engineered the full deployment workflow, including model quantization to GGUF for hardware efficiency and building high-performance inference services with FastAPI.
               * **Supervisor**: Prof. Haiyang Yao, Head of the Team. (Reference available upon request)
         - title: Team Member, Intelligent Acoustics
           company: Intelligent Acoustics & Immersive Communication Team, SUSTech
