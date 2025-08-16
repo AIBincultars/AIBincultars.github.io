@@ -16,7 +16,7 @@ sections:
       title: Technical Skills
       items:
         - name: Programming & Frameworks
-          description: 'Python, Pytorch, Tensorflow, LangChain, FastAPI, llama.cpp, Xinference'
+          description: 'Python,C++ , Pytorch, Tensorflow, LangChain, FastAPI, llama.cpp, Xinference'
           icon: code
           icon_pack: fas
         - name: AI & Machine Learning
