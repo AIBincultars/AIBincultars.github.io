@@ -77,6 +77,6 @@ highlight_name: true
 ---
 
 I am the first-ranked undergraduate (Class of 2026) in Artificial Intelligence at Shaanxi University of Science & Technology. 
-A recipient of five national-level awards and the National Endeavor Fellowship, my work has also resulted in first-author publications centered on Computer Vision and applied LLMs. 
+A recipient of five national-level awards and the National Endeavor Fellowship, my work includes first-author publications on arXiv exploring novel applications of Computer Vision and Large Language Models.. 
 I have led research in developing novel architectures that significantly outperform established baselines and have hands-on experience in the full lifecycle of LLM fine-tuning and deployment.
 {style="text-align: justify;"}
