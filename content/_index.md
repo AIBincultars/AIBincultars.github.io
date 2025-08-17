@@ -240,10 +240,10 @@ sections:
           icon_pack: fab
           name: Bincultars
           link: 'https://x.com/home?lang=en-sg'
-        - icon: skype
-          icon_pack: fab
-          name: Skype Me
-          link: 'skype:echo123?call'
+      #  - icon: skype
+      #    icon_pack: fab
+      #    name: Skype Me
+      #    link: 'skype:echo123?call'
       #  - icon: video
       #    icon_pack: fas
       #    name: Zoom Me
