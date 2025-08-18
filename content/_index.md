@@ -219,11 +219,11 @@ sections:
       title: Contact
       subtitle:
       text: |-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi diam, venenatis ut magna et, vehicula efficitur enim.
+        Have a question or feedback? Send me a message.
       # Contact (add or remove contact options as necessary)
       email: edu.kangziyue@gmail.com
       # phone: 888 888 88 88
-      appointment_url: 'https://calendly.com'
+      #appointment_url: 'https://calendly.com'
       # address:
         # street: 450 Serra Mall
         # city: Stanford
