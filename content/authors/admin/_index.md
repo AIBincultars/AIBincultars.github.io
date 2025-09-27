@@ -76,6 +76,6 @@ email: ''
 highlight_name: true
 ---
  
-Kang Ziyue is an undergraduate student in Artificial Intelligence at Shaanxi University of Science and Technology, expecting to graduate in 2026 with a major ranking of 1/59. His primary focus is on few-shot learning, large language model technologies, and multi-modal applications.
+Ziyue Kang is an undergraduate student in Artificial Intelligence at Shaanxi University of Science and Technology, expecting to graduate in 2026 with a major ranking of 1/59. His primary focus is on few-shot learning, large language model technologies, and multi-modal applications.
 In his research, he has first-authored several conference and journal papers on few-shot image classification (currently under review). As a project lead, his teams have won several national first-prize awards in innovation competitions. His main work includes algorithm design, model fine-tuning, and local deployment.
 {style="text-align: justify;"}
