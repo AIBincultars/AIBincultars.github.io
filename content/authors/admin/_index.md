@@ -28,7 +28,7 @@ bio: My research interests include embodied intelligence, large model fine-tunin
 interests:
   - Artificial Intelligence
   - Machine Learning
-  - Large Language Model Fine-tuning
+  - LLM Fine-tuning
   - Computer Vision
   - Few-shot Learning
 
