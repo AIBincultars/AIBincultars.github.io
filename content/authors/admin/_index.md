@@ -28,14 +28,14 @@ bio: My research interests include embodied intelligence, large model fine-tunin
 interests:
   - Artificial Intelligence
   - Machine Learning
-  - Large Model Fine-tuning
+  - Large Language Model Fine-tuning
   - Computer Vision
   - Few-shot Learning
 
 # Education to show in About widget
 education:
   courses:
-    - course: BSc in Artificial Intelligence
+    - course: B.Eng in Artificial Intelligence
       institution: Shaanxi University of Science & Technology
       year: 2026
 
@@ -75,8 +75,7 @@ email: ''
 # Highlight the author in author lists? (true/false)
 highlight_name: true
 ---
-
-I am the first-ranked undergraduate (Class of 2026) in Artificial Intelligence at Shaanxi University of Science & Technology. 
-A recipient of five national-level awards and the National Endeavor Fellowship, my work includes first-author publications on arXiv exploring novel applications of Computer Vision and Large Language Models.. 
-I have led research in developing novel architectures that significantly outperform established baselines and have hands-on experience in the full lifecycle of LLM fine-tuning and deployment.
+ 
+Kang Ziyue is an undergraduate student in Artificial Intelligence at Shaanxi University of Science and Technology, expecting to graduate in 2026 with a major ranking of 1/59. His primary focus is on few-shot learning, large language model technologies, and multi-modal applications.
+In his research, he has first-authored several conference and journal papers on few-shot image classification (currently under review). As a project lead, his teams have won several national first-prize awards in innovation competitions. His main work includes algorithm design, model fine-tuning, and local deployment.
 {style="text-align: justify;"}

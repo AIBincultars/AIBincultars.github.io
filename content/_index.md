@@ -24,7 +24,7 @@ sections:
           icon: robot
           icon_pack: fas
         - name: Languages
-          description: 'English(CET-4:469, CET-6:472)'
+          description: 'English(CET-4, CET-6)'
           icon: language
           icon_pack: fas
   - block: experience
@@ -49,7 +49,6 @@ sections:
               Served as the first student author and project lead for two key research papers:
               * **Few-Shot Learning**: Investigated Bayesian few-shot image classification using Gaussian Processes, enhancing model generalization in data-scarce scenarios.
               * **Sparse-Data Vision**: Designed a novel Frequency-Adaptive Discrete Cosine-ViT-ResNet architecture that outperformed ResNet50 by 59.51%.
-              * **Supervisor**: Prof. Weichuan Zhang, Head of the Lab. (Reference available upon request)
         - title: Team Member, LLM Engineering
           company: Complex Environment Intelligent Perception Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/37862.htm'
@@ -60,7 +59,6 @@ sections:
               Managed the end-to-end pipeline for applied large language model research, focusing on two key areas:
               * **Efficient LLM Fine-Tuning:** Implemented Parameter-Efficient Fine-Tuning (PEFT) techniques, specifically LoRA, to adapt large models for specialized tasks while minimizing computational overhead.
               * **On-Premise Deployment & Serving:** Engineered the full deployment workflow, including model quantization to GGUF for hardware efficiency and building high-performance inference services with FastAPI.
-              * **Supervisor**: Prof. Haiyang Yao, Head of the Team. (Reference available upon request)
         - title: Team Member, Intelligent Acoustics
           company: Intelligent Acoustics & Immersive Communication Team, SUSTech
           company_url: 'http://dianzhi.www.sust.edu.cn/info/4667/38002.htm'
