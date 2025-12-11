@@ -37,10 +37,10 @@ education:
   courses:
     - course: B.Eng in Artificial Intelligence
       institution: Shaanxi University of Science & Technology
-      year: Sep 2022 - Jun 2026
+      year: Jun 2026
     - course: M.S in Control Science and Engineering
       institution: Xi'an Jiaotong University
-      year: Sep 2026 - Jun 2029 
+      year: Jun 2029 
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons

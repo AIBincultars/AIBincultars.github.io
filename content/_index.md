@@ -20,11 +20,11 @@ sections:
           icon: code
           icon_pack: fas
         - name: AI & Machine Learning
-          description: 'Computer Vision, LLM Fine-Tuning, RAG, Multimodal Learning, Deep Learning, Gaussian Processes'
+          description: 'Computer Vision, LLM Fine-Tuning, Multimodal Learning, Deep Learning, Gaussian Processes'
           icon: robot
           icon_pack: fas
         - name: Languages
-          description: 'English(CET-4, CET-6)'
+          description: 'English'
           icon: language
           icon_pack: fas
   - block: experience
