@@ -1,35 +1,17 @@
-# Ziyue Kang — Research Homepage
+# 康子越 | Ziyue Kang
 
-A bilingual, multi-page research homepage built with Astro, custom CSS, and Astro Content Collections.
+西安交通大学控制科学与工程硕士研究生，本科毕业于陕西科技大学人工智能专业。我的研究聚焦于面向可控、数据高效生成的结构化与多模态表征学习。
 
-## Routes
+I am an M.S. student in Control Science and Engineering at Xi'an Jiaotong University. I received my B.Eng. in Artificial Intelligence from Shaanxi University of Science & Technology. My research focuses on structured and multimodal representation learning for controllable and data-efficient generation.
 
-- `/en/` and `/zh/` — Home
-- `/en/publications/` and `/zh/publications/` — Publications
-- `/en/collaborations/` and `/zh/collaborations/` — Public collaborations
-- `/en/projects/` and `/zh/projects/` — Projects
+## 研究兴趣 | Research Interests
 
-Projects navigation and homepage content remain hidden while the public project list is empty, and direct Projects URLs return to the matching Home page. The legacy `/en/about/`, `/zh/about/`, `/en/experience/`, and `/zh/experience/` routes also redirect to the matching Home page. The root route chooses a language from `localStorage` and the browser language. Every language page is statically generated and can be opened or refreshed directly on GitHub Pages.
+- 结构化与多模态表征学习 · Structured and Multimodal Representation Learning
+- 可控生成模型 · Controllable Generative Modeling
+- 数据高效学习 · Data-Efficient Learning
 
-## Content
+## 联系方式 | Contact
 
-- Public profile, bilingual copy, education, and projects: `src/data/site-content.ts`
-- Routes, languages, site URL, and language storage key: `src/config/site.ts`
-- Public publications: `src/content/publications/`
-- Public collaborations: `src/content/collaborations/`
-- Content validation: `src/content/config.ts`
-- Shared visual system: `src/styles/global.css`
-
-Only publicly verifiable research outputs and collaborations belong in the frontend content collections.
-
-## Development
-
-```bash
-npm install
-npm run dev -- --host
-npm run check
-npm run build
-npm run preview -- --host
-```
-
-See `CONTENT_EDIT_GUIDE.md` before editing public content. GitHub Pages deploys the generated `dist/` directory through `.github/workflows/deploy.yml`.
+- 个人主页：[aibincultars.github.io](https://aibincultars.github.io/)
+- Google Scholar：[Ziyue Kang](https://scholar.google.com/citations?user=ltaBNZIAAAAJ&hl=en)
+- Email：[edu.kangziyue@gmail.com](mailto:edu.kangziyue@gmail.com)
