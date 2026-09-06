@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import PageHeader from '../../components/PageHeader.astro';
+import ProjectList from '../../components/ProjectList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages, localize, type Language } from '../../config/site';
+import { siteContent as site } from '../../data/site-content';
+
+export const getStaticPaths = () => languages.map((lang) => ({ params: { lang } }));
+
+const language = Astro.params.lang as Language;
+const [publications, collaborations] = await Promise.all([getCollection('publications'), getCollection('collaborations')]);
+if (site.projects.items.length === 0) return Astro.redirect(`/${language}/`);
+---
+
+<BaseLayout language={language} page="projects" hasPublications={publications.length > 0} hasCollaborations={collaborations.length > 0}>
+  <PageHeader title={localize(site.labels.projects, language)} introduction={localize(site.projects.intro, language)} />
+  <ProjectList projects={site.projects.items} language={language} />
+</BaseLayout>

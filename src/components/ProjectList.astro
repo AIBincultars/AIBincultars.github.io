@@ -1,0 +1,27 @@
+---
+import { localize, type Language } from '../config/site';
+import { siteContent as site, type PublicProject } from '../data/site-content';
+
+interface Props {
+  projects: PublicProject[];
+  language: Language;
+}
+
+const { projects, language } = Astro.props;
+---
+
+<ol class="project-list">
+  {projects.map((project) => (
+    <li>
+      <article class="project-item">
+        <h3>{localize(project.title, language)}</h3>
+        <p>{localize(project.description, language)}</p>
+        <div class="text-links project-links">
+          <a href={project.publicUrl} target="_blank" rel="noopener noreferrer">
+            {localize(site.labels.projectPage, language)} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </li>
+  ))}
+</ol>

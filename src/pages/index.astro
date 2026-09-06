@@ -1,0 +1,27 @@
+---
+import { siteConfig } from '../config/site';
+import { siteContent } from '../data/site-content';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <title>{siteContent.profile.name.en}</title>
+    <script is:inline define:vars={{ storageKey: siteConfig.languageStorageKey }}>
+      (() => {
+        let savedLanguage = null;
+        try { savedLanguage = localStorage.getItem(storageKey); } catch {}
+        const language = savedLanguage === 'zh' || savedLanguage === 'en'
+          ? savedLanguage
+          : navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+        location.replace(`/${language}/`);
+      })();
+    </script>
+  </head>
+  <body>
+    <p><a href="/en/">{siteContent.labels.languageNames.en}</a> · <a href="/zh/">{siteContent.labels.languageNames.zh}</a></p>
+  </body>
+</html>

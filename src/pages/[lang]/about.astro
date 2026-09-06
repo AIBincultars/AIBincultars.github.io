@@ -1,0 +1,24 @@
+---
+import { languages, localize, paths, siteConfig, type Language } from '../../config/site';
+import { siteContent } from '../../data/site-content';
+
+export const getStaticPaths = () => languages.map((lang) => ({ params: { lang } }));
+
+const language = Astro.params.lang as Language;
+const destination = paths[language].home;
+const message = localize(siteContent.labels.homeRedirect, language);
+---
+
+<!doctype html>
+<html lang={language === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+    <link rel="canonical" href={new URL(destination, siteConfig.url)} />
+    <title>{message}</title>
+    <script is:inline define:vars={{ destination }}>location.replace(destination);</script>
+  </head>
+  <body><p><a href={destination}>{message}</a></p></body>
+</html>

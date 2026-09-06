@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import AccordionSection from '../../components/AccordionSection.astro';
+import CollaborationList from '../../components/CollaborationList.astro';
+import CompactHero from '../../components/CompactHero.astro';
+import PublicationList from '../../components/PublicationList.astro';
+import ProjectList from '../../components/ProjectList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages, localize, paths, type Language } from '../../config/site';
+import { siteContent as site } from '../../data/site-content';
+
+export const getStaticPaths = () => languages.map((lang) => ({ params: { lang } }));
+
+const language = Astro.params.lang as Language;
+const [publications, collaborations] = await Promise.all([
+  getCollection('publications'),
+  getCollection('collaborations'),
+]);
+const selectedPublications = publications.filter((entry) => entry.data.featured).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
+const selectedCollaborations = collaborations.filter((entry) => entry.data.featured).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
+---
+
+<BaseLayout language={language} page="home" hasPublications={publications.length > 0} hasCollaborations={collaborations.length > 0}>
+  <CompactHero language={language} />
+  <div class="home-sections">
+    {selectedPublications.length > 0 && (
+      <AccordionSection title={localize(site.labels.selectedPublications, language)} open>
+        <PublicationList publications={selectedPublications} language={language} />
+        <a class="more-link" href={paths[language].publications}>{localize(site.labels.viewAllPublications, language)} <span aria-hidden="true">→</span></a>
+      </AccordionSection>
+    )}
+    {site.projects.items.length > 0 && (
+      <AccordionSection title={localize(site.labels.projects, language)}>
+        <ProjectList projects={site.projects.items} language={language} />
+        <a class="more-link" href={paths[language].projects}>{localize(site.labels.viewAllProjects, language)} <span aria-hidden="true">→</span></a>
+      </AccordionSection>
+    )}
+    {selectedCollaborations.length > 0 && (
+      <AccordionSection title={localize(site.labels.publicCollaborations, language)}>
+        <CollaborationList collaborations={selectedCollaborations} language={language} />
+        <a class="more-link" href={paths[language].collaborations}>{localize(site.labels.viewAllCollaborations, language)} <span aria-hidden="true">→</span></a>
+      </AccordionSection>
+    )}
+  </div>
+</BaseLayout>

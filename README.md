@@ -1,21 +1,35 @@
-# 康子越的个人学术主页 (Ziyue Kang's Academic Homepage)
+# Ziyue Kang — Research Homepage
 
-[![Deploy Website to GitHub Pages](https://github.com/aibincultars/AIBincultars.github.io/actions/workflows/publish.yaml/badge.svg)](https://github.com/aibincultars/AIBincultars.github.io/actions/workflows/publish.yaml)
+A bilingual, multi-page research homepage built with Astro, custom CSS, and Astro Content Collections.
 
-该仓库包含我的个人学术主页的全部源代码。
+## Routes
 
-**➡️ 访问在线主页: [https://aibincultars.github.io/](https://aibincultars.github.io/)**
+- `/en/` and `/zh/` — Home
+- `/en/publications/` and `/zh/publications/` — Publications
+- `/en/collaborations/` and `/zh/collaborations/` — Public collaborations
+- `/en/projects/` and `/zh/projects/` — Projects
 
----
+Projects navigation and homepage content remain hidden while the public project list is empty, and direct Projects URLs return to the matching Home page. The legacy `/en/about/`, `/zh/about/`, `/en/experience/`, and `/zh/experience/` routes also redirect to the matching Home page. The root route chooses a language from `localStorage` and the browser language. Every language page is statically generated and can be opened or refreshed directly on GitHub Pages.
 
-## 网站预览
+## Content
 
-![我的个人主页预览](images/preview.png)
+- Public profile, bilingual copy, education, and projects: `src/data/site-content.ts`
+- Routes, languages, site URL, and language storage key: `src/config/site.ts`
+- Public publications: `src/content/publications/`
+- Public collaborations: `src/content/collaborations/`
+- Content validation: `src/content/config.ts`
+- Shared visual system: `src/styles/global.css`
 
----
+Only publicly verifiable research outputs and collaborations belong in the frontend content collections.
 
-## 技术栈
+## Development
 
-本网站使用 [Hugo](https://gohugo.io/) 静态网站生成器构建，并基于 [Wowchemy](https://wowchemy.com/) 学术主题模板。
+```bash
+npm install
+npm run dev -- --host
+npm run check
+npm run build
+npm run preview -- --host
+```
 
-所有内容均使用 Markdown 编写，并通过 GitHub Actions 自动部署到 GitHub Pages。
+See `CONTENT_EDIT_GUIDE.md` before editing public content. GitHub Pages deploys the generated `dist/` directory through `.github/workflows/deploy.yml`.

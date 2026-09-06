@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { localize, type Language } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+
+interface Props {
+  publications: CollectionEntry<'publications'>[];
+  language: Language;
+}
+
+const { publications, language } = Astro.props;
+---
+
+<ol class="publication-list">
+  {publications.map(({ data: publication }) => {
+    const links = [
+      { label: site.labels.paper, url: publication.paperUrl },
+      { label: site.labels.publisher, url: publication.publisherUrl },
+      { label: site.labels.arxiv, url: publication.arxivUrl },
+      { label: site.labels.code, url: publication.codeUrl },
+      { label: site.labels.projectPage, url: publication.projectUrl },
+      { label: site.labels.demo, url: publication.demoUrl },
+    ].filter((link): link is { label: typeof site.labels.paper; url: string } => Boolean(link.url));
+
+    return (
+      <li>
+        <article class="publication-item">
+          <h3>{publication.title}</h3>
+          <p class="publication-authors">
+            {publication.authors.map((author, index) => (
+              <>{author === site.profile.publicationAuthorName ? <strong>{author}</strong> : author}{index < publication.authors.length - 1 ? ', ' : ''}</>
+            ))}
+          </p>
+          <p class="publication-meta">
+            <span>{publication.venue}</span>
+            <span>{localize(site.labels.publicDate, language)} · <time datetime={publication.publicDate}>{publication.publicDate}</time></span>
+            <span>{localize(site.labels.publicPreprint, language)}</span>
+          </p>
+          <div class="text-links publication-links">
+            {links.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{localize(link.label, language)} <span aria-hidden="true">↗</span></a>)}
+          </div>
+        </article>
+      </li>
+    );
+  })}
+</ol>

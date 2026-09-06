@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { localize, type Language } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+
+interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+---
+
+<section class="compact-hero" aria-labelledby="home-title">
+  <div class="hero-copy">
+    <h1 id="home-title">{localize(site.profile.name, language)}</h1>
+    <p class="alternate-name">{localize(site.profile.alternateName, language)}</p>
+    <div class="hero-education">
+      <p class="hero-education-label">{localize(site.labels.education, language)}</p>
+      <ul>
+        {site.education.map((item) => (
+          <li>
+            <span>{localize(item.institution, language)} · {localize(item.degree, language)} · {localize(item.major, language)}</span>{' '}
+            <span class="hero-education-period">({item.startDate}–{item.endDate ?? localize(site.labels.present, language)})</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="text-links hero-links">
+      <a href={`mailto:${site.contact.email}`}>{localize(site.labels.email, language)}</a>
+      <a href={site.contact.github} target="_blank" rel="noopener noreferrer">{localize(site.labels.github, language)} <span aria-hidden="true">↗</span></a>
+      <a href={site.contact.scholar} target="_blank" rel="noopener noreferrer">{localize(site.labels.scholar, language)} <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="hero-interests" aria-label={localize(site.labels.researchInterests, language)}>
+      <span class="hero-interests-label">{localize(site.labels.researchInterests, language)}</span>
+      <div class="hero-interests-content">
+        <p>{localize(site.researchInterests.statement, language)}</p>
+        <ul>
+          {site.researchInterests.items.map((interest) => <li>{localize(interest.title, language)}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <Image
+    src={site.profile.portrait.src}
+    alt={localize(site.profile.portrait.alt, language)}
+    width={128}
+    height={128}
+    format="webp"
+    quality={82}
+    loading="eager"
+    fetchpriority="high"
+    class="profile-photo"
+  />
+</section>

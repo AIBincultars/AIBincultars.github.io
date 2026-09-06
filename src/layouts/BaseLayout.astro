@@ -1,0 +1,76 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { localize, paths, siteConfig, type Language, type PageKey } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '../styles/global.css';
+
+interface Props {
+  language: Language;
+  page: PageKey;
+  hasPublications: boolean;
+  hasCollaborations: boolean;
+}
+
+const { language, page, hasPublications, hasCollaborations } = Astro.props;
+const metadata = site.metadata[page];
+const canonical = new URL(paths[language][page], siteConfig.url);
+---
+
+<!doctype html>
+<html lang={language === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="description" content={localize(metadata.description, language)} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={new URL(paths.en[page], siteConfig.url)} />
+    <link rel="alternate" hreflang="zh-CN" href={new URL(paths.zh[page], siteConfig.url)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(paths.en[page], siteConfig.url)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={localize(metadata.title, language)} />
+    <meta property="og:description" content={localize(metadata.description, language)} />
+    <meta property="og:url" content={canonical} />
+    <title>{localize(metadata.title, language)}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">{localize(site.labels.skipToContent, language)}</a>
+    <Header language={language} page={page} hasPublications={hasPublications} hasCollaborations={hasCollaborations} />
+    <main id="main-content" class="site-container page-content"><slot /></main>
+    <Footer language={language} />
+
+    <script is:inline define:vars={{ storageKey: siteConfig.languageStorageKey, pageLanguage: language }}>
+      (() => {
+        try { localStorage.setItem(storageKey, pageLanguage); } catch {}
+
+        document.querySelectorAll('[data-language-target]').forEach((link) => {
+          link.addEventListener('click', () => {
+            try { localStorage.setItem(storageKey, link.dataset.languageTarget); } catch {}
+          });
+        });
+
+        document.querySelectorAll('details[data-accordion]').forEach((details) => {
+          const summary = details.querySelector(':scope > summary');
+          const synchronize = () => summary?.setAttribute('aria-expanded', String(details.open));
+          details.addEventListener('toggle', synchronize);
+          synchronize();
+        });
+
+        document.querySelectorAll('[data-accordion-action]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const group = button.closest('[data-accordion-group]');
+            const shouldOpen = button.dataset.accordionAction === 'expand';
+            group?.querySelectorAll('details[data-accordion]').forEach((details) => {
+              details.open = shouldOpen;
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

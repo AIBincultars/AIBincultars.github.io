@@ -1,0 +1,56 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { localize, paths, type Language, type PageKey } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+
+interface Props {
+  language: Language;
+  page: PageKey;
+  hasPublications: boolean;
+  hasCollaborations: boolean;
+}
+
+const { language, page, hasPublications, hasCollaborations } = Astro.props;
+const navigation = [
+  { key: 'home' as const, label: site.navigation.home, visible: true },
+  { key: 'publications' as const, label: site.navigation.publications, visible: hasPublications },
+  { key: 'collaborations' as const, label: site.navigation.collaborations, visible: hasCollaborations },
+  { key: 'projects' as const, label: site.navigation.projects, visible: site.projects.items.length > 0 },
+].filter((item) => item.visible);
+---
+
+<header class="site-header">
+  <div class="site-container header-inner">
+    {page !== 'home' && (
+      <a class="site-name" href={paths[language].home}>{localize(site.profile.name, language)}</a>
+    )}
+
+    <nav class="desktop-navigation" aria-label={localize(site.labels.primaryNavigation, language)}>
+      <ul>
+        {navigation.map((item) => (
+          <li>
+            <a href={paths[language][item.key]} aria-current={page === item.key ? 'page' : undefined}>
+              {localize(item.label, language)}
+            </a>
+          </li>
+        ))}
+        <li><LanguageSwitcher language={language} page={page} /></li>
+      </ul>
+    </nav>
+
+    <details class="mobile-navigation" data-accordion>
+      <summary aria-expanded={false}>
+        <span>{localize(site.labels.menu, language)}</span>
+        <span class="summary-mark" aria-hidden="true"></span>
+      </summary>
+      <nav aria-label={localize(site.labels.mobileNavigation, language)}>
+        <ul>
+          {navigation.map((item) => (
+            <li><a href={paths[language][item.key]} aria-current={page === item.key ? 'page' : undefined}>{localize(item.label, language)}</a></li>
+          ))}
+          <li><LanguageSwitcher language={language} page={page} /></li>
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

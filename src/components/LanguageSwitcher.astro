@@ -1,0 +1,23 @@
+---
+import { localize, paths, type Language, type PageKey } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+
+interface Props {
+  language: Language;
+  page: PageKey;
+}
+
+const { language, page } = Astro.props;
+const targetLanguage: Language = language === 'en' ? 'zh' : 'en';
+---
+
+<a
+  class="language-switcher"
+  href={paths[targetLanguage][page]}
+  aria-label={localize(site.labels.switchTo, language)}
+  data-language-target={targetLanguage}
+>
+  <span class:list={{ active: language === 'zh' }} lang="zh-CN">{site.labels.languageShort.zh}</span>
+  <span aria-hidden="true">/</span>
+  <span class:list={{ active: language === 'en' }} lang="en">{site.labels.languageShort.en}</span>
+</a>

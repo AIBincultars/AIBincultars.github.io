@@ -1,0 +1,21 @@
+---
+import { localize, paths, type Language } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+
+interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="site-container footer-inner">
+    <p>© {new Date().getFullYear()} {localize(site.profile.name, language)}</p>
+    <div class="footer-links">
+      <a href={paths[language].home}>{localize(site.navigation.home, language)}</a>
+      <a href={`mailto:${site.contact.email}`}>{localize(site.labels.email, language)}</a>
+      <a href={site.contact.scholar} target="_blank" rel="noopener noreferrer">{localize(site.labels.scholar, language)}</a>
+    </div>
+  </div>
+</footer>

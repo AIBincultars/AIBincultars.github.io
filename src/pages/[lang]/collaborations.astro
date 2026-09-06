@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import CollaborationList from '../../components/CollaborationList.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages, localize, type Language } from '../../config/site';
+import { siteContent as site } from '../../data/site-content';
+
+export const getStaticPaths = () => languages.map((lang) => ({ params: { lang } }));
+
+const language = Astro.params.lang as Language;
+const [publications, collaborations] = await Promise.all([getCollection('publications'), getCollection('collaborations')]);
+if (collaborations.length === 0) return Astro.redirect(`/${language}/`);
+const sortedCollaborations = collaborations.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout language={language} page="collaborations" hasPublications={publications.length > 0} hasCollaborations>
+  <PageHeader title={localize(site.labels.collaborations, language)} introduction={localize(site.labels.collaborationsIntro, language)} />
+  <div class="accordion-group" data-accordion-group>
+    {sortedCollaborations.length > 3 && <div class="accordion-actions">
+      <button type="button" data-accordion-action="expand">{localize(site.labels.expandAll, language)}</button>
+      <button type="button" data-accordion-action="collapse">{localize(site.labels.collapseAll, language)}</button>
+    </div>}
+    <CollaborationList collaborations={sortedCollaborations} language={language} accordion />
+  </div>
+</BaseLayout>

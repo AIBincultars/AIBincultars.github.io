@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import AccordionSection from './AccordionSection.astro';
+import { localize, type Language } from '../config/site';
+import { siteContent as site } from '../data/site-content';
+
+interface Props {
+  collaborations: CollectionEntry<'collaborations'>[];
+  language: Language;
+  accordion?: boolean;
+}
+
+const { collaborations, language, accordion = false } = Astro.props;
+---
+
+<div class="collaboration-list">
+  {collaborations.map(({ data: collaboration }, index) => {
+    const content = (
+      <div class="collaboration-content">
+        {collaboration.officialUrl && (
+          <div class="collaboration-detail">
+            <h3>{localize(site.labels.institutionPage, language)}</h3>
+            <p>
+              <a href={localize(collaboration.officialUrl, language)} target="_blank" rel="noopener noreferrer">
+                {localize(site.labels.officialWebsite, language)} <span aria-hidden="true">↗</span>
+              </a>
+            </p>
+          </div>
+        )}
+        <div class="collaboration-detail">
+          <h3>{localize(site.labels.collaborators, language)}</h3>
+          <p>{collaboration.collaborators.join(', ')}</p>
+        </div>
+        <div class="collaboration-detail">
+          <h3>{localize(site.labels.relatedOutputs, language)}</h3>
+          <ul>
+            {collaboration.relatedOutputs.map((output) => (
+              <li><a href={output.url} target="_blank" rel="noopener noreferrer">{output.title} <span aria-hidden="true">↗</span></a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+
+    return accordion ? (
+      <AccordionSection title={localize(collaboration.title, language)} open={index === 0}>{content}</AccordionSection>
+    ) : (
+      <article class="collaboration-preview">
+        <h3>{localize(collaboration.title, language)}</h3>
+        {content}
+      </article>
+    );
+  })}
+</div>

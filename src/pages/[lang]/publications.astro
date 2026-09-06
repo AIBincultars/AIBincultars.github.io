@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import AccordionSection from '../../components/AccordionSection.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PublicationList from '../../components/PublicationList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages, localize, type Language } from '../../config/site';
+import { siteContent as site } from '../../data/site-content';
+
+export const getStaticPaths = () => languages.map((lang) => ({ params: { lang } }));
+
+const language = Astro.params.lang as Language;
+const [publications, collaborations] = await Promise.all([getCollection('publications'), getCollection('collaborations')]);
+if (publications.length === 0) return Astro.redirect(`/${language}/`);
+const sortedPublications = publications.sort((a, b) => b.data.year - a.data.year || a.data.order - b.data.order);
+const years = [...new Set(sortedPublications.map((entry) => entry.data.year))];
+const groups = years.map((year) => ({ year, publications: sortedPublications.filter((entry) => entry.data.year === year) }));
+---
+
+<BaseLayout language={language} page="publications" hasPublications hasCollaborations={collaborations.length > 0}>
+  <PageHeader title={localize(site.labels.publications, language)} introduction={localize(site.labels.publicationsIntro, language)} />
+  <div class="accordion-group" data-accordion-group>
+    {groups.length > 1 && <div class="accordion-actions">
+      <button type="button" data-accordion-action="expand">{localize(site.labels.expandAll, language)}</button>
+      <button type="button" data-accordion-action="collapse">{localize(site.labels.collapseAll, language)}</button>
+    </div>}
+    {groups.map((group, index) => <AccordionSection title={String(group.year)} open={index === 0}>
+      <PublicationList publications={group.publications} language={language} />
+    </AccordionSection>)}
+  </div>
+</BaseLayout>
