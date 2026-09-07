@@ -21,7 +21,6 @@ export const siteContent = {
       zh: 'Ziyue Kang',
       en: '康子越',
     },
-    publicationAuthorName: 'Z. Kang',
     portrait: {
       src: portrait,
       alt: {
@@ -143,14 +142,10 @@ export const siteContent = {
     publications: { zh: '论文', en: 'Publications' },
     publicationsIntro: { zh: '已公开论文与预印本，按年份排列。', en: 'Public papers and preprints, organized by year.' },
     collaborations: { zh: '合作', en: 'Collaborations' },
-    collaborationsIntro: { zh: '按公开合作机构整理的研究成果。', en: 'Public research outputs organized by collaborating institution.' },
+    collaborationsIntro: { zh: '公开研究合作机构。', en: 'Institutions involved in public research collaborations.' },
     projects: { zh: '项目', en: 'Projects' },
     researchInterests: { zh: '研究兴趣', en: 'Research Interests' },
     education: { zh: '教育背景', en: 'Education' },
-    institutionPage: { zh: '机构主页', en: 'Institution' },
-    officialWebsite: { zh: '访问官方网站', en: 'Official website' },
-    collaborators: { zh: '公开共同作者', en: 'Public co-authors' },
-    relatedOutputs: { zh: '相关成果', en: 'Related outputs' },
     paper: { zh: '论文', en: 'Paper' },
     arxiv: { zh: 'arXiv', en: 'arXiv' },
     publisher: { zh: '出版页面', en: 'Publisher' },
@@ -183,8 +178,8 @@ export const siteContent = {
     collaborations: {
       title: { zh: '合作｜康子越', en: 'Collaborations | Ziyue Kang' },
       description: {
-        zh: '康子越按公开合作机构整理的研究成果。',
-        en: 'Public research outputs by Ziyue Kang, organized by collaborating institution.',
+        zh: '康子越的公开研究合作机构。',
+        en: 'Institutions involved in public research collaborations with Ziyue Kang.',
       },
     },
     projects: {

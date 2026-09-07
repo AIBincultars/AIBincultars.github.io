@@ -5,15 +5,6 @@ title:
 officialUrl:
   zh: "https://www.ccom.edu.cn/jgk/jxdw/ylrgznyylxxkjx/yxjj.htm"
   en: "https://www.ccom.edu.cn/jgk/jxdw/ylrgznyylxxkjx/yxjj.htm"
-collaborators:
-  - "X. He"
-  - "Y. Pan"
-  - "X. Li"
-  - "F. Yu"
-  - "X. Guan"
-relatedOutputs:
-  - title: "SymphonyGen: 3D Hierarchical Orchestral Generation with Controllable Harmony Skeleton"
-    url: "https://arxiv.org/abs/2604.25498"
 featured: true
 order: 1
 ---

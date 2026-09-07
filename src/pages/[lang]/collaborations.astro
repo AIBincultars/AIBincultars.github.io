@@ -16,11 +16,7 @@ const sortedCollaborations = collaborations.sort((a, b) => a.data.order - b.data
 
 <BaseLayout language={language} page="collaborations" hasPublications={publications.length > 0} hasCollaborations>
   <PageHeader title={localize(site.labels.collaborations, language)} introduction={localize(site.labels.collaborationsIntro, language)} />
-  <div class="accordion-group" data-accordion-group>
-    {sortedCollaborations.length > 3 && <div class="accordion-actions">
-      <button type="button" data-accordion-action="expand">{localize(site.labels.expandAll, language)}</button>
-      <button type="button" data-accordion-action="collapse">{localize(site.labels.collapseAll, language)}</button>
-    </div>}
-    <CollaborationList collaborations={sortedCollaborations} language={language} accordion />
+  <div class="accordion-group">
+    <CollaborationList collaborations={sortedCollaborations} language={language} />
   </div>
 </BaseLayout>

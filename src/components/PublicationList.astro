@@ -26,11 +26,6 @@ const { publications, language } = Astro.props;
       <li>
         <article class="publication-item">
           <h3>{publication.title}</h3>
-          <p class="publication-authors">
-            {publication.authors.map((author, index) => (
-              <>{author === site.profile.publicationAuthorName ? <strong>{author}</strong> : author}{index < publication.authors.length - 1 ? ', ' : ''}</>
-            ))}
-          </p>
           <p class="publication-meta">
             <span>{publication.venue}</span>
             <span>{localize(site.labels.publicDate, language)} · <time datetime={publication.publicDate}>{publication.publicDate}</time></span>

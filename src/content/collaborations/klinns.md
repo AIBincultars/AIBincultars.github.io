@@ -5,13 +5,6 @@ title:
 officialUrl:
   zh: "https://mob.xjtu.edu.cn/kxyj/kyjd.htm"
   en: "https://en.xjtu.edu.cn/2021-03/30/c_607160.htm"
-collaborators:
-  - "N. Nan"
-  - "C. Lin"
-  - "X. Guan"
-relatedOutputs:
-  - title: "UOT-IR: Structured Routing of High-Polyphony Symbolic Music into Fixed-Budget Representations"
-    url: "https://arxiv.org/abs/2608.00576"
 featured: true
 order: 3
 ---

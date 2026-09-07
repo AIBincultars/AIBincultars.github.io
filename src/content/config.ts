@@ -17,7 +17,6 @@ const publications = defineCollection({
   schema: z
     .object({
       title: z.string().min(1),
-      authors: z.array(z.string().min(1)).min(1),
       venue: z.string().min(1),
       year: z.number().int(),
       publicDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
@@ -41,8 +40,6 @@ const collaborations = defineCollection({
   schema: z.object({
     title: localizedText,
     officialUrl: localizedUrl,
-    collaborators: z.array(z.string().min(1)).min(1),
-    relatedOutputs: z.array(z.object({ title: z.string().min(1), url: z.url() })).min(1),
     featured: z.boolean().default(false),
     order: z.number().int().default(0),
   }),
