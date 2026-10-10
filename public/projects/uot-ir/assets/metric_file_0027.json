@@ -1,0 +1,27 @@
+{
+  "method_name": "Random",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6413663.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.2986530422666047,
+    "Note_P": 0.7993535554450523,
+    "Note_R": 0.1836303404158099,
+    "Fam_Acc": 0.9048211508553656,
+    "Fam_MacroF1": 0.5511080734815176,
+    "FTED": 0.052836490024069,
+    "PC_JSD": 0.2361936547291681,
+    "Dur_JSD": 0.2013377499987247,
+    "IOI_JSD": 0.2999075611864678,
+    "Avg_StructCost": 3.494492432155283,
+    "BadConf_Rate": 0.0954898911353032,
+    "PolyRate_AbsDiff": 0.3917387625331821,
+    "PCEntropy_AbsDiff": 0.1870316761369799
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift"
+  ]
+}

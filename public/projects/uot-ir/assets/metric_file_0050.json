@@ -1,0 +1,29 @@
+{
+  "method_name": "Greedy",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6361362.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.453409585379499,
+    "Note_P": 0.6077320446592235,
+    "Note_R": 0.3615903232203054,
+    "Fam_Acc": 0.2980531944063614,
+    "Fam_MacroF1": 0.173321073665839,
+    "FTED": 0.0265776377808626,
+    "PC_JSD": 0.0692487728031106,
+    "Dur_JSD": 0.0863993196957797,
+    "IOI_JSD": 0.1337112279980326,
+    "Avg_StructCost": 21.56683303817416,
+    "BadConf_Rate": 0.7027693995064437,
+    "PolyRate_AbsDiff": 0.2778655506729948,
+    "PCEntropy_AbsDiff": 0.0038381464412959
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift"
+  ]
+}

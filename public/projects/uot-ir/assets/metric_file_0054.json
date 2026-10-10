@@ -1,0 +1,29 @@
+{
+  "method_name": "BMF",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6361362.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.4266423816103505,
+    "Note_P": 0.5819910897875257,
+    "Note_R": 0.336753916319651,
+    "Fam_Acc": 0.2891211541292507,
+    "Fam_MacroF1": 0.1551295437476892,
+    "FTED": 0.0255274899092544,
+    "PC_JSD": 0.0764382934910198,
+    "Dur_JSD": 0.0795862455109246,
+    "IOI_JSD": 0.1462979313471887,
+    "Avg_StructCost": 22.177633762245552,
+    "BadConf_Rate": 0.7120565287796261,
+    "PolyRate_AbsDiff": 0.2570345885343748,
+    "PCEntropy_AbsDiff": 0.0074453349382967
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift"
+  ]
+}

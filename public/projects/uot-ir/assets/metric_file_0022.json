@@ -1,0 +1,29 @@
+{
+  "method_name": "NMF",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/5888322.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.2183004955880575,
+    "Note_P": 0.665929203539823,
+    "Note_R": 0.1305479254011854,
+    "Fam_Acc": 0.1627906976744186,
+    "Fam_MacroF1": 0.1119535850084541,
+    "FTED": 0.0478772159140856,
+    "PC_JSD": 0.2783446124348587,
+    "Dur_JSD": 0.2029628512605749,
+    "IOI_JSD": 0.4690257844442727,
+    "Avg_StructCost": 20.07398613637204,
+    "BadConf_Rate": 0.8383167220376523,
+    "PolyRate_AbsDiff": 0.7740740560458337,
+    "PCEntropy_AbsDiff": 0.3166748278031952
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift"
+  ]
+}

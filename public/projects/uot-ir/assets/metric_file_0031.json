@@ -1,0 +1,29 @@
+{
+  "method_name": "KMeans",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6413663.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.3203185087997104,
+    "Note_P": 0.7704026115342764,
+    "Note_R": 0.2021932830705963,
+    "Fam_Acc": 0.838135593220339,
+    "Fam_MacroF1": 0.5086555810927845,
+    "FTED": 0.0449794317223397,
+    "PC_JSD": 0.2650360767568016,
+    "Dur_JSD": 0.1833321627594445,
+    "IOI_JSD": 0.2827096142199925,
+    "Avg_StructCost": 11.317568080438733,
+    "BadConf_Rate": 0.1629943502824858,
+    "PolyRate_AbsDiff": 0.4470492802821713,
+    "PCEntropy_AbsDiff": 0.0833177573970282
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift"
+  ]
+}

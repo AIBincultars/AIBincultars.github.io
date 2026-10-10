@@ -1,0 +1,28 @@
+{
+  "method_name": "PCA",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6413663.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.1240576093173191,
+    "Note_P": 0.6915942028985507,
+    "Note_R": 0.0681402787297235,
+    "Fam_Acc": 0.9186923721709976,
+    "Fam_MacroF1": 0.3456667265096958,
+    "FTED": 0.0717507611466133,
+    "PC_JSD": 0.4880822059835635,
+    "Dur_JSD": 0.4669183386596516,
+    "IOI_JSD": 0.6657529537874993,
+    "Avg_StructCost": 1.8597960604006567,
+    "BadConf_Rate": 0.0829840737636211,
+    "PolyRate_AbsDiff": 0.7789564821784203,
+    "PCEntropy_AbsDiff": 0.306690118499012
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift",
+    "embedding_distance_high"
+  ]
+}

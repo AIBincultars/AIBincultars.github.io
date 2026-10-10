@@ -1,0 +1,30 @@
+{
+  "method_name": "Direct",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6413663.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.2470664928292046,
+    "Note_P": 0.6685987903225806,
+    "Note_R": 0.151530728809687,
+    "Fam_Acc": 0.6732001507727101,
+    "Fam_MacroF1": 0.2571549076189197,
+    "FTED": 0.0590921740712026,
+    "PC_JSD": 0.1956933321559061,
+    "Dur_JSD": 0.3679736363939331,
+    "IOI_JSD": 0.2515600777755709,
+    "Avg_StructCost": 13.499074015804297,
+    "BadConf_Rate": 0.3584621183565775,
+    "PolyRate_AbsDiff": 0.5174057247377475,
+    "PCEntropy_AbsDiff": 0.0557500527297136
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift",
+    "embedding_distance_high"
+  ]
+}

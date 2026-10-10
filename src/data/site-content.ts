@@ -7,7 +7,19 @@ export type PublicProject = {
   publicUrl: string;
 };
 
-const publicProjects: PublicProject[] = [];
+const publicProjects: PublicProject[] = [
+  {
+    title: {
+      zh: 'UOT-IR：固定槽位的符号音乐路由',
+      en: 'UOT-IR: Fixed-budget symbolic music routing',
+    },
+    description: {
+      zh: '基于非平衡最优传输的多轨 MIDI 路由。项目主页提供钢琴卷帘图、MIDI 示例与方法对比。',
+      en: 'Multitrack MIDI routing with unbalanced optimal transport. Explore piano-roll visualizations, MIDI examples, and method comparisons.',
+    },
+    publicUrl: 'https://aibincultars.github.io/projects/uot-ir/',
+  },
+];
 
 // 日常修改个人信息和中英文页面文案时，只需要编辑这个文件。
 // 未发表或未公开的研究内容不得写入前端数据。

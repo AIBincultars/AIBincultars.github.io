@@ -15,3 +15,16 @@ I am an M.S. student in Control Science and Engineering at Xi'an Jiaotong Univer
 - 个人主页：[aibincultars.github.io](https://aibincultars.github.io/)
 - Google Scholar：[Ziyue Kang](https://scholar.google.com/citations?user=ltaBNZIAAAAJ&hl=en)
 - Email：[edu.kangziyue@gmail.com](mailto:edu.kangziyue@gmail.com)
+
+## 项目网页 | Project Pages
+
+- [UOT-IR](https://aibincultars.github.io/projects/uot-ir/)：网页与演示资源维护在 `public/projects/uot-ir/`，算法代码维护在 [UOT-IR 仓库](https://github.com/AIBincultars/UOT-IR)。
+- `public/UOT-IR/index.html` 为旧项目地址提供跳转。项目与论文入口分别维护在 `src/data/site-content.ts` 和 `src/content/publications/uot-ir.md`。
+
+```bash
+npm ci
+npm run check
+npm run build
+```
+
+推送到 `main` 后，现有 GitHub Actions 工作流会构建并发布个人主页及项目网页。

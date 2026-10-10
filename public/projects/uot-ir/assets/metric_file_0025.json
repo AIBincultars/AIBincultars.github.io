@@ -1,0 +1,29 @@
+{
+  "method_name": "Vanilla-UOT",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6413663.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.4968981150083513,
+    "Note_P": 0.5199750312109863,
+    "Note_R": 0.4757824994288325,
+    "Fam_Acc": 0.1076830732292917,
+    "Fam_MacroF1": 0.0722588464205413,
+    "FTED": 0.0456047916819761,
+    "PC_JSD": 0.1156921897628399,
+    "Dur_JSD": 0.1364048686657096,
+    "IOI_JSD": 0.094020833539603,
+    "Avg_StructCost": 28.4589589947734,
+    "BadConf_Rate": 0.9224489795918368,
+    "PolyRate_AbsDiff": 0.0011102186311078,
+    "PCEntropy_AbsDiff": 0.0952454734673566
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift"
+  ]
+}

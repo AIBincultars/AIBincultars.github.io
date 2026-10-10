@@ -1,0 +1,1365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UOT-IR | Ziyue Kang</title>
+  <link rel="canonical" href="https://aibincultars.github.io/projects/uot-ir/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="description" content="Official project website for UOT-IR, with static music examples, MIDI and audio previews, and quantitative results." />
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e5e7eb;
+      --card: #ffffff;
+      --link: #1d4ed8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 16px 44px;
+    }
+    .hero {
+      text-align: center;
+      padding: 14px 0 22px;
+      margin-bottom: 8px;
+    }
+    .page-title {
+      margin: 0 auto;
+      max-width: 940px;
+      letter-spacing: 0.2px;
+    }
+    .title-prefix {
+      display: block;
+      font-size: 20px;
+      font-weight: 600;
+      color: #4b5563;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+    .title-main {
+      display: block;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+    .author-line {
+      max-width: 980px;
+      margin: 16px auto 0;
+      color: var(--text);
+      font-size: 17px;
+      font-weight: 650;
+      line-height: 1.45;
+      text-align: center;
+    }
+    .affiliation-list {
+      max-width: 980px;
+      margin: 9px auto 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+      text-align: center;
+    }
+    .corresponding-author {
+      max-width: 980px;
+      margin: 8px auto 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .summary-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin: 12px auto 8px;
+      max-width: 760px;
+    }
+    .summary-bar div {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .summary-bar strong {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .summary-bar span {
+      display: block;
+      color: var(--text);
+      font-size: 20px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+    .quick-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 12px 0 2px;
+    }
+    .quick-nav a {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: var(--link);
+      text-decoration: none;
+    }
+    .quick-nav a:hover { text-decoration: underline; }
+    .section-card {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 18px 0 24px;
+    }
+    h2 {
+      margin: 4px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
+      font-size: 22px;
+    }
+    h3 {
+      margin: 12px 0 8px;
+      font-size: 17px;
+    }
+    h4 {
+      margin: 12px 0 6px;
+      font-size: 15px;
+    }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+    .warning {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #7c2d12;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 12px;
+    }
+    .case-group {
+      margin: 12px 0;
+    }
+    .case-summary {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      list-style: none;
+    }
+    .case-content {
+      padding: 12px 0 4px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      margin: 0;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      background: #0b0b0b;
+    }
+    .card img.zoomable {
+      cursor: zoom-in;
+      transition: opacity .15s ease;
+    }
+    .card img.zoomable:hover {
+      opacity: .9;
+    }
+    .card figcaption {
+      margin-top: 7px;
+      font-size: 13px;
+    }
+    .img-error {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #b91c1c;
+    }
+    .midi-input {
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .table-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    .table-scroll:focus-visible {
+      outline: 2px solid var(--link);
+      outline-offset: 2px;
+    }
+    .compact-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      font-size: 13px;
+    }
+    .compact-table th, .compact-table td {
+      border: 1px solid var(--line);
+      padding: 7px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .compact-table th {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+    .main-method-row {
+      background: #eff6ff;
+      font-weight: 600;
+    }
+    .download-group {
+      margin: 12px 0;
+    }
+    .download-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .download-item {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .download-item .small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .footnote {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 28px 16px;
+    }
+    .lightbox.open {
+      display: flex;
+    }
+    .lightbox-panel {
+      max-width: 95vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .lightbox-image {
+      max-width: 95vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+      background: #111;
+    }
+    .lightbox-caption {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #f3f4f6;
+      text-align: center;
+      max-width: 92vw;
+      word-break: break-word;
+    }
+    .lightbox-close {
+      position: absolute;
+      right: 0;
+      top: -40px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .lightbox-close:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1 class="page-title">
+        <span class="title-prefix">Official Project Website for</span>
+        <span class="title-main">UOT-IR: Unbalanced Optimal Transport for Information Routing</span>
+      </h1>
+      <div class="author-line">
+        Ziyue Kang¹˒² &middot; Nan Nan*¹˒²˒³ &middot; Chenhao Lin¹˒²˒³ &middot; Xiaohong Guan¹˒²˒³˒⁴
+      </div>
+      <div class="affiliation-list">
+        <div>¹ Frontier Institute of Science and Technology, Xi'an Jiaotong University, Xi'an, China</div>
+        <div>² Interdisciplinary Research Center of Frontier Science and Technology, Xi'an Jiaotong University, Xi'an, China</div>
+        <div>³ MOE KLINNS Lab, Faculty of Electronic and Information Engineering, Xi'an Jiaotong University, Xi'an, China</div>
+        <div>⁴ Center for Intelligent and Networked Systems, Tsinghua University, Beijing, China</div>
+      </div>
+      <div class="corresponding-author">
+        * Corresponding author: Nan Nan (<a href="mailto:nan.nan@xjtu.edu.cn">nan.nan@xjtu.edu.cn</a>)
+      </div>
+      <p class="hero-subtitle">
+        This page provides static visual examples, MIDI files, and compact metric summaries for UOT-IR.
+      </p>
+      <div class="summary-bar">
+        <div><strong>Cases</strong><span>6</span></div>
+        <div><strong>Visuals</strong><span>72</span></div>
+        <div><strong>MIDI files</strong><span>72</span></div>
+        <div><strong>Metric files</strong><span>66</span></div>
+      </div>
+      <nav class="quick-nav" aria-label="Project links">
+        <a href="/">← Research Homepage</a>
+        <a href="https://arxiv.org/abs/2608.00576">Paper</a>
+        <a href="https://github.com/AIBincultars/UOT-IR">Code</a>
+        <a href="#visual-results">Visual Results</a>
+        <a href="#midi-examples">MIDI Examples</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#downloads">Downloads</a>
+      </nav>
+    </header>
+
+
+    <section id="visual-results" class="section-card">
+      <h2>1. Visual Results</h2>
+
+            <details class="case-group" open>
+              <summary class="case-summary">case_001 &middot; 12 visual results &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="gallery">
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0001.png" alt="case_001 / Input" loading="lazy" data-caption="case_001 / Input" />
+                  <figcaption><strong>case_001 / Input</strong><br><span class="muted">Input piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0002.png" alt="case_001 / UOT-IR" loading="lazy" data-caption="case_001 / UOT-IR" />
+                  <figcaption><strong>case_001 / UOT-IR</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0003.png" alt="case_001 / UOT-IR-Core" loading="lazy" data-caption="case_001 / UOT-IR-Core" />
+                  <figcaption><strong>case_001 / UOT-IR-Core</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0004.png" alt="case_001 / Vanilla-UOT" loading="lazy" data-caption="case_001 / Vanilla-UOT" />
+                  <figcaption><strong>case_001 / Vanilla-UOT</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0005.png" alt="case_001 / Direct" loading="lazy" data-caption="case_001 / Direct" />
+                  <figcaption><strong>case_001 / Direct</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0006.png" alt="case_001 / Random" loading="lazy" data-caption="case_001 / Random" />
+                  <figcaption><strong>case_001 / Random</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0007.png" alt="case_001 / Greedy" loading="lazy" data-caption="case_001 / Greedy" />
+                  <figcaption><strong>case_001 / Greedy</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0008.png" alt="case_001 / Skyline" loading="lazy" data-caption="case_001 / Skyline" />
+                  <figcaption><strong>case_001 / Skyline</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0009.png" alt="case_001 / PCA" loading="lazy" data-caption="case_001 / PCA" />
+                  <figcaption><strong>case_001 / PCA</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0010.png" alt="case_001 / KMeans" loading="lazy" data-caption="case_001 / KMeans" />
+                  <figcaption><strong>case_001 / KMeans</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0011.png" alt="case_001 / BMF-PC" loading="lazy" data-caption="case_001 / BMF-PC" />
+                  <figcaption><strong>case_001 / BMF-PC</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0012.png" alt="case_001 / NMF" loading="lazy" data-caption="case_001 / NMF" />
+                  <figcaption><strong>case_001 / NMF</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_002 &middot; 12 visual results &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="gallery">
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0013.png" alt="case_002 / Input" loading="lazy" data-caption="case_002 / Input" />
+                  <figcaption><strong>case_002 / Input</strong><br><span class="muted">Input piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0014.png" alt="case_002 / UOT-IR" loading="lazy" data-caption="case_002 / UOT-IR" />
+                  <figcaption><strong>case_002 / UOT-IR</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0015.png" alt="case_002 / UOT-IR-Core" loading="lazy" data-caption="case_002 / UOT-IR-Core" />
+                  <figcaption><strong>case_002 / UOT-IR-Core</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0016.png" alt="case_002 / Vanilla-UOT" loading="lazy" data-caption="case_002 / Vanilla-UOT" />
+                  <figcaption><strong>case_002 / Vanilla-UOT</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0017.png" alt="case_002 / Direct" loading="lazy" data-caption="case_002 / Direct" />
+                  <figcaption><strong>case_002 / Direct</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0018.png" alt="case_002 / Random" loading="lazy" data-caption="case_002 / Random" />
+                  <figcaption><strong>case_002 / Random</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0019.png" alt="case_002 / Greedy" loading="lazy" data-caption="case_002 / Greedy" />
+                  <figcaption><strong>case_002 / Greedy</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0020.png" alt="case_002 / Skyline" loading="lazy" data-caption="case_002 / Skyline" />
+                  <figcaption><strong>case_002 / Skyline</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0021.png" alt="case_002 / PCA" loading="lazy" data-caption="case_002 / PCA" />
+                  <figcaption><strong>case_002 / PCA</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0022.png" alt="case_002 / KMeans" loading="lazy" data-caption="case_002 / KMeans" />
+                  <figcaption><strong>case_002 / KMeans</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0023.png" alt="case_002 / BMF-PC" loading="lazy" data-caption="case_002 / BMF-PC" />
+                  <figcaption><strong>case_002 / BMF-PC</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0024.png" alt="case_002 / NMF" loading="lazy" data-caption="case_002 / NMF" />
+                  <figcaption><strong>case_002 / NMF</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_003 &middot; 12 visual results &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="gallery">
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0025.png" alt="case_003 / Input" loading="lazy" data-caption="case_003 / Input" />
+                  <figcaption><strong>case_003 / Input</strong><br><span class="muted">Input piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0026.png" alt="case_003 / UOT-IR" loading="lazy" data-caption="case_003 / UOT-IR" />
+                  <figcaption><strong>case_003 / UOT-IR</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0027.png" alt="case_003 / UOT-IR-Core" loading="lazy" data-caption="case_003 / UOT-IR-Core" />
+                  <figcaption><strong>case_003 / UOT-IR-Core</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0028.png" alt="case_003 / Vanilla-UOT" loading="lazy" data-caption="case_003 / Vanilla-UOT" />
+                  <figcaption><strong>case_003 / Vanilla-UOT</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0029.png" alt="case_003 / Direct" loading="lazy" data-caption="case_003 / Direct" />
+                  <figcaption><strong>case_003 / Direct</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0030.png" alt="case_003 / Random" loading="lazy" data-caption="case_003 / Random" />
+                  <figcaption><strong>case_003 / Random</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0031.png" alt="case_003 / Greedy" loading="lazy" data-caption="case_003 / Greedy" />
+                  <figcaption><strong>case_003 / Greedy</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0032.png" alt="case_003 / Skyline" loading="lazy" data-caption="case_003 / Skyline" />
+                  <figcaption><strong>case_003 / Skyline</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0033.png" alt="case_003 / PCA" loading="lazy" data-caption="case_003 / PCA" />
+                  <figcaption><strong>case_003 / PCA</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0034.png" alt="case_003 / KMeans" loading="lazy" data-caption="case_003 / KMeans" />
+                  <figcaption><strong>case_003 / KMeans</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0035.png" alt="case_003 / BMF-PC" loading="lazy" data-caption="case_003 / BMF-PC" />
+                  <figcaption><strong>case_003 / BMF-PC</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0036.png" alt="case_003 / NMF" loading="lazy" data-caption="case_003 / NMF" />
+                  <figcaption><strong>case_003 / NMF</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_004 &middot; 12 visual results &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="gallery">
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0037.png" alt="case_004 / Input" loading="lazy" data-caption="case_004 / Input" />
+                  <figcaption><strong>case_004 / Input</strong><br><span class="muted">Input piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0038.png" alt="case_004 / UOT-IR" loading="lazy" data-caption="case_004 / UOT-IR" />
+                  <figcaption><strong>case_004 / UOT-IR</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0039.png" alt="case_004 / UOT-IR-Core" loading="lazy" data-caption="case_004 / UOT-IR-Core" />
+                  <figcaption><strong>case_004 / UOT-IR-Core</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0040.png" alt="case_004 / Vanilla-UOT" loading="lazy" data-caption="case_004 / Vanilla-UOT" />
+                  <figcaption><strong>case_004 / Vanilla-UOT</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0041.png" alt="case_004 / Direct" loading="lazy" data-caption="case_004 / Direct" />
+                  <figcaption><strong>case_004 / Direct</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0042.png" alt="case_004 / Random" loading="lazy" data-caption="case_004 / Random" />
+                  <figcaption><strong>case_004 / Random</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0043.png" alt="case_004 / Greedy" loading="lazy" data-caption="case_004 / Greedy" />
+                  <figcaption><strong>case_004 / Greedy</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0044.png" alt="case_004 / Skyline" loading="lazy" data-caption="case_004 / Skyline" />
+                  <figcaption><strong>case_004 / Skyline</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0045.png" alt="case_004 / PCA" loading="lazy" data-caption="case_004 / PCA" />
+                  <figcaption><strong>case_004 / PCA</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0046.png" alt="case_004 / KMeans" loading="lazy" data-caption="case_004 / KMeans" />
+                  <figcaption><strong>case_004 / KMeans</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0047.png" alt="case_004 / BMF-PC" loading="lazy" data-caption="case_004 / BMF-PC" />
+                  <figcaption><strong>case_004 / BMF-PC</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0048.png" alt="case_004 / NMF" loading="lazy" data-caption="case_004 / NMF" />
+                  <figcaption><strong>case_004 / NMF</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_005 &middot; 12 visual results &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="gallery">
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0049.png" alt="case_005 / Input" loading="lazy" data-caption="case_005 / Input" />
+                  <figcaption><strong>case_005 / Input</strong><br><span class="muted">Input piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0050.png" alt="case_005 / UOT-IR" loading="lazy" data-caption="case_005 / UOT-IR" />
+                  <figcaption><strong>case_005 / UOT-IR</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0051.png" alt="case_005 / UOT-IR-Core" loading="lazy" data-caption="case_005 / UOT-IR-Core" />
+                  <figcaption><strong>case_005 / UOT-IR-Core</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0052.png" alt="case_005 / Vanilla-UOT" loading="lazy" data-caption="case_005 / Vanilla-UOT" />
+                  <figcaption><strong>case_005 / Vanilla-UOT</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0053.png" alt="case_005 / Direct" loading="lazy" data-caption="case_005 / Direct" />
+                  <figcaption><strong>case_005 / Direct</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0054.png" alt="case_005 / Random" loading="lazy" data-caption="case_005 / Random" />
+                  <figcaption><strong>case_005 / Random</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0055.png" alt="case_005 / Greedy" loading="lazy" data-caption="case_005 / Greedy" />
+                  <figcaption><strong>case_005 / Greedy</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0056.png" alt="case_005 / Skyline" loading="lazy" data-caption="case_005 / Skyline" />
+                  <figcaption><strong>case_005 / Skyline</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0057.png" alt="case_005 / PCA" loading="lazy" data-caption="case_005 / PCA" />
+                  <figcaption><strong>case_005 / PCA</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0058.png" alt="case_005 / KMeans" loading="lazy" data-caption="case_005 / KMeans" />
+                  <figcaption><strong>case_005 / KMeans</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0059.png" alt="case_005 / BMF-PC" loading="lazy" data-caption="case_005 / BMF-PC" />
+                  <figcaption><strong>case_005 / BMF-PC</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0060.png" alt="case_005 / NMF" loading="lazy" data-caption="case_005 / NMF" />
+                  <figcaption><strong>case_005 / NMF</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_006 &middot; 12 visual results &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="gallery">
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0061.png" alt="case_006 / Input" loading="lazy" data-caption="case_006 / Input" />
+                  <figcaption><strong>case_006 / Input</strong><br><span class="muted">Input piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0062.png" alt="case_006 / UOT-IR" loading="lazy" data-caption="case_006 / UOT-IR" />
+                  <figcaption><strong>case_006 / UOT-IR</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0063.png" alt="case_006 / UOT-IR-Core" loading="lazy" data-caption="case_006 / UOT-IR-Core" />
+                  <figcaption><strong>case_006 / UOT-IR-Core</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0064.png" alt="case_006 / Vanilla-UOT" loading="lazy" data-caption="case_006 / Vanilla-UOT" />
+                  <figcaption><strong>case_006 / Vanilla-UOT</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0065.png" alt="case_006 / Direct" loading="lazy" data-caption="case_006 / Direct" />
+                  <figcaption><strong>case_006 / Direct</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0066.png" alt="case_006 / Random" loading="lazy" data-caption="case_006 / Random" />
+                  <figcaption><strong>case_006 / Random</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0067.png" alt="case_006 / Greedy" loading="lazy" data-caption="case_006 / Greedy" />
+                  <figcaption><strong>case_006 / Greedy</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0068.png" alt="case_006 / Skyline" loading="lazy" data-caption="case_006 / Skyline" />
+                  <figcaption><strong>case_006 / Skyline</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0069.png" alt="case_006 / PCA" loading="lazy" data-caption="case_006 / PCA" />
+                  <figcaption><strong>case_006 / PCA</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0070.png" alt="case_006 / KMeans" loading="lazy" data-caption="case_006 / KMeans" />
+                  <figcaption><strong>case_006 / KMeans</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0071.png" alt="case_006 / BMF-PC" loading="lazy" data-caption="case_006 / BMF-PC" />
+                  <figcaption><strong>case_006 / BMF-PC</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                <figure class="card">
+                  <img class="zoomable" src="assets/image_0072.png" alt="case_006 / NMF" loading="lazy" data-caption="case_006 / NMF" />
+                  <figcaption><strong>case_006 / NMF</strong><br><span class="muted">Output piano-roll</span></figcaption>
+                </figure>
+
+                </div>
+              </div>
+            </details>
+
+    </section>
+
+    <section id="midi-examples" class="section-card">
+      <h2>2. MIDI Examples</h2>
+
+            <details class="case-group" open>
+              <summary class="case-summary">case_001 &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="midi-input"><a href='assets/midi_0001.mid' download>Download Input MIDI</a></div>
+                <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Method</th><th>MIDI</th></tr></thead><tbody><tr><td>UOT-IR</td><td><a href='assets/midi_0002.mid' download>Download</a></td></tr><tr><td>UOT-IR-Core</td><td><a href='assets/midi_0003.mid' download>Download</a></td></tr><tr><td>Vanilla-UOT</td><td><a href='assets/midi_0004.mid' download>Download</a></td></tr><tr><td>Direct</td><td><a href='assets/midi_0005.mid' download>Download</a></td></tr><tr><td>Random</td><td><a href='assets/midi_0006.mid' download>Download</a></td></tr><tr><td>Greedy</td><td><a href='assets/midi_0007.mid' download>Download</a></td></tr><tr><td>Skyline</td><td><a href='assets/midi_0008.mid' download>Download</a></td></tr><tr><td>PCA</td><td><a href='assets/midi_0009.mid' download>Download</a></td></tr><tr><td>KMeans</td><td><a href='assets/midi_0010.mid' download>Download</a></td></tr><tr><td>BMF-PC</td><td><a href='assets/midi_0011.mid' download>Download</a></td></tr><tr><td>NMF</td><td><a href='assets/midi_0012.mid' download>Download</a></td></tr></tbody></table></div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_002 &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="midi-input"><a href='assets/midi_0013.mid' download>Download Input MIDI</a></div>
+                <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Method</th><th>MIDI</th></tr></thead><tbody><tr><td>UOT-IR</td><td><a href='assets/midi_0014.mid' download>Download</a></td></tr><tr><td>UOT-IR-Core</td><td><a href='assets/midi_0015.mid' download>Download</a></td></tr><tr><td>Vanilla-UOT</td><td><a href='assets/midi_0016.mid' download>Download</a></td></tr><tr><td>Direct</td><td><a href='assets/midi_0017.mid' download>Download</a></td></tr><tr><td>Random</td><td><a href='assets/midi_0018.mid' download>Download</a></td></tr><tr><td>Greedy</td><td><a href='assets/midi_0019.mid' download>Download</a></td></tr><tr><td>Skyline</td><td><a href='assets/midi_0020.mid' download>Download</a></td></tr><tr><td>PCA</td><td><a href='assets/midi_0021.mid' download>Download</a></td></tr><tr><td>KMeans</td><td><a href='assets/midi_0022.mid' download>Download</a></td></tr><tr><td>BMF-PC</td><td><a href='assets/midi_0023.mid' download>Download</a></td></tr><tr><td>NMF</td><td><a href='assets/midi_0024.mid' download>Download</a></td></tr></tbody></table></div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_003 &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="midi-input"><a href='assets/midi_0025.mid' download>Download Input MIDI</a></div>
+                <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Method</th><th>MIDI</th></tr></thead><tbody><tr><td>UOT-IR</td><td><a href='assets/midi_0026.mid' download>Download</a></td></tr><tr><td>UOT-IR-Core</td><td><a href='assets/midi_0027.mid' download>Download</a></td></tr><tr><td>Vanilla-UOT</td><td><a href='assets/midi_0028.mid' download>Download</a></td></tr><tr><td>Direct</td><td><a href='assets/midi_0029.mid' download>Download</a></td></tr><tr><td>Random</td><td><a href='assets/midi_0030.mid' download>Download</a></td></tr><tr><td>Greedy</td><td><a href='assets/midi_0031.mid' download>Download</a></td></tr><tr><td>Skyline</td><td><a href='assets/midi_0032.mid' download>Download</a></td></tr><tr><td>PCA</td><td><a href='assets/midi_0033.mid' download>Download</a></td></tr><tr><td>KMeans</td><td><a href='assets/midi_0034.mid' download>Download</a></td></tr><tr><td>BMF-PC</td><td><a href='assets/midi_0035.mid' download>Download</a></td></tr><tr><td>NMF</td><td><a href='assets/midi_0036.mid' download>Download</a></td></tr></tbody></table></div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_004 &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="midi-input"><a href='assets/midi_0037.mid' download>Download Input MIDI</a></div>
+                <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Method</th><th>MIDI</th></tr></thead><tbody><tr><td>UOT-IR</td><td><a href='assets/midi_0038.mid' download>Download</a></td></tr><tr><td>UOT-IR-Core</td><td><a href='assets/midi_0039.mid' download>Download</a></td></tr><tr><td>Vanilla-UOT</td><td><a href='assets/midi_0040.mid' download>Download</a></td></tr><tr><td>Direct</td><td><a href='assets/midi_0041.mid' download>Download</a></td></tr><tr><td>Random</td><td><a href='assets/midi_0042.mid' download>Download</a></td></tr><tr><td>Greedy</td><td><a href='assets/midi_0043.mid' download>Download</a></td></tr><tr><td>Skyline</td><td><a href='assets/midi_0044.mid' download>Download</a></td></tr><tr><td>PCA</td><td><a href='assets/midi_0045.mid' download>Download</a></td></tr><tr><td>KMeans</td><td><a href='assets/midi_0046.mid' download>Download</a></td></tr><tr><td>BMF-PC</td><td><a href='assets/midi_0047.mid' download>Download</a></td></tr><tr><td>NMF</td><td><a href='assets/midi_0048.mid' download>Download</a></td></tr></tbody></table></div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_005 &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="midi-input"><a href='assets/midi_0049.mid' download>Download Input MIDI</a></div>
+                <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Method</th><th>MIDI</th></tr></thead><tbody><tr><td>UOT-IR</td><td><a href='assets/midi_0050.mid' download>Download</a></td></tr><tr><td>UOT-IR-Core</td><td><a href='assets/midi_0051.mid' download>Download</a></td></tr><tr><td>Vanilla-UOT</td><td><a href='assets/midi_0052.mid' download>Download</a></td></tr><tr><td>Direct</td><td><a href='assets/midi_0053.mid' download>Download</a></td></tr><tr><td>Random</td><td><a href='assets/midi_0054.mid' download>Download</a></td></tr><tr><td>Greedy</td><td><a href='assets/midi_0055.mid' download>Download</a></td></tr><tr><td>Skyline</td><td><a href='assets/midi_0056.mid' download>Download</a></td></tr><tr><td>PCA</td><td><a href='assets/midi_0057.mid' download>Download</a></td></tr><tr><td>KMeans</td><td><a href='assets/midi_0058.mid' download>Download</a></td></tr><tr><td>BMF-PC</td><td><a href='assets/midi_0059.mid' download>Download</a></td></tr><tr><td>NMF</td><td><a href='assets/midi_0060.mid' download>Download</a></td></tr></tbody></table></div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_006 &middot; 1 input &middot; 11 outputs</summary>
+              <div class="case-content">
+                <div class="midi-input"><a href='assets/midi_0061.mid' download>Download Input MIDI</a></div>
+                <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Method</th><th>MIDI</th></tr></thead><tbody><tr><td>UOT-IR</td><td><a href='assets/midi_0062.mid' download>Download</a></td></tr><tr><td>UOT-IR-Core</td><td><a href='assets/midi_0063.mid' download>Download</a></td></tr><tr><td>Vanilla-UOT</td><td><a href='assets/midi_0064.mid' download>Download</a></td></tr><tr><td>Direct</td><td><a href='assets/midi_0065.mid' download>Download</a></td></tr><tr><td>Random</td><td><a href='assets/midi_0066.mid' download>Download</a></td></tr><tr><td>Greedy</td><td><a href='assets/midi_0067.mid' download>Download</a></td></tr><tr><td>Skyline</td><td><a href='assets/midi_0068.mid' download>Download</a></td></tr><tr><td>PCA</td><td><a href='assets/midi_0069.mid' download>Download</a></td></tr><tr><td>KMeans</td><td><a href='assets/midi_0070.mid' download>Download</a></td></tr><tr><td>BMF-PC</td><td><a href='assets/midi_0071.mid' download>Download</a></td></tr><tr><td>NMF</td><td><a href='assets/midi_0072.mid' download>Download</a></td></tr></tbody></table></div>
+              </div>
+            </details>
+
+    </section>
+
+    <section id="metrics" class="section-card">
+      <h2>3. Metric Summary</h2>
+
+            <details class="case-group metric-case" open>
+              <summary class="case-summary">case_001 &middot; Metric Summary</summary>
+              <div class="case-content"><div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>method</th><th>Note_F1</th><th>FTED</th><th>Avg_StructCost</th><th>BadConf_Rate</th><th>PC_JSD</th><th>Dur_JSD</th><th>IOI_JSD</th><th>Fam_Acc</th></tr></thead><tbody><tr class='main-method-row'><td>UOT-IR</td><td>0.948712</td><td>0.034179</td><td>11.7676</td><td>0.198195</td><td>0.008709</td><td>0.060287</td><td>0.010139</td><td>0.867564</td></tr><tr><td>UOT-IR-Core</td><td>0.757929</td><td>0.043716</td><td>26.5689</td><td>0.527180</td><td>0.019842</td><td>0.060709</td><td>0.014203</td><td>0.487167</td></tr><tr><td>Vanilla-UOT</td><td>0.460668</td><td>0.032971</td><td>35.7080</td><td>0.940187</td><td>0.023031</td><td>0.063364</td><td>0.023928</td><td>0.112417</td></tr><tr><td>Direct</td><td>0.107617</td><td>0.037905</td><td>90.3504</td><td>0.966234</td><td>0.204224</td><td>0.247694</td><td>0.497175</td><td>0.116883</td></tr><tr><td>Random</td><td>0.158662</td><td>0.026414</td><td>49.0483</td><td>0.881024</td><td>0.339920</td><td>0.094824</td><td>0.420221</td><td>0.186747</td></tr><tr><td>Greedy</td><td>0.537945</td><td>0.054864</td><td>28.4233</td><td>0.601738</td><td>0.040152</td><td>0.083830</td><td>0.043647</td><td>0.419434</td></tr><tr><td>Skyline</td><td>0.498585</td><td>0.054101</td><td>17.0874</td><td>0.561066</td><td>0.050697</td><td>0.087358</td><td>0.054702</td><td>0.449790</td></tr><tr><td>PCA</td><td>0.068107</td><td>0.042200</td><td>20.4164</td><td>0.681287</td><td>0.451558</td><td>0.196430</td><td>0.356553</td><td>0.327485</td></tr><tr><td>KMeans</td><td>0.253861</td><td>0.025268</td><td>17.0622</td><td>0.338496</td><td>0.253959</td><td>0.127940</td><td>0.295015</td><td>0.678466</td></tr><tr><td>BMF-PC</td><td>0.434560</td><td>0.045414</td><td>15.9918</td><td>0.515822</td><td>0.046983</td><td>0.090447</td><td>0.053947</td><td>0.517222</td></tr><tr><td>NMF</td><td>0.143349</td><td>0.031590</td><td>19.7484</td><td>0.384000</td><td>0.388011</td><td>0.126032</td><td>0.309516</td><td>0.616000</td></tr></tbody></table></div></div>
+            </details>
+
+            <details class="case-group metric-case">
+              <summary class="case-summary">case_002 &middot; Metric Summary</summary>
+              <div class="case-content"><div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>method</th><th>Note_F1</th><th>FTED</th><th>Avg_StructCost</th><th>BadConf_Rate</th><th>PC_JSD</th><th>Dur_JSD</th><th>IOI_JSD</th><th>Fam_Acc</th></tr></thead><tbody><tr class='main-method-row'><td>UOT-IR</td><td>0.982477</td><td>0.049780</td><td>11.6184</td><td>0.173900</td><td>0.008416</td><td>0.023660</td><td>0.006686</td><td>0.885404</td></tr><tr><td>UOT-IR-Core</td><td>0.949628</td><td>0.056373</td><td>21.2009</td><td>0.545811</td><td>0.004991</td><td>0.024854</td><td>0.008457</td><td>0.488397</td></tr><tr><td>Vanilla-UOT</td><td>0.636571</td><td>0.051700</td><td>28.5588</td><td>0.872685</td><td>0.013203</td><td>0.057587</td><td>0.018149</td><td>0.166877</td></tr><tr><td>Direct</td><td>0.342838</td><td>0.074382</td><td>26.9473</td><td>0.566600</td><td>0.187343</td><td>0.454845</td><td>0.350799</td><td>0.444665</td></tr><tr><td>Random</td><td>0.391114</td><td>0.042241</td><td>12.0666</td><td>0.434373</td><td>0.171624</td><td>0.167227</td><td>0.343446</td><td>0.570335</td></tr><tr><td>Greedy</td><td>0.629920</td><td>0.053122</td><td>16.9617</td><td>0.454677</td><td>0.070980</td><td>0.088558</td><td>0.086935</td><td>0.583756</td></tr><tr><td>Skyline</td><td>0.559543</td><td>0.072858</td><td>29.0387</td><td>0.764161</td><td>0.075905</td><td>0.147285</td><td>0.087568</td><td>0.241013</td></tr><tr><td>PCA</td><td>0.072364</td><td>0.057184</td><td>56.2239</td><td>0.820789</td><td>0.434115</td><td>0.305360</td><td>0.564595</td><td>0.186380</td></tr><tr><td>KMeans</td><td>0.353846</td><td>0.042525</td><td>19.7479</td><td>0.439420</td><td>0.183882</td><td>0.089469</td><td>0.392688</td><td>0.564638</td></tr><tr><td>BMF-PC</td><td>0.547124</td><td>0.060055</td><td>29.8243</td><td>0.648821</td><td>0.081251</td><td>0.122919</td><td>0.086570</td><td>0.357282</td></tr><tr><td>NMF</td><td>0.218300</td><td>0.047877</td><td>20.0740</td><td>0.838317</td><td>0.278345</td><td>0.202963</td><td>0.469026</td><td>0.162791</td></tr></tbody></table></div></div>
+            </details>
+
+            <details class="case-group metric-case">
+              <summary class="case-summary">case_003 &middot; Metric Summary</summary>
+              <div class="case-content"><div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>method</th><th>Note_F1</th><th>FTED</th><th>Avg_StructCost</th><th>BadConf_Rate</th><th>PC_JSD</th><th>Dur_JSD</th><th>IOI_JSD</th><th>Fam_Acc</th></tr></thead><tbody><tr class='main-method-row'><td>UOT-IR</td><td>0.851179</td><td>0.051077</td><td>3.8796</td><td>0.082227</td><td>0.044991</td><td>0.054197</td><td>0.033467</td><td>0.930107</td></tr><tr><td>UOT-IR-Core</td><td>0.812961</td><td>0.056132</td><td>15.5712</td><td>0.527976</td><td>0.078123</td><td>0.069998</td><td>0.040440</td><td>0.519047</td></tr><tr><td>Vanilla-UOT</td><td>0.496898</td><td>0.045605</td><td>28.4590</td><td>0.922449</td><td>0.115692</td><td>0.136405</td><td>0.094021</td><td>0.107683</td></tr><tr><td>Direct</td><td>0.247066</td><td>0.059092</td><td>13.4991</td><td>0.358462</td><td>0.195693</td><td>0.367974</td><td>0.251560</td><td>0.673200</td></tr><tr><td>Random</td><td>0.298653</td><td>0.052836</td><td>3.4945</td><td>0.095490</td><td>0.236194</td><td>0.201338</td><td>0.299908</td><td>0.904821</td></tr><tr><td>Greedy</td><td>0.616011</td><td>0.058765</td><td>12.8666</td><td>0.453525</td><td>0.121688</td><td>0.093344</td><td>0.070040</td><td>0.547997</td></tr><tr><td>Skyline</td><td>0.058714</td><td>0.071708</td><td>28.2409</td><td>0.945865</td><td>0.475291</td><td>0.446103</td><td>0.509738</td><td>0.057143</td></tr><tr><td>PCA</td><td>0.124058</td><td>0.071751</td><td>1.8598</td><td>0.082984</td><td>0.488082</td><td>0.466918</td><td>0.665753</td><td>0.918692</td></tr><tr><td>KMeans</td><td>0.320319</td><td>0.044979</td><td>11.3176</td><td>0.162994</td><td>0.265036</td><td>0.183332</td><td>0.282710</td><td>0.838136</td></tr><tr><td>BMF-PC</td><td>0.524612</td><td>0.054218</td><td>12.1784</td><td>0.388566</td><td>0.113321</td><td>0.086842</td><td>0.090316</td><td>0.611782</td></tr><tr><td>NMF</td><td>0.215915</td><td>0.054181</td><td>3.3863</td><td>0.140375</td><td>0.263939</td><td>0.320740</td><td>0.441667</td><td>0.861911</td></tr></tbody></table></div></div>
+            </details>
+
+            <details class="case-group metric-case">
+              <summary class="case-summary">case_004 &middot; Metric Summary</summary>
+              <div class="case-content"><div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>method</th><th>Note_F1</th><th>FTED</th><th>Avg_StructCost</th><th>BadConf_Rate</th><th>PC_JSD</th><th>Dur_JSD</th><th>IOI_JSD</th><th>Fam_Acc</th></tr></thead><tbody><tr class='main-method-row'><td>UOT-IR</td><td>0.979159</td><td>0.055368</td><td>10.1080</td><td>0.150686</td><td>0.005790</td><td>0.020162</td><td>0.004562</td><td>0.849314</td></tr><tr><td>UOT-IR-Core</td><td>0.942861</td><td>0.048941</td><td>23.2357</td><td>0.713713</td><td>0.020288</td><td>0.030200</td><td>0.016126</td><td>0.305591</td></tr><tr><td>Vanilla-UOT</td><td>0.546239</td><td>0.036583</td><td>37.8358</td><td>0.925263</td><td>0.025562</td><td>0.031339</td><td>0.028172</td><td>0.090351</td></tr><tr><td>Direct</td><td>0.214365</td><td>0.033885</td><td>20.1491</td><td>0.410175</td><td>0.260130</td><td>0.362241</td><td>0.415468</td><td>0.590620</td></tr><tr><td>Random</td><td>0.291396</td><td>0.030618</td><td>17.5791</td><td>0.549212</td><td>0.194042</td><td>0.237722</td><td>0.312389</td><td>0.455139</td></tr><tr><td>Greedy</td><td>0.531227</td><td>0.044295</td><td>24.7004</td><td>0.849735</td><td>0.064908</td><td>0.081845</td><td>0.115664</td><td>0.152381</td></tr><tr><td>Skyline</td><td>0.337815</td><td>0.061623</td><td>20.4584</td><td>0.749164</td><td>0.084913</td><td>0.119581</td><td>0.113716</td><td>0.265217</td></tr><tr><td>PCA</td><td>0.148634</td><td>0.062386</td><td>15.1374</td><td>0.212014</td><td>0.386160</td><td>0.481567</td><td>0.407972</td><td>0.787986</td></tr><tr><td>KMeans</td><td>0.336307</td><td>0.023640</td><td>17.5607</td><td>0.409859</td><td>0.151297</td><td>0.166179</td><td>0.369306</td><td>0.590141</td></tr><tr><td>BMF-PC</td><td>0.345155</td><td>0.064662</td><td>19.7290</td><td>0.731236</td><td>0.088359</td><td>0.123681</td><td>0.117758</td><td>0.282858</td></tr><tr><td>NMF</td><td>0.158818</td><td>0.030127</td><td>13.3042</td><td>0.398496</td><td>0.309461</td><td>0.186222</td><td>0.400349</td><td>0.605263</td></tr></tbody></table></div></div>
+            </details>
+
+            <details class="case-group metric-case">
+              <summary class="case-summary">case_005 &middot; Metric Summary</summary>
+              <div class="case-content"><div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>method</th><th>Note_F1</th><th>FTED</th><th>Avg_StructCost</th><th>BadConf_Rate</th><th>PC_JSD</th><th>Dur_JSD</th><th>IOI_JSD</th><th>Fam_Acc</th></tr></thead><tbody><tr class='main-method-row'><td>UOT-IR</td><td>0.959167</td><td>0.025045</td><td>3.6527</td><td>0.094182</td><td>0.004260</td><td>0.063415</td><td>0.045327</td><td>0.916435</td></tr><tr><td>UOT-IR-Core</td><td>0.924353</td><td>0.030997</td><td>22.5882</td><td>0.702401</td><td>0.016310</td><td>0.051104</td><td>0.047691</td><td>0.325642</td></tr><tr><td>Vanilla-UOT</td><td>0.627568</td><td>0.021211</td><td>26.5591</td><td>0.846365</td><td>0.021573</td><td>0.056742</td><td>0.055323</td><td>0.155964</td></tr><tr><td>Direct</td><td>0.260504</td><td>0.025410</td><td>31.8260</td><td>0.797509</td><td>0.104344</td><td>0.188362</td><td>0.339837</td><td>0.202491</td></tr><tr><td>Random</td><td>0.325468</td><td>0.023778</td><td>21.0071</td><td>0.846482</td><td>0.123798</td><td>0.131917</td><td>0.293140</td><td>0.153518</td></tr><tr><td>Greedy</td><td>0.453410</td><td>0.026578</td><td>21.5668</td><td>0.702769</td><td>0.069249</td><td>0.086399</td><td>0.133711</td><td>0.298053</td></tr><tr><td>Skyline</td><td>0.377653</td><td>0.026070</td><td>25.0020</td><td>0.608375</td><td>0.065568</td><td>0.111718</td><td>0.168993</td><td>0.394371</td></tr><tr><td>PCA</td><td>0.164413</td><td>0.023295</td><td>25.1451</td><td>0.900713</td><td>0.178731</td><td>0.134825</td><td>0.382106</td><td>0.099287</td></tr><tr><td>KMeans</td><td>0.261200</td><td>0.013920</td><td>15.0048</td><td>0.547997</td><td>0.129907</td><td>0.124182</td><td>0.258334</td><td>0.453445</td></tr><tr><td>BMF-PC</td><td>0.426642</td><td>0.025527</td><td>22.1776</td><td>0.712057</td><td>0.076438</td><td>0.079586</td><td>0.146298</td><td>0.289121</td></tr><tr><td>NMF</td><td>0.247602</td><td>0.023787</td><td>17.8656</td><td>0.678808</td><td>0.177066</td><td>0.148463</td><td>0.378074</td><td>0.322517</td></tr></tbody></table></div></div>
+            </details>
+
+            <details class="case-group metric-case">
+              <summary class="case-summary">case_006 &middot; Metric Summary</summary>
+              <div class="case-content"><div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>method</th><th>Note_F1</th><th>FTED</th><th>Avg_StructCost</th><th>BadConf_Rate</th><th>PC_JSD</th><th>Dur_JSD</th><th>IOI_JSD</th><th>Fam_Acc</th></tr></thead><tbody><tr class='main-method-row'><td>UOT-IR</td><td>0.960779</td><td>0.069415</td><td>2.2263</td><td>0.065205</td><td>0.005756</td><td>0.015907</td><td>0.004542</td><td>0.950685</td></tr><tr><td>UOT-IR-Core</td><td>0.927166</td><td>0.071157</td><td>6.8812</td><td>0.249724</td><td>0.009797</td><td>0.025998</td><td>0.008402</td><td>0.759647</td></tr><tr><td>Vanilla-UOT</td><td>0.661841</td><td>0.075628</td><td>30.6097</td><td>0.917969</td><td>0.008651</td><td>0.028419</td><td>0.008013</td><td>0.091406</td></tr><tr><td>Direct</td><td>0.145083</td><td>0.089629</td><td>5.8536</td><td>0.315436</td><td>0.326280</td><td>0.608146</td><td>0.565556</td><td>0.825503</td></tr><tr><td>Random</td><td>0.673589</td><td>0.065912</td><td>36.8593</td><td>0.405961</td><td>0.194730</td><td>0.202122</td><td>0.326678</td><td>0.597122</td></tr><tr><td>Greedy</td><td>0.827422</td><td>0.090841</td><td>24.3192</td><td>0.300704</td><td>0.038158</td><td>0.120489</td><td>0.075066</td><td>0.699936</td></tr><tr><td>Skyline</td><td>0.742593</td><td>0.094535</td><td>6.6491</td><td>0.281113</td><td>0.084171</td><td>0.186819</td><td>0.104146</td><td>0.722548</td></tr><tr><td>PCA</td><td>0.537190</td><td>0.074586</td><td>1.0907</td><td>0.041026</td><td>0.364532</td><td>0.248473</td><td>0.273646</td><td>0.960256</td></tr><tr><td>KMeans</td><td>0.459064</td><td>0.050600</td><td>3.6269</td><td>0.141720</td><td>0.241270</td><td>0.154321</td><td>0.288041</td><td>0.858280</td></tr><tr><td>BMF-PC</td><td>0.625571</td><td>0.057359</td><td>38.8363</td><td>0.482795</td><td>0.162294</td><td>0.183143</td><td>0.269850</td><td>0.520334</td></tr><tr><td>NMF</td><td>0.410906</td><td>0.057472</td><td>4.4102</td><td>0.071028</td><td>0.290410</td><td>0.355171</td><td>0.458401</td><td>0.928972</td></tr></tbody></table></div></div>
+            </details>
+
+    </section>
+
+    <section id="downloads" class="section-card">
+      <h2>4. Downloads / Additional Files</h2>
+      <details class="download-group">
+        <summary class="case-summary">Full Metric JSON Files &middot; 66 files</summary>
+        <div class="case-content">
+
+            <details class="case-group" open>
+              <summary class="case-summary">case_001 &middot; 11 metric files</summary>
+              <div class="case-content">
+                <div class="download-list">
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0001.json" download>UOT-IR metrics.json</a>
+                  <span class="small">metric_file_0001.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0002.json" download>UOT-IR-Core metrics.json</a>
+                  <span class="small">metric_file_0002.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0003.json" download>Vanilla-UOT metrics.json</a>
+                  <span class="small">metric_file_0003.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0004.json" download>Direct metrics.json</a>
+                  <span class="small">metric_file_0004.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0005.json" download>Random metrics.json</a>
+                  <span class="small">metric_file_0005.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0006.json" download>Greedy metrics.json</a>
+                  <span class="small">metric_file_0006.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0007.json" download>Skyline metrics.json</a>
+                  <span class="small">metric_file_0007.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0008.json" download>PCA metrics.json</a>
+                  <span class="small">metric_file_0008.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0009.json" download>KMeans metrics.json</a>
+                  <span class="small">metric_file_0009.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0010.json" download>BMF-PC metrics.json</a>
+                  <span class="small">metric_file_0010.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0011.json" download>NMF metrics.json</a>
+                  <span class="small">metric_file_0011.json</span>
+                </div>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_002 &middot; 11 metric files</summary>
+              <div class="case-content">
+                <div class="download-list">
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0012.json" download>UOT-IR metrics.json</a>
+                  <span class="small">metric_file_0012.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0013.json" download>UOT-IR-Core metrics.json</a>
+                  <span class="small">metric_file_0013.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0014.json" download>Vanilla-UOT metrics.json</a>
+                  <span class="small">metric_file_0014.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0015.json" download>Direct metrics.json</a>
+                  <span class="small">metric_file_0015.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0016.json" download>Random metrics.json</a>
+                  <span class="small">metric_file_0016.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0017.json" download>Greedy metrics.json</a>
+                  <span class="small">metric_file_0017.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0018.json" download>Skyline metrics.json</a>
+                  <span class="small">metric_file_0018.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0019.json" download>PCA metrics.json</a>
+                  <span class="small">metric_file_0019.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0020.json" download>KMeans metrics.json</a>
+                  <span class="small">metric_file_0020.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0021.json" download>BMF-PC metrics.json</a>
+                  <span class="small">metric_file_0021.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0022.json" download>NMF metrics.json</a>
+                  <span class="small">metric_file_0022.json</span>
+                </div>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_003 &middot; 11 metric files</summary>
+              <div class="case-content">
+                <div class="download-list">
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0023.json" download>UOT-IR metrics.json</a>
+                  <span class="small">metric_file_0023.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0024.json" download>UOT-IR-Core metrics.json</a>
+                  <span class="small">metric_file_0024.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0025.json" download>Vanilla-UOT metrics.json</a>
+                  <span class="small">metric_file_0025.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0026.json" download>Direct metrics.json</a>
+                  <span class="small">metric_file_0026.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0027.json" download>Random metrics.json</a>
+                  <span class="small">metric_file_0027.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0028.json" download>Greedy metrics.json</a>
+                  <span class="small">metric_file_0028.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0029.json" download>Skyline metrics.json</a>
+                  <span class="small">metric_file_0029.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0030.json" download>PCA metrics.json</a>
+                  <span class="small">metric_file_0030.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0031.json" download>KMeans metrics.json</a>
+                  <span class="small">metric_file_0031.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0032.json" download>BMF-PC metrics.json</a>
+                  <span class="small">metric_file_0032.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0033.json" download>NMF metrics.json</a>
+                  <span class="small">metric_file_0033.json</span>
+                </div>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_004 &middot; 11 metric files</summary>
+              <div class="case-content">
+                <div class="download-list">
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0034.json" download>UOT-IR metrics.json</a>
+                  <span class="small">metric_file_0034.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0035.json" download>UOT-IR-Core metrics.json</a>
+                  <span class="small">metric_file_0035.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0036.json" download>Vanilla-UOT metrics.json</a>
+                  <span class="small">metric_file_0036.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0037.json" download>Direct metrics.json</a>
+                  <span class="small">metric_file_0037.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0038.json" download>Random metrics.json</a>
+                  <span class="small">metric_file_0038.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0039.json" download>Greedy metrics.json</a>
+                  <span class="small">metric_file_0039.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0040.json" download>Skyline metrics.json</a>
+                  <span class="small">metric_file_0040.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0041.json" download>PCA metrics.json</a>
+                  <span class="small">metric_file_0041.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0042.json" download>KMeans metrics.json</a>
+                  <span class="small">metric_file_0042.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0043.json" download>BMF-PC metrics.json</a>
+                  <span class="small">metric_file_0043.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0044.json" download>NMF metrics.json</a>
+                  <span class="small">metric_file_0044.json</span>
+                </div>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_005 &middot; 11 metric files</summary>
+              <div class="case-content">
+                <div class="download-list">
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0045.json" download>UOT-IR metrics.json</a>
+                  <span class="small">metric_file_0045.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0046.json" download>UOT-IR-Core metrics.json</a>
+                  <span class="small">metric_file_0046.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0047.json" download>Vanilla-UOT metrics.json</a>
+                  <span class="small">metric_file_0047.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0048.json" download>Direct metrics.json</a>
+                  <span class="small">metric_file_0048.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0049.json" download>Random metrics.json</a>
+                  <span class="small">metric_file_0049.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0050.json" download>Greedy metrics.json</a>
+                  <span class="small">metric_file_0050.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0051.json" download>Skyline metrics.json</a>
+                  <span class="small">metric_file_0051.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0052.json" download>PCA metrics.json</a>
+                  <span class="small">metric_file_0052.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0053.json" download>KMeans metrics.json</a>
+                  <span class="small">metric_file_0053.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0054.json" download>BMF-PC metrics.json</a>
+                  <span class="small">metric_file_0054.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0055.json" download>NMF metrics.json</a>
+                  <span class="small">metric_file_0055.json</span>
+                </div>
+
+                </div>
+              </div>
+            </details>
+
+            <details class="case-group">
+              <summary class="case-summary">case_006 &middot; 11 metric files</summary>
+              <div class="case-content">
+                <div class="download-list">
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0056.json" download>UOT-IR metrics.json</a>
+                  <span class="small">metric_file_0056.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0057.json" download>UOT-IR-Core metrics.json</a>
+                  <span class="small">metric_file_0057.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0058.json" download>Vanilla-UOT metrics.json</a>
+                  <span class="small">metric_file_0058.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0059.json" download>Direct metrics.json</a>
+                  <span class="small">metric_file_0059.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0060.json" download>Random metrics.json</a>
+                  <span class="small">metric_file_0060.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0061.json" download>Greedy metrics.json</a>
+                  <span class="small">metric_file_0061.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0062.json" download>Skyline metrics.json</a>
+                  <span class="small">metric_file_0062.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0063.json" download>PCA metrics.json</a>
+                  <span class="small">metric_file_0063.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0064.json" download>KMeans metrics.json</a>
+                  <span class="small">metric_file_0064.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0065.json" download>BMF-PC metrics.json</a>
+                  <span class="small">metric_file_0065.json</span>
+                </div>
+
+                <div class="download-item">
+                  <a href="assets/metric_file_0066.json" download>NMF metrics.json</a>
+                  <span class="small">metric_file_0066.json</span>
+                </div>
+
+                </div>
+              </div>
+            </details>
+
+        </div>
+      </details>
+      <details class="download-group">
+        <summary class="case-summary">Complete Asset Index &middot; 210 files</summary>
+        <div class="case-content">
+          <div class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"><table class='compact-table'><thead><tr><th>Asset File</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>midi_0001.mid</td><td>midi</td><td>case_001 input</td></tr><tr><td>image_0001.png</td><td>image</td><td>case_001 input roll</td></tr><tr><td>midi_0002.mid</td><td>midi</td><td>case_001 UOT-IR output</td></tr><tr><td>image_0002.png</td><td>image</td><td>case_001 UOT-IR roll</td></tr><tr><td>metric_file_0001.json</td><td>metric</td><td>case_001 UOT-IR metrics file</td></tr><tr><td>midi_0003.mid</td><td>midi</td><td>case_001 UOT-IR-Core output</td></tr><tr><td>image_0003.png</td><td>image</td><td>case_001 UOT-IR-Core roll</td></tr><tr><td>metric_file_0002.json</td><td>metric</td><td>case_001 UOT-IR-Core metrics file</td></tr><tr><td>midi_0004.mid</td><td>midi</td><td>case_001 Vanilla-UOT output</td></tr><tr><td>image_0004.png</td><td>image</td><td>case_001 Vanilla-UOT roll</td></tr><tr><td>metric_file_0003.json</td><td>metric</td><td>case_001 Vanilla-UOT metrics file</td></tr><tr><td>midi_0005.mid</td><td>midi</td><td>case_001 Direct output</td></tr><tr><td>image_0005.png</td><td>image</td><td>case_001 Direct roll</td></tr><tr><td>metric_file_0004.json</td><td>metric</td><td>case_001 Direct metrics file</td></tr><tr><td>midi_0006.mid</td><td>midi</td><td>case_001 Random output</td></tr><tr><td>image_0006.png</td><td>image</td><td>case_001 Random roll</td></tr><tr><td>metric_file_0005.json</td><td>metric</td><td>case_001 Random metrics file</td></tr><tr><td>midi_0007.mid</td><td>midi</td><td>case_001 Greedy output</td></tr><tr><td>image_0007.png</td><td>image</td><td>case_001 Greedy roll</td></tr><tr><td>metric_file_0006.json</td><td>metric</td><td>case_001 Greedy metrics file</td></tr><tr><td>midi_0008.mid</td><td>midi</td><td>case_001 Skyline output</td></tr><tr><td>image_0008.png</td><td>image</td><td>case_001 Skyline roll</td></tr><tr><td>metric_file_0007.json</td><td>metric</td><td>case_001 Skyline metrics file</td></tr><tr><td>midi_0009.mid</td><td>midi</td><td>case_001 PCA output</td></tr><tr><td>image_0009.png</td><td>image</td><td>case_001 PCA roll</td></tr><tr><td>metric_file_0008.json</td><td>metric</td><td>case_001 PCA metrics file</td></tr><tr><td>midi_0010.mid</td><td>midi</td><td>case_001 KMeans output</td></tr><tr><td>image_0010.png</td><td>image</td><td>case_001 KMeans roll</td></tr><tr><td>metric_file_0009.json</td><td>metric</td><td>case_001 KMeans metrics file</td></tr><tr><td>midi_0011.mid</td><td>midi</td><td>case_001 BMF-PC output</td></tr><tr><td>image_0011.png</td><td>image</td><td>case_001 BMF-PC roll</td></tr><tr><td>metric_file_0010.json</td><td>metric</td><td>case_001 BMF-PC metrics file</td></tr><tr><td>midi_0012.mid</td><td>midi</td><td>case_001 NMF output</td></tr><tr><td>image_0012.png</td><td>image</td><td>case_001 NMF roll</td></tr><tr><td>metric_file_0011.json</td><td>metric</td><td>case_001 NMF metrics file</td></tr><tr><td>midi_0013.mid</td><td>midi</td><td>case_002 input</td></tr><tr><td>image_0013.png</td><td>image</td><td>case_002 input roll</td></tr><tr><td>midi_0014.mid</td><td>midi</td><td>case_002 UOT-IR output</td></tr><tr><td>image_0014.png</td><td>image</td><td>case_002 UOT-IR roll</td></tr><tr><td>metric_file_0012.json</td><td>metric</td><td>case_002 UOT-IR metrics file</td></tr><tr><td>midi_0015.mid</td><td>midi</td><td>case_002 UOT-IR-Core output</td></tr><tr><td>image_0015.png</td><td>image</td><td>case_002 UOT-IR-Core roll</td></tr><tr><td>metric_file_0013.json</td><td>metric</td><td>case_002 UOT-IR-Core metrics file</td></tr><tr><td>midi_0016.mid</td><td>midi</td><td>case_002 Vanilla-UOT output</td></tr><tr><td>image_0016.png</td><td>image</td><td>case_002 Vanilla-UOT roll</td></tr><tr><td>metric_file_0014.json</td><td>metric</td><td>case_002 Vanilla-UOT metrics file</td></tr><tr><td>midi_0017.mid</td><td>midi</td><td>case_002 Direct output</td></tr><tr><td>image_0017.png</td><td>image</td><td>case_002 Direct roll</td></tr><tr><td>metric_file_0015.json</td><td>metric</td><td>case_002 Direct metrics file</td></tr><tr><td>midi_0018.mid</td><td>midi</td><td>case_002 Random output</td></tr><tr><td>image_0018.png</td><td>image</td><td>case_002 Random roll</td></tr><tr><td>metric_file_0016.json</td><td>metric</td><td>case_002 Random metrics file</td></tr><tr><td>midi_0019.mid</td><td>midi</td><td>case_002 Greedy output</td></tr><tr><td>image_0019.png</td><td>image</td><td>case_002 Greedy roll</td></tr><tr><td>metric_file_0017.json</td><td>metric</td><td>case_002 Greedy metrics file</td></tr><tr><td>midi_0020.mid</td><td>midi</td><td>case_002 Skyline output</td></tr><tr><td>image_0020.png</td><td>image</td><td>case_002 Skyline roll</td></tr><tr><td>metric_file_0018.json</td><td>metric</td><td>case_002 Skyline metrics file</td></tr><tr><td>midi_0021.mid</td><td>midi</td><td>case_002 PCA output</td></tr><tr><td>image_0021.png</td><td>image</td><td>case_002 PCA roll</td></tr><tr><td>metric_file_0019.json</td><td>metric</td><td>case_002 PCA metrics file</td></tr><tr><td>midi_0022.mid</td><td>midi</td><td>case_002 KMeans output</td></tr><tr><td>image_0022.png</td><td>image</td><td>case_002 KMeans roll</td></tr><tr><td>metric_file_0020.json</td><td>metric</td><td>case_002 KMeans metrics file</td></tr><tr><td>midi_0023.mid</td><td>midi</td><td>case_002 BMF-PC output</td></tr><tr><td>image_0023.png</td><td>image</td><td>case_002 BMF-PC roll</td></tr><tr><td>metric_file_0021.json</td><td>metric</td><td>case_002 BMF-PC metrics file</td></tr><tr><td>midi_0024.mid</td><td>midi</td><td>case_002 NMF output</td></tr><tr><td>image_0024.png</td><td>image</td><td>case_002 NMF roll</td></tr><tr><td>metric_file_0022.json</td><td>metric</td><td>case_002 NMF metrics file</td></tr><tr><td>midi_0025.mid</td><td>midi</td><td>case_003 input</td></tr><tr><td>image_0025.png</td><td>image</td><td>case_003 input roll</td></tr><tr><td>midi_0026.mid</td><td>midi</td><td>case_003 UOT-IR output</td></tr><tr><td>image_0026.png</td><td>image</td><td>case_003 UOT-IR roll</td></tr><tr><td>metric_file_0023.json</td><td>metric</td><td>case_003 UOT-IR metrics file</td></tr><tr><td>midi_0027.mid</td><td>midi</td><td>case_003 UOT-IR-Core output</td></tr><tr><td>image_0027.png</td><td>image</td><td>case_003 UOT-IR-Core roll</td></tr><tr><td>metric_file_0024.json</td><td>metric</td><td>case_003 UOT-IR-Core metrics file</td></tr><tr><td>midi_0028.mid</td><td>midi</td><td>case_003 Vanilla-UOT output</td></tr><tr><td>image_0028.png</td><td>image</td><td>case_003 Vanilla-UOT roll</td></tr><tr><td>metric_file_0025.json</td><td>metric</td><td>case_003 Vanilla-UOT metrics file</td></tr><tr><td>midi_0029.mid</td><td>midi</td><td>case_003 Direct output</td></tr><tr><td>image_0029.png</td><td>image</td><td>case_003 Direct roll</td></tr><tr><td>metric_file_0026.json</td><td>metric</td><td>case_003 Direct metrics file</td></tr><tr><td>midi_0030.mid</td><td>midi</td><td>case_003 Random output</td></tr><tr><td>image_0030.png</td><td>image</td><td>case_003 Random roll</td></tr><tr><td>metric_file_0027.json</td><td>metric</td><td>case_003 Random metrics file</td></tr><tr><td>midi_0031.mid</td><td>midi</td><td>case_003 Greedy output</td></tr><tr><td>image_0031.png</td><td>image</td><td>case_003 Greedy roll</td></tr><tr><td>metric_file_0028.json</td><td>metric</td><td>case_003 Greedy metrics file</td></tr><tr><td>midi_0032.mid</td><td>midi</td><td>case_003 Skyline output</td></tr><tr><td>image_0032.png</td><td>image</td><td>case_003 Skyline roll</td></tr><tr><td>metric_file_0029.json</td><td>metric</td><td>case_003 Skyline metrics file</td></tr><tr><td>midi_0033.mid</td><td>midi</td><td>case_003 PCA output</td></tr><tr><td>image_0033.png</td><td>image</td><td>case_003 PCA roll</td></tr><tr><td>metric_file_0030.json</td><td>metric</td><td>case_003 PCA metrics file</td></tr><tr><td>midi_0034.mid</td><td>midi</td><td>case_003 KMeans output</td></tr><tr><td>image_0034.png</td><td>image</td><td>case_003 KMeans roll</td></tr><tr><td>metric_file_0031.json</td><td>metric</td><td>case_003 KMeans metrics file</td></tr><tr><td>midi_0035.mid</td><td>midi</td><td>case_003 BMF-PC output</td></tr><tr><td>image_0035.png</td><td>image</td><td>case_003 BMF-PC roll</td></tr><tr><td>metric_file_0032.json</td><td>metric</td><td>case_003 BMF-PC metrics file</td></tr><tr><td>midi_0036.mid</td><td>midi</td><td>case_003 NMF output</td></tr><tr><td>image_0036.png</td><td>image</td><td>case_003 NMF roll</td></tr><tr><td>metric_file_0033.json</td><td>metric</td><td>case_003 NMF metrics file</td></tr><tr><td>midi_0037.mid</td><td>midi</td><td>case_004 input</td></tr><tr><td>image_0037.png</td><td>image</td><td>case_004 input roll</td></tr><tr><td>midi_0038.mid</td><td>midi</td><td>case_004 UOT-IR output</td></tr><tr><td>image_0038.png</td><td>image</td><td>case_004 UOT-IR roll</td></tr><tr><td>metric_file_0034.json</td><td>metric</td><td>case_004 UOT-IR metrics file</td></tr><tr><td>midi_0039.mid</td><td>midi</td><td>case_004 UOT-IR-Core output</td></tr><tr><td>image_0039.png</td><td>image</td><td>case_004 UOT-IR-Core roll</td></tr><tr><td>metric_file_0035.json</td><td>metric</td><td>case_004 UOT-IR-Core metrics file</td></tr><tr><td>midi_0040.mid</td><td>midi</td><td>case_004 Vanilla-UOT output</td></tr><tr><td>image_0040.png</td><td>image</td><td>case_004 Vanilla-UOT roll</td></tr><tr><td>metric_file_0036.json</td><td>metric</td><td>case_004 Vanilla-UOT metrics file</td></tr><tr><td>midi_0041.mid</td><td>midi</td><td>case_004 Direct output</td></tr><tr><td>image_0041.png</td><td>image</td><td>case_004 Direct roll</td></tr><tr><td>metric_file_0037.json</td><td>metric</td><td>case_004 Direct metrics file</td></tr><tr><td>midi_0042.mid</td><td>midi</td><td>case_004 Random output</td></tr><tr><td>image_0042.png</td><td>image</td><td>case_004 Random roll</td></tr><tr><td>metric_file_0038.json</td><td>metric</td><td>case_004 Random metrics file</td></tr><tr><td>midi_0043.mid</td><td>midi</td><td>case_004 Greedy output</td></tr><tr><td>image_0043.png</td><td>image</td><td>case_004 Greedy roll</td></tr><tr><td>metric_file_0039.json</td><td>metric</td><td>case_004 Greedy metrics file</td></tr><tr><td>midi_0044.mid</td><td>midi</td><td>case_004 Skyline output</td></tr><tr><td>image_0044.png</td><td>image</td><td>case_004 Skyline roll</td></tr><tr><td>metric_file_0040.json</td><td>metric</td><td>case_004 Skyline metrics file</td></tr><tr><td>midi_0045.mid</td><td>midi</td><td>case_004 PCA output</td></tr><tr><td>image_0045.png</td><td>image</td><td>case_004 PCA roll</td></tr><tr><td>metric_file_0041.json</td><td>metric</td><td>case_004 PCA metrics file</td></tr><tr><td>midi_0046.mid</td><td>midi</td><td>case_004 KMeans output</td></tr><tr><td>image_0046.png</td><td>image</td><td>case_004 KMeans roll</td></tr><tr><td>metric_file_0042.json</td><td>metric</td><td>case_004 KMeans metrics file</td></tr><tr><td>midi_0047.mid</td><td>midi</td><td>case_004 BMF-PC output</td></tr><tr><td>image_0047.png</td><td>image</td><td>case_004 BMF-PC roll</td></tr><tr><td>metric_file_0043.json</td><td>metric</td><td>case_004 BMF-PC metrics file</td></tr><tr><td>midi_0048.mid</td><td>midi</td><td>case_004 NMF output</td></tr><tr><td>image_0048.png</td><td>image</td><td>case_004 NMF roll</td></tr><tr><td>metric_file_0044.json</td><td>metric</td><td>case_004 NMF metrics file</td></tr><tr><td>midi_0049.mid</td><td>midi</td><td>case_005 input</td></tr><tr><td>image_0049.png</td><td>image</td><td>case_005 input roll</td></tr><tr><td>midi_0050.mid</td><td>midi</td><td>case_005 UOT-IR output</td></tr><tr><td>image_0050.png</td><td>image</td><td>case_005 UOT-IR roll</td></tr><tr><td>metric_file_0045.json</td><td>metric</td><td>case_005 UOT-IR metrics file</td></tr><tr><td>midi_0051.mid</td><td>midi</td><td>case_005 UOT-IR-Core output</td></tr><tr><td>image_0051.png</td><td>image</td><td>case_005 UOT-IR-Core roll</td></tr><tr><td>metric_file_0046.json</td><td>metric</td><td>case_005 UOT-IR-Core metrics file</td></tr><tr><td>midi_0052.mid</td><td>midi</td><td>case_005 Vanilla-UOT output</td></tr><tr><td>image_0052.png</td><td>image</td><td>case_005 Vanilla-UOT roll</td></tr><tr><td>metric_file_0047.json</td><td>metric</td><td>case_005 Vanilla-UOT metrics file</td></tr><tr><td>midi_0053.mid</td><td>midi</td><td>case_005 Direct output</td></tr><tr><td>image_0053.png</td><td>image</td><td>case_005 Direct roll</td></tr><tr><td>metric_file_0048.json</td><td>metric</td><td>case_005 Direct metrics file</td></tr><tr><td>midi_0054.mid</td><td>midi</td><td>case_005 Random output</td></tr><tr><td>image_0054.png</td><td>image</td><td>case_005 Random roll</td></tr><tr><td>metric_file_0049.json</td><td>metric</td><td>case_005 Random metrics file</td></tr><tr><td>midi_0055.mid</td><td>midi</td><td>case_005 Greedy output</td></tr><tr><td>image_0055.png</td><td>image</td><td>case_005 Greedy roll</td></tr><tr><td>metric_file_0050.json</td><td>metric</td><td>case_005 Greedy metrics file</td></tr><tr><td>midi_0056.mid</td><td>midi</td><td>case_005 Skyline output</td></tr><tr><td>image_0056.png</td><td>image</td><td>case_005 Skyline roll</td></tr><tr><td>metric_file_0051.json</td><td>metric</td><td>case_005 Skyline metrics file</td></tr><tr><td>midi_0057.mid</td><td>midi</td><td>case_005 PCA output</td></tr><tr><td>image_0057.png</td><td>image</td><td>case_005 PCA roll</td></tr><tr><td>metric_file_0052.json</td><td>metric</td><td>case_005 PCA metrics file</td></tr><tr><td>midi_0058.mid</td><td>midi</td><td>case_005 KMeans output</td></tr><tr><td>image_0058.png</td><td>image</td><td>case_005 KMeans roll</td></tr><tr><td>metric_file_0053.json</td><td>metric</td><td>case_005 KMeans metrics file</td></tr><tr><td>midi_0059.mid</td><td>midi</td><td>case_005 BMF-PC output</td></tr><tr><td>image_0059.png</td><td>image</td><td>case_005 BMF-PC roll</td></tr><tr><td>metric_file_0054.json</td><td>metric</td><td>case_005 BMF-PC metrics file</td></tr><tr><td>midi_0060.mid</td><td>midi</td><td>case_005 NMF output</td></tr><tr><td>image_0060.png</td><td>image</td><td>case_005 NMF roll</td></tr><tr><td>metric_file_0055.json</td><td>metric</td><td>case_005 NMF metrics file</td></tr><tr><td>midi_0061.mid</td><td>midi</td><td>case_006 input</td></tr><tr><td>image_0061.png</td><td>image</td><td>case_006 input roll</td></tr><tr><td>midi_0062.mid</td><td>midi</td><td>case_006 UOT-IR output</td></tr><tr><td>image_0062.png</td><td>image</td><td>case_006 UOT-IR roll</td></tr><tr><td>metric_file_0056.json</td><td>metric</td><td>case_006 UOT-IR metrics file</td></tr><tr><td>midi_0063.mid</td><td>midi</td><td>case_006 UOT-IR-Core output</td></tr><tr><td>image_0063.png</td><td>image</td><td>case_006 UOT-IR-Core roll</td></tr><tr><td>metric_file_0057.json</td><td>metric</td><td>case_006 UOT-IR-Core metrics file</td></tr><tr><td>midi_0064.mid</td><td>midi</td><td>case_006 Vanilla-UOT output</td></tr><tr><td>image_0064.png</td><td>image</td><td>case_006 Vanilla-UOT roll</td></tr><tr><td>metric_file_0058.json</td><td>metric</td><td>case_006 Vanilla-UOT metrics file</td></tr><tr><td>midi_0065.mid</td><td>midi</td><td>case_006 Direct output</td></tr><tr><td>image_0065.png</td><td>image</td><td>case_006 Direct roll</td></tr><tr><td>metric_file_0059.json</td><td>metric</td><td>case_006 Direct metrics file</td></tr><tr><td>midi_0066.mid</td><td>midi</td><td>case_006 Random output</td></tr><tr><td>image_0066.png</td><td>image</td><td>case_006 Random roll</td></tr><tr><td>metric_file_0060.json</td><td>metric</td><td>case_006 Random metrics file</td></tr><tr><td>midi_0067.mid</td><td>midi</td><td>case_006 Greedy output</td></tr><tr><td>image_0067.png</td><td>image</td><td>case_006 Greedy roll</td></tr><tr><td>metric_file_0061.json</td><td>metric</td><td>case_006 Greedy metrics file</td></tr><tr><td>midi_0068.mid</td><td>midi</td><td>case_006 Skyline output</td></tr><tr><td>image_0068.png</td><td>image</td><td>case_006 Skyline roll</td></tr><tr><td>metric_file_0062.json</td><td>metric</td><td>case_006 Skyline metrics file</td></tr><tr><td>midi_0069.mid</td><td>midi</td><td>case_006 PCA output</td></tr><tr><td>image_0069.png</td><td>image</td><td>case_006 PCA roll</td></tr><tr><td>metric_file_0063.json</td><td>metric</td><td>case_006 PCA metrics file</td></tr><tr><td>midi_0070.mid</td><td>midi</td><td>case_006 KMeans output</td></tr><tr><td>image_0070.png</td><td>image</td><td>case_006 KMeans roll</td></tr><tr><td>metric_file_0064.json</td><td>metric</td><td>case_006 KMeans metrics file</td></tr><tr><td>midi_0071.mid</td><td>midi</td><td>case_006 BMF-PC output</td></tr><tr><td>image_0071.png</td><td>image</td><td>case_006 BMF-PC roll</td></tr><tr><td>metric_file_0065.json</td><td>metric</td><td>case_006 BMF-PC metrics file</td></tr><tr><td>midi_0072.mid</td><td>midi</td><td>case_006 NMF output</td></tr><tr><td>image_0072.png</td><td>image</td><td>case_006 NMF roll</td></tr><tr><td>metric_file_0066.json</td><td>metric</td><td>case_006 NMF metrics file</td></tr></tbody></table></div>
+        </div>
+      </details>
+    </section>
+
+    <p class="footnote">
+      This static page is generated from local files only. No server API, no external CDN, and no online dependency is used at runtime.
+    </p>
+  </div>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-panel">
+      <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+      <img id="lightboxImage" class="lightbox-image" alt="" />
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    if (!lightbox || !lightboxImage || !lightboxCaption || !lightboxClose) return;
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.removeAttribute('src');
+      lightboxImage.alt = '';
+      lightboxCaption.textContent = '';
+    }
+
+    function openLightbox(src, alt, caption) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || '';
+      lightboxCaption.textContent = caption || alt || '';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    lightboxClose.addEventListener('click', function (evt) {
+      evt.preventDefault();
+      closeLightbox();
+    });
+
+    lightbox.addEventListener('click', function (evt) {
+      if (evt.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', function (evt) {
+      if (evt.key === 'Escape' && lightbox.classList.contains('open')) {
+        closeLightbox();
+      }
+    });
+
+    const zoomables = document.querySelectorAll('img.zoomable');
+    zoomables.forEach(function (img) {
+      img.addEventListener('click', function () {
+        openLightbox(
+          img.getAttribute('src') || '',
+          img.getAttribute('alt') || '',
+          img.getAttribute('data-caption') || img.getAttribute('alt') || ''
+        );
+      });
+
+      img.addEventListener('error', function () {
+        img.style.display = 'none';
+        const errorText = document.createElement('div');
+        errorText.className = 'img-error';
+        errorText.textContent = 'Image failed to load.';
+        img.parentElement && img.parentElement.appendChild(errorText);
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

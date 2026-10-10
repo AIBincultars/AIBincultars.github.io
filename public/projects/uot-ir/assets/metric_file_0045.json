@@ -1,0 +1,22 @@
+{
+  "method_name": "UOTIR",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/6361362.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.9591672127841911,
+    "Note_P": 0.9756435237411548,
+    "Note_R": 0.943238151893714,
+    "Fam_Acc": 0.9164345403899722,
+    "Fam_MacroF1": 0.4753204688032713,
+    "FTED": 0.0250448952135947,
+    "PC_JSD": 0.0042601387069574,
+    "Dur_JSD": 0.0634147274156055,
+    "IOI_JSD": 0.0453267294292676,
+    "Avg_StructCost": 3.65268115686839,
+    "BadConf_Rate": 0.0941819519629999,
+    "PolyRate_AbsDiff": 0.0009391920878638,
+    "PCEntropy_AbsDiff": 0.0013111684120801
+  },
+  "failure_tags": []
+}

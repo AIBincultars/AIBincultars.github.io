@@ -1,0 +1,30 @@
+{
+  "method_name": "Skyline",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/5888322.mid",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.5595428571428571,
+    "Note_P": 0.5914948453608248,
+    "Note_R": 0.5308659823622958,
+    "Fam_Acc": 0.2410130718954248,
+    "Fam_MacroF1": 0.1809331080712224,
+    "FTED": 0.0728575634715943,
+    "PC_JSD": 0.0759046633650275,
+    "Dur_JSD": 0.1472850616582712,
+    "IOI_JSD": 0.0875675106873866,
+    "Avg_StructCost": 29.03865583490962,
+    "BadConf_Rate": 0.764161220043573,
+    "PolyRate_AbsDiff": 0.1074479529203316,
+    "PCEntropy_AbsDiff": 0.0628683213456504
+  },
+  "failure_tags": [
+    "low_fidelity",
+    "high_structural_cost",
+    "high_conflict_rate",
+    "pitch_distribution_shift",
+    "rhythm_distribution_shift",
+    "texture_distribution_shift",
+    "embedding_distance_high"
+  ]
+}

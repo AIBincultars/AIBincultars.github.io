@@ -8,4 +8,6 @@ featured: true
 order: 1
 paperUrl: "https://arxiv.org/pdf/2608.00576"
 arxivUrl: "https://arxiv.org/abs/2608.00576"
+codeUrl: "https://github.com/AIBincultars/UOT-IR"
+projectUrl: "https://aibincultars.github.io/projects/uot-ir/"
 ---
