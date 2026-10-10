@@ -18,8 +18,8 @@ I am an M.S. student in Control Science and Engineering at Xi'an Jiaotong Univer
 
 ## 项目网页 | Project Pages
 
-- [UOT-IR](https://aibincultars.github.io/projects/uot-ir/)：网页与演示资源维护在 `public/projects/uot-ir/`，算法代码维护在 [UOT-IR 仓库](https://github.com/AIBincultars/UOT-IR)。
-- `public/UOT-IR/index.html` 为旧项目地址提供跳转。项目与论文入口分别维护在 `src/data/site-content.ts` 和 `src/content/publications/uot-ir.md`。
+- [UOT-IR](https://aibincultars.github.io/projects/uot-ir/)：页面使用 Astro，入口为 `src/pages/projects/uot-ir/index.astro`，组件位于 `src/components/uot-ir/`，案例定义位于 `src/data/uot-ir.ts`。MIDI、图片与指标 JSON 维护在 `public/projects/uot-ir/assets/`，算法代码维护在 [UOT-IR 仓库](https://github.com/AIBincultars/UOT-IR)。
+- `src/pages/UOT-IR/index.astro` 为旧项目地址提供跳转。项目与论文入口分别维护在 `src/data/site-content.ts` 和 `src/content/publications/uot-ir.md`。
 
 ```bash
 npm ci

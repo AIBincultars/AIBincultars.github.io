@@ -1,0 +1,29 @@
+---
+import { formatMetric, metricColumns, type DemoTrack } from '../../data/uot-ir';
+
+interface Props {
+  caseId: string;
+  tracks: DemoTrack[];
+}
+
+const { caseId, tracks } = Astro.props;
+---
+
+<div class="table-scroll" role="region" aria-label={`${caseId} metrics`} tabindex="0">
+  <table class="compact-table">
+    <thead>
+      <tr>
+        <th scope="col">method</th>
+        {metricColumns.map((column) => <th scope="col">{column}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {tracks.map((track) => (
+        <tr class:list={{ 'main-method-row': track.method === 'UOTIR' }}>
+          <td>{track.label}</td>
+          {metricColumns.map((column) => <td>{formatMetric(track.metrics?.metrics[column])}</td>)}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,44 @@
+---
+import type { DemoTrack } from '../../data/uot-ir';
+
+interface Props {
+  caseId: string;
+  track: DemoTrack;
+}
+
+const { caseId, track } = Astro.props;
+const caption = `${caseId} / ${track.label}`;
+---
+
+<figure class="card">
+  <button
+    class="piano-roll-preview"
+    type="button"
+    aria-label={`Preview ${caption}`}
+    data-piano-roll-preview
+    data-caption={caption}
+  >
+    <img class="zoomable" src={track.imageUrl} alt={caption} loading="lazy" />
+  </button>
+  <figcaption>
+    <strong>{caption}</strong><br />
+    <span class="muted">{track.method === 'Input' ? 'Input' : 'Output'} piano-roll</span>
+  </figcaption>
+</figure>
+
+<style>
+  .piano-roll-preview {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .piano-roll-preview:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 3px;
+  }
+</style>
