@@ -7,14 +7,24 @@ interface Props {
 }
 
 const { caseId, tracks } = Astro.props;
+const labels: Record<(typeof metricColumns)[number], string> = {
+  Note_F1: 'Note F1 ↑',
+  FTED: 'FTED ↓',
+  Avg_StructCost: 'Struct. cost ↓',
+  BadConf_Rate: 'Confusion ↓',
+  PC_JSD: 'Pitch JSD ↓',
+  Dur_JSD: 'Dur. JSD ↓',
+  IOI_JSD: 'IOI JSD ↓',
+  Fam_Acc: 'Family acc. ↑',
+};
 ---
 
 <div class="table-scroll" role="region" aria-label={`${caseId} metrics`} tabindex="0">
   <table class="compact-table">
     <thead>
       <tr>
-        <th scope="col">method</th>
-        {metricColumns.map((column) => <th scope="col">{column}</th>)}
+        <th scope="col">Method</th>
+        {metricColumns.map((column) => <th scope="col" title={column} data-metric={column}>{labels[column]}</th>)}
       </tr>
     </thead>
     <tbody>

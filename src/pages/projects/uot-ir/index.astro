@@ -1,441 +1,239 @@
 ---
+import ResearchProjectLayout from '../../../layouts/ResearchProjectLayout.astro';
 import CaseGroup from '../../../components/uot-ir/CaseGroup.astro';
 import ImagePreview from '../../../components/uot-ir/ImagePreview.astro';
 import MetricTable from '../../../components/uot-ir/MetricTable.astro';
 import PianoRoll from '../../../components/uot-ir/PianoRoll.astro';
 import { demoAssets, demoCases } from '../../../data/uot-ir';
 
-const canonical = new URL('/projects/uot-ir/', Astro.site);
-const description = 'Official project website for UOT-IR, with MIDI examples, piano-roll previews, and quantitative results.';
+const description = 'UOT-IR routes multitrack symbolic music into fixed-budget representations. Explore MIDI examples, piano rolls, and per-example metrics.';
 const trackCount = demoCases.reduce((count, demoCase) => count + demoCase.tracks.length, 0);
 const metricCount = demoCases.reduce((count, demoCase) => count + demoCase.outputs.length, 0);
+const exampleLabel = (index: number) => `Example ${String(index + 1).padStart(2, '0')}`;
+const citation = `@misc{kang2026uotir,
+  title = {{UOT-IR}: Structured Routing of High-Polyphony Symbolic Music into Fixed-Budget Representations},
+  author = {Ziyue Kang and Nan Nan and Chenhao Lin and Xiaohong Guan},
+  year = {2026},
+  eprint = {2608.00576},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.SD},
+  url = {https://arxiv.org/abs/2608.00576},
+  note = {Accepted at ISMIR 2026}
+}`;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>UOT-IR | Ziyue Kang</title>
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
-    <meta name="description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="UOT-IR | Ziyue Kang" />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <main id="main-content" class="wrap">
-      <header class="hero">
-        <h1 class="page-title">
-          <span class="title-prefix">Official Project Website for</span>
-          <span class="title-main">UOT-IR: Unbalanced Optimal Transport for Information Routing</span>
-        </h1>
-        <div class="author-line">
-          Ziyue Kang¹˒² &middot; Nan Nan*¹˒²˒³ &middot; Chenhao Lin¹˒²˒³ &middot; Xiaohong Guan¹˒²˒³˒⁴
-        </div>
-        <div class="affiliation-list">
-          <div>¹ Frontier Institute of Science and Technology, Xi'an Jiaotong University, Xi'an, China</div>
-          <div>² Interdisciplinary Research Center of Frontier Science and Technology, Xi'an Jiaotong University, Xi'an, China</div>
-          <div>³ MOE KLINNS Lab, Faculty of Electronic and Information Engineering, Xi'an Jiaotong University, Xi'an, China</div>
-          <div>⁴ Center for Intelligent and Networked Systems, Tsinghua University, Beijing, China</div>
-        </div>
-        <div class="corresponding-author">
-          * Corresponding author: Nan Nan (<a href="mailto:nan.nan@xjtu.edu.cn">nan.nan@xjtu.edu.cn</a>)
-        </div>
-        <p class="hero-subtitle">Visual examples, MIDI files, and metric summaries for UOT-IR.</p>
-        <div class="summary-bar">
-          <div><strong>Cases</strong><span>{demoCases.length}</span></div>
-          <div><strong>Visuals</strong><span>{trackCount}</span></div>
-          <div><strong>MIDI files</strong><span>{trackCount}</span></div>
-          <div><strong>Metric files</strong><span>{metricCount}</span></div>
-        </div>
-        <nav class="quick-nav" aria-label="Project links">
-          <a href="/">← Research Homepage</a>
-          <a href="https://arxiv.org/abs/2608.00576">Paper</a>
-          <a href="https://github.com/AIBincultars/UOT-IR">Code</a>
-          <a href="#visual-results">Visual Results</a>
-          <a href="#midi-examples">MIDI Examples</a>
-          <a href="#metrics">Metrics</a>
-          <a href="#downloads">Downloads</a>
-        </nav>
-      </header>
+<ResearchProjectLayout title="UOT-IR | Ziyue Kang" description={description}>
+  <div class="research-project">
+    <header class="project-hero">
+      <p class="project-eyebrow"><a href="/en/projects/">Research projects</a><span aria-hidden="true">/</span>ISMIR 2026</p>
+      <h1>UOT-IR</h1>
+      <p class="project-title">Structured routing for fixed-budget symbolic music.</p>
+      <p class="project-description">Route multitrack MIDI into a fixed instrument budget with bar-level optimal transport.</p>
+      <p class="project-authors">Ziyue Kang · Nan Nan · Chenhao Lin · Xiaohong Guan</p>
+      <div class="text-links project-actions">
+        <a href="https://arxiv.org/abs/2608.00576">Read the paper <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/AIBincultars/UOT-IR">View code <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="project-facts">{demoCases.length} examples <span aria-hidden="true">·</span> {demoCases[0].outputs.length} methods <span aria-hidden="true">·</span> 16 slots by default</p>
+    </header>
 
-      <section id="visual-results" class="section-card">
-        <h2>1. Visual Results</h2>
+    <nav class="project-navigation" aria-label="On this page">
+      <a href="#visual-results">Examples</a>
+      <a href="#metrics">Results</a>
+      <a href="#midi-examples">Downloads</a>
+      <a href="#paper">Citation</a>
+    </nav>
+
+    <section id="visual-results" class="project-section">
+      <div class="section-heading"><h2>Examples</h2><span>Template standardization</span></div>
+      <p class="section-description">Compare the original score with UOT-IR. Select a piano roll for a closer look.</p>
+      <div class="example-list">
         {demoCases.map((demoCase, index) => (
-          <CaseGroup
-            summary={`${demoCase.id} · ${demoCase.tracks.length} visual results · 1 input · ${demoCase.outputs.length} outputs`}
-            open={index === 0}
-          >
-            <div class="gallery">
-              {demoCase.tracks.map((track) => <PianoRoll caseId={demoCase.id} track={track} />)}
+          <CaseGroup summary={exampleLabel(index)} meta="Input & UOT-IR" open={index === 0}>
+            <div class="featured-gallery">
+              <PianoRoll caseId={demoCase.id} track={demoCase.input} />
+              <PianoRoll caseId={demoCase.id} track={demoCase.outputs[0]} />
             </div>
+            <CaseGroup summary="Compare other methods" meta={`${demoCase.outputs.length - 1} methods`} variant="comparison">
+              <div class="gallery">
+                {demoCase.outputs.slice(1).map((track) => <PianoRoll caseId={demoCase.id} track={track} />)}
+              </div>
+            </CaseGroup>
           </CaseGroup>
         ))}
-      </section>
+      </div>
+    </section>
 
-      <section id="midi-examples" class="section-card">
-        <h2>2. MIDI Examples</h2>
-        {demoCases.map((demoCase, index) => (
-          <CaseGroup summary={`${demoCase.id} · MIDI files`} open={index === 0}>
-            <div class="midi-input"><a href={demoCase.input.midiUrl} download>Download Input MIDI</a></div>
-            <div class="table-scroll" role="region" aria-label={`${demoCase.id} MIDI files`} tabindex="0">
-              <table class="compact-table">
-                <thead><tr><th scope="col">Method</th><th scope="col">MIDI</th></tr></thead>
-                <tbody>
-                  {demoCase.outputs.map((track) => (
-                    <tr><td>{track.label}</td><td><a href={track.midiUrl} download>Download</a></td></tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CaseGroup>
-        ))}
-      </section>
+    <section id="metrics" class="project-section">
+      <div class="section-heading"><h2>Results</h2><a href="https://github.com/AIBincultars/UOT-IR/blob/main/docs/EXPERIMENTS.md">Metric definitions <span aria-hidden="true">↗</span></a></div>
+      <p class="section-description">Per-example metrics for the MIDI files shown above. Arrows indicate the preferred direction.</p>
+      {demoCases.map((demoCase, index) => (
+        <CaseGroup summary={exampleLabel(index)} meta={`${demoCase.outputs.length} methods`} open={index === 0}>
+          <MetricTable caseId={demoCase.id} tracks={demoCase.outputs} />
+        </CaseGroup>
+      ))}
+    </section>
 
-      <section id="metrics" class="section-card">
-        <h2>3. Metric Summary</h2>
-        {demoCases.map((demoCase, index) => (
-          <CaseGroup summary={`${demoCase.id} · Metric Summary`} open={index === 0}>
-            <MetricTable caseId={demoCase.id} tracks={demoCase.outputs} />
-          </CaseGroup>
-        ))}
-      </section>
-
-      <section id="downloads" class="section-card">
-        <h2>4. Downloads / Additional Files</h2>
-        <details class="download-group">
-          <summary class="case-summary">Metric JSON Files · {metricCount} files</summary>
-          <div class="case-content">
-            {demoCases.map((demoCase) => (
-              <CaseGroup summary={`${demoCase.id} · ${demoCase.outputs.length} metric files`}>
-                <div class="download-list">
-                  {demoCase.outputs.map((track) => (
-                    <div class="download-item">
-                      <a href={track.metricsUrl} download>{track.label} metrics.json</a>
-                      <span class="small">{track.metricsUrl?.split('/').pop()}</span>
-                    </div>
-                  ))}
-                </div>
-              </CaseGroup>
-            ))}
+    <section id="midi-examples" class="project-section">
+      <div class="section-heading"><h2>Downloads</h2><span>{trackCount} MIDI files · {metricCount} metric files</span></div>
+      <p class="section-description">Each piano roll includes a MIDI download. Browse all files by example below.</p>
+      <div id="downloads">
+        <CaseGroup summary="MIDI files" meta={`${trackCount} files`}>
+          {demoCases.map((demoCase, index) => (
+            <CaseGroup summary={exampleLabel(index)}>
+              <div class="resource-list midi-downloads">
+                {demoCase.tracks.map((track) => <a href={track.midiUrl} download>{track.label} <span aria-hidden="true">↓</span></a>)}
+              </div>
+            </CaseGroup>
+          ))}
+        </CaseGroup>
+        <CaseGroup summary="Metric JSON files" meta={`${metricCount} files`}>
+          {demoCases.map((demoCase, index) => (
+            <CaseGroup summary={exampleLabel(index)}>
+              <div class="resource-list metric-downloads">
+                {demoCase.outputs.map((track) => <a href={track.metricsUrl} download>{track.label} <span aria-hidden="true">↓</span></a>)}
+              </div>
+            </CaseGroup>
+          ))}
+        </CaseGroup>
+        <CaseGroup summary="Complete asset index" meta={`${demoAssets.length} files`}>
+          <div class="table-scroll" role="region" aria-label="Complete asset index" tabindex="0">
+            <table class="compact-table asset-index">
+              <thead><tr><th scope="col">File</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead>
+              <tbody>
+                {demoAssets.map((asset) => (
+                  <tr><td><a href={asset.url} download>{asset.filename}</a></td><td>{asset.type}</td><td>{asset.description}</td></tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </details>
-        <details class="download-group">
-          <summary class="case-summary">Complete Asset Index · {demoAssets.length} files</summary>
-          <div class="case-content">
-            <div class="table-scroll" role="region" aria-label="Complete asset index" tabindex="0">
-              <table class="compact-table">
-                <thead><tr><th scope="col">Asset File</th><th scope="col">Type</th><th scope="col">Description</th></tr></thead>
-                <tbody>
-                  {demoAssets.map((asset) => (
-                    <tr><td><a href={asset.url} download>{asset.filename}</a></td><td>{asset.type}</td><td>{asset.description}</td></tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </details>
-      </section>
+        </CaseGroup>
+      </div>
+    </section>
 
-      <p class="footnote">
-        These examples accompany the UOT-IR <a href="https://arxiv.org/abs/2608.00576">paper</a>.
-        See the <a href="https://github.com/AIBincultars/UOT-IR/blob/main/docs/EXPERIMENTS.md">experiment documentation</a> for metric definitions.
+    <section id="paper" class="project-section paper-section">
+      <div class="section-heading"><h2>Paper & citation</h2><span>ISMIR 2026</span></div>
+      <p class="paper-reference">
+        Ziyue Kang, Nan Nan, Chenhao Lin, and Xiaohong Guan.<br />
+        <a href="https://arxiv.org/abs/2608.00576">UOT-IR: Structured Routing of High-Polyphony Symbolic Music into Fixed-Budget Representations.</a>
       </p>
-    </main>
-    <ImagePreview />
-  </body>
-</html>
+      <CaseGroup summary="BibTeX">
+        <pre class="citation"><code>{citation}</code></pre>
+      </CaseGroup>
+      <CaseGroup summary="Affiliations & correspondence">
+        <div class="paper-details">
+          <p>Ziyue Kang¹˒² · Nan Nan*¹˒²˒³ · Chenhao Lin¹˒²˒³ · Xiaohong Guan¹˒²˒³˒⁴</p>
+          <ol>
+            <li>Frontier Institute of Science and Technology, Xi'an Jiaotong University, Xi'an, China</li>
+            <li>Interdisciplinary Research Center of Frontier Science and Technology, Xi'an Jiaotong University, Xi'an, China</li>
+            <li>MOE KLINNS Lab, Faculty of Electronic and Information Engineering, Xi'an Jiaotong University, Xi'an, China</li>
+            <li>Center for Intelligent and Networked Systems, Tsinghua University, Beijing, China</li>
+          </ol>
+          <p>* Corresponding author: Nan Nan · <a href="mailto:nan.nan@xjtu.edu.cn">nan.nan@xjtu.edu.cn</a></p>
+        </div>
+      </CaseGroup>
+    </section>
+  </div>
+  <ImagePreview />
+</ResearchProjectLayout>
 
 <style is:global>
+  .research-project { max-width: 900px; }
+  .project-hero { max-width: 820px; padding: 60px 0 36px; }
+  .project-eyebrow { display: flex; gap: 12px; margin-bottom: 22px; color: var(--text-tertiary); font-size: 12px; }
+  .project-eyebrow a { color: var(--text-secondary); }
+  .project-hero h1 { margin: 0 0 14px; font-size: clamp(44px, 6vw, 62px); font-weight: 600; letter-spacing: -0.045em; line-height: 1; }
+  .project-title { max-width: 780px; margin-bottom: 16px; font-size: clamp(19px, 2.4vw, 24px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.48; text-wrap: balance; }
+  .project-description { max-width: 730px; margin-bottom: 18px; color: var(--text-secondary); font-size: 14px; }
+  .project-authors { margin-bottom: 0; color: var(--text-secondary); font-size: 12px; }
+  .project-actions { gap: 24px; margin-top: 18px; }
+  .project-facts { margin: 26px 0 0; color: var(--text-tertiary); font-size: 12px; }
+  .project-facts span { padding-inline: 9px; }
+  .project-navigation {
+    position: sticky;
+    top: 70px;
+    z-index: 20;
+    display: flex;
+    gap: 28px;
+    padding: 15px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .project-navigation a { color: var(--text-secondary); }
+  .project-navigation a:hover { color: var(--accent); }
+  .project-section { padding-top: 46px; scroll-margin-top: 145px; }
+  #downloads { scroll-margin-top: 145px; }
+  .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin-bottom: 9px; }
+  .section-heading h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.025em; }
+  .section-heading > span, .section-heading > a { color: var(--text-tertiary); font-size: 11px; }
+  .section-heading > a:hover { color: var(--accent); }
+  .section-description { margin-bottom: 22px; color: var(--text-secondary); font-size: 13px; }
+  .research-project .case-group { border-top: 1px solid var(--line); }
+  .research-project .case-group:last-child { border-bottom: 1px solid var(--line); }
+  .research-project .case-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 58px;
+    padding: 16px 0;
+    list-style: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .case-summary-end { display: flex; align-items: center; gap: 22px; }
+  .case-meta { color: var(--text-tertiary); font-size: 11px; font-weight: 400; }
+  .research-project .case-content { padding-bottom: 22px; }
+  .featured-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .research-project .method-comparison { margin-top: 16px; border: 0; }
+  .research-project .method-comparison:last-child { border: 0; }
+  .research-project .method-comparison > .case-summary { min-height: 40px; padding: 8px 0; color: var(--text-secondary); font-size: 12px; }
+  .research-project .method-comparison > .case-content { padding-top: 8px; padding-bottom: 0; }
+  .table-scroll { max-width: 100%; overflow-x: auto; }
+  .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .compact-table { width: 100%; border-collapse: collapse; font-size: 11px; font-variant-numeric: tabular-nums; }
+  .compact-table th, .compact-table td { padding: 11px 9px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  .compact-table th { color: var(--text-secondary); font-size: 10px; font-weight: 500; }
+  .compact-table th:first-child, .compact-table td:first-child { padding-left: 12px; text-align: left; }
+  .main-method-row { background: color-mix(in srgb, var(--accent) 4%, var(--surface)); font-weight: 600; }
+  .main-method-row td:first-child { color: var(--accent); }
+  .resource-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; padding: 4px 0 8px; font-size: 12px; }
+  .resource-list a { display: flex; justify-content: space-between; gap: 12px; }
+  #downloads .case-content .case-group { padding-inline: 16px; }
+  .asset-index th, .asset-index td { text-align: left; }
+  .paper-reference { margin: 20px 0 25px; color: var(--text-secondary); font-size: 13px; line-height: 1.8; }
+  .paper-reference a { color: var(--text); }
+  .paper-reference a:hover { color: var(--accent); }
+  .citation { max-width: 100%; margin: 0; padding: 18px; border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; background: var(--surface); font-size: 11px; line-height: 1.8; }
+  .paper-details { max-width: 780px; color: var(--text-secondary); font-size: 12px; }
+  .paper-details p { margin-bottom: 14px; }
+  .paper-details ol { padding-left: 18px; margin-bottom: 18px; }
+  .paper-details li { padding: 3px 0; }
+  .img-error { margin-top: 8px; color: var(--text-secondary); font-size: 12px; }
 
-    :root {
-      --bg: #f6f7f9;
-      --text: #0f172a;
-      --muted: #64748b;
-      --line: #e5e7eb;
-      --card: #ffffff;
-      --link: #1d4ed8;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.5;
-    }
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 16px 44px;
-    }
-    .hero {
-      text-align: center;
-      padding: 14px 0 22px;
-      margin-bottom: 8px;
-    }
-    .page-title {
-      margin: 0 auto;
-      max-width: 940px;
-      letter-spacing: 0.2px;
-    }
-    .title-prefix {
-      display: block;
-      font-size: 20px;
-      font-weight: 600;
-      color: #4b5563;
-      line-height: 1.35;
-      margin-bottom: 4px;
-    }
-    .title-main {
-      display: block;
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(28px, 3.2vw, 40px);
-      font-weight: 800;
-      color: #0f172a;
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-    }
-    .author-line {
-      max-width: 980px;
-      margin: 16px auto 0;
-      color: var(--text);
-      font-size: 17px;
-      font-weight: 650;
-      line-height: 1.45;
-      text-align: center;
-    }
-    .affiliation-list {
-      max-width: 980px;
-      margin: 9px auto 0;
-      color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.55;
-      text-align: center;
-    }
-    .corresponding-author {
-      max-width: 980px;
-      margin: 8px auto 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      text-align: center;
-    }
-    .hero-subtitle {
-      max-width: 760px;
-      margin: 14px auto 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    .summary-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin: 12px auto 8px;
-      max-width: 760px;
-    }
-    .summary-bar div {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 10px 12px;
-      text-align: center;
-    }
-    .summary-bar strong {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .summary-bar span {
-      display: block;
-      color: var(--text);
-      font-size: 20px;
-      font-weight: 800;
-      margin-top: 2px;
-    }
-    .quick-nav {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 12px 0 2px;
-    }
-    .quick-nav a {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 13px;
-      color: var(--link);
-      text-decoration: none;
-    }
-    .quick-nav a:hover { text-decoration: underline; }
-    .section-card {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 18px 0 24px;
-    }
-    h2 {
-      margin: 4px 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--line);
-      font-size: 22px;
-    }
-    h3 {
-      margin: 12px 0 8px;
-      font-size: 17px;
-    }
-    h4 {
-      margin: 12px 0 6px;
-      font-size: 15px;
-    }
-    .muted { color: var(--muted); font-size: 0.95rem; }
-    .warning {
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      color: #7c2d12;
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-top: 12px;
-    }
-    .case-group {
-      margin: 12px 0;
-    }
-    .case-summary {
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 700;
-      background: #f8fafc;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 10px 12px;
-      list-style: none;
-    }
-    .case-content {
-      padding: 12px 0 4px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
-    }
-    .card {
-      margin: 0;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 8px;
-    }
-    .card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 6px;
-      background: #0b0b0b;
-    }
-    .card img.zoomable {
-      cursor: zoom-in;
-      transition: opacity .15s ease;
-    }
-    .card img.zoomable:hover {
-      opacity: .9;
-    }
-    .card figcaption {
-      margin-top: 7px;
-      font-size: 13px;
-    }
-    .img-error {
-      margin-top: 6px;
-      font-size: 12px;
-      color: #b91c1c;
-    }
-    .midi-input {
-      margin-bottom: 8px;
-      font-size: 14px;
-      color: var(--text);
-    }
-    .table-scroll {
-      max-width: 100%;
-      overflow-x: auto;
-    }
-    .table-scroll:focus-visible {
-      outline: 2px solid var(--link);
-      outline-offset: 2px;
-    }
-    .compact-table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fff;
-      font-size: 13px;
-    }
-    .compact-table th, .compact-table td {
-      border: 1px solid var(--line);
-      padding: 7px 8px;
-      text-align: left;
-      vertical-align: top;
-    }
-    .compact-table th {
-      background: #f9fafb;
-      font-weight: 600;
-    }
-    .main-method-row {
-      background: #eff6ff;
-      font-weight: 600;
-    }
-    .download-group {
-      margin: 12px 0;
-    }
-    .download-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .download-item {
-      background: #ffffff;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 8px 10px;
-    }
-    .download-item .small {
-      display: block;
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    .footnote {
-      margin-top: 16px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .skip-link {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      padding: 8px 12px;
-      background: #fff;
-      transform: translateY(-200%);
-    }
-    .skip-link:focus {
-      transform: translateY(0);
-    }
+  @media (max-width: 640px) {
+    .project-hero { padding-top: 42px; padding-bottom: 28px; }
+    .project-eyebrow { margin-bottom: 20px; }
+    .project-hero h1 { font-size: 44px; }
+    .project-title { font-size: 20px; }
+    .project-description { font-size: 13px; }
+    .project-authors { max-width: 310px; line-height: 1.8; }
+    .project-facts span { padding-inline: 5px; }
+    .project-navigation { top: 64px; gap: 24px; }
+    .project-section { padding-top: 34px; scroll-margin-top: 130px; }
+    #downloads { scroll-margin-top: 130px; }
+    .section-heading { flex-wrap: wrap; gap: 4px 16px; }
+    .section-description { margin-bottom: 18px; }
+    .featured-gallery, .gallery { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .case-summary-end { gap: 14px; }
+    .case-meta { font-size: 10px; }
+    .resource-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 18px; }
+    .compact-table th, .compact-table td { padding: 10px 9px; }
+    .citation { padding: 14px; }
+  }
 </style>

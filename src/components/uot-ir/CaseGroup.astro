@@ -2,12 +2,20 @@
 interface Props {
   summary: string;
   open?: boolean;
+  meta?: string;
+  variant?: 'case' | 'comparison';
 }
 
-const { summary, open = false } = Astro.props;
+const { summary, open = false, meta, variant = 'case' } = Astro.props;
 ---
 
-<details class="case-group" open={open}>
-  <summary class="case-summary">{summary}</summary>
+<details class:list={['case-group', { 'method-comparison': variant === 'comparison' }]} open={open} data-accordion>
+  <summary class="case-summary">
+    <span>{summary}</span>
+    <span class="case-summary-end">
+      {meta && <span class="case-meta">{meta}</span>}
+      <span class="summary-mark" aria-hidden="true"></span>
+    </span>
+  </summary>
   <div class="case-content"><slot /></div>
 </details>

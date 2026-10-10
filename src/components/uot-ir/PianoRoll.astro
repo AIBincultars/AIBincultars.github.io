@@ -10,7 +10,7 @@ const { caseId, track } = Astro.props;
 const caption = `${caseId} / ${track.label}`;
 ---
 
-<figure class="card">
+<figure class:list={['demo-figure', { 'is-uotir': track.method === 'UOTIR' }]}>
   <button
     class="piano-roll-preview"
     type="button"
@@ -18,27 +18,63 @@ const caption = `${caseId} / ${track.label}`;
     data-piano-roll-preview
     data-caption={caption}
   >
-    <img class="zoomable" src={track.imageUrl} alt={caption} loading="lazy" />
+    <img class="zoomable" src={track.imageUrl} alt={caption} width="2520" height="648" loading="lazy" />
   </button>
   <figcaption>
-    <strong>{caption}</strong><br />
-    <span class="muted">{track.method === 'Input' ? 'Input' : 'Output'} piano-roll</span>
+    <div>
+      <strong>{track.label}</strong>
+      <span class="figure-description">{track.method === 'Input' ? 'Original score' : 'Reduced score'}</span>
+    </div>
+    <a class="figure-download" href={track.midiUrl} download aria-label={`Download ${caption} MIDI`}>MIDI <span aria-hidden="true">↓</span></a>
   </figcaption>
 </figure>
 
 <style>
+  .demo-figure {
+    min-width: 0;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+  }
+
   .piano-roll-preview {
     display: block;
     width: 100%;
     padding: 0;
     border: 0;
-    border-radius: 6px;
+    border-radius: 3px;
     background: transparent;
     cursor: zoom-in;
   }
 
   .piano-roll-preview:focus-visible {
-    outline: 2px solid var(--link);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    transition: opacity 150ms ease;
+  }
+
+  .piano-roll-preview:hover img { opacity: 0.85; }
+
+  figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 2px 2px;
+    font-size: 12px;
+  }
+
+  strong { font-weight: 600; }
+  .is-uotir strong { color: var(--accent); }
+  .figure-description { display: block; margin-top: 2px; color: var(--text-tertiary); font-size: 11px; }
+  .figure-download { flex: none; font-size: 11px; font-weight: 500; }
 </style>
