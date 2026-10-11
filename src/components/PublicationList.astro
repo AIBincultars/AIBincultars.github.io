@@ -26,13 +26,15 @@ const { publications, language } = Astro.props;
       <li>
         <article class="publication-item">
           <h3>{publication.title}</h3>
-          <p class="publication-meta">
-            <span>{publication.venue}</span>
-            <span>{localize(site.labels.publicDate, language)} · <time datetime={publication.publicDate}>{publication.publicDate}</time></span>
-            <span>{localize(site.labels.publicPreprint, language)}</span>
-          </p>
-          <div class="text-links publication-links">
-            {links.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{localize(link.label, language)} <span aria-hidden="true">↗</span></a>)}
+          <div class="publication-details">
+            <p class="publication-meta">
+              <span>{publication.venue}</span>
+              <span>{localize(site.labels.publicDate, language)} · <time datetime={publication.publicDate}>{publication.publicDate}</time></span>
+              <span>{localize(site.labels.publicPreprint, language)}</span>
+            </p>
+            <div class="text-links publication-links">
+              {links.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{localize(link.label, language)} <span aria-hidden="true">↗</span></a>)}
+            </div>
           </div>
         </article>
       </li>

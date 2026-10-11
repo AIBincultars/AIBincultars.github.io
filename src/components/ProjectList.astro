@@ -14,13 +14,15 @@ const { projects, language } = Astro.props;
   {projects.map((project) => (
     <li>
       <article class="project-item">
-        <h3>{localize(project.title, language)}</h3>
-        <p>{localize(project.description, language)}</p>
-        <div class="text-links project-links">
-          <a href={project.publicUrl} target="_blank" rel="noopener noreferrer">
-            {localize(site.labels.projectPage, language)} <span aria-hidden="true">↗</span>
-          </a>
+        <div class="project-heading">
+          <h3>{localize(project.title, language)}</h3>
+          <div class="text-links project-links">
+            <a href={project.publicUrl} target="_blank" rel="noopener noreferrer">
+              {localize(site.labels.projectPage, language)} <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
+        <p>{localize(project.description, language)}</p>
       </article>
     </li>
   ))}
