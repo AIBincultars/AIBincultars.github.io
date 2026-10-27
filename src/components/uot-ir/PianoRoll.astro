@@ -21,13 +21,34 @@ const caption = `${caseId} / ${track.label}`;
     <img class="zoomable" src={track.imageUrl} alt={caption} width="2520" height="648" loading="lazy" />
   </button>
   <figcaption>
-    <div>
-      <strong>{track.label}</strong>
-      <span class="figure-description">{track.method === 'Input' ? 'Original score' : 'Reduced score'}</span>
+    <div class="figure-heading">
+      <div>
+        <strong>{track.label}</strong>
+        <span class="figure-description">{track.method === 'Input' ? 'Original score' : 'Reduced score'}</span>
+      </div>
+      <div class="figure-downloads">
+        {track.audioUrl && <a class="figure-download" href={track.audioUrl} download aria-label={`Download ${caption} audio`}>MP3 <span aria-hidden="true">↓</span></a>}
+        <a class="figure-download" href={track.midiUrl} download aria-label={`Download ${caption} MIDI`}>MIDI <span aria-hidden="true">↓</span></a>
+      </div>
     </div>
-    <a class="figure-download" href={track.midiUrl} download aria-label={`Download ${caption} MIDI`}>MIDI <span aria-hidden="true">↓</span></a>
+    {track.audioUrl && (
+      <audio class="audio-preview" controls preload="none" src={track.audioUrl} aria-label={`Listen to ${caption}`} data-uotir-audio>
+        <a href={track.audioUrl}>Download the audio preview as MP3.</a>
+      </audio>
+    )}
   </figcaption>
 </figure>
+
+<script>
+  const previews = document.querySelectorAll<HTMLAudioElement>('audio[data-uotir-audio]');
+  previews.forEach((preview) => {
+    preview.addEventListener('play', () => {
+      previews.forEach((other) => {
+        if (other !== preview) other.pause();
+      });
+    });
+  });
+</script>
 
 <style>
   .demo-figure {
@@ -65,13 +86,19 @@ const caption = `${caseId} / ${track.label}`;
   .piano-roll-preview:hover img { opacity: 0.85; }
 
   figcaption {
+    padding: 12px 2px 2px;
+    font-size: 12px;
+  }
+
+  .figure-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 12px 2px 2px;
-    font-size: 12px;
   }
+
+  .figure-downloads { display: flex; flex: none; gap: 12px; }
+  .audio-preview { display: block; width: 100%; min-width: 0; height: 36px; margin-top: 12px; }
 
   strong { font-weight: 600; }
   .is-uotir strong { color: var(--accent); }

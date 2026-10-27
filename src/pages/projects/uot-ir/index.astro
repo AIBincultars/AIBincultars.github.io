@@ -6,8 +6,9 @@ import MetricTable from '../../../components/uot-ir/MetricTable.astro';
 import PianoRoll from '../../../components/uot-ir/PianoRoll.astro';
 import { demoAssets, demoCases } from '../../../data/uot-ir';
 
-const description = 'UOT-IR routes multitrack symbolic music into fixed-budget representations. Explore MIDI examples, piano rolls, and per-example metrics.';
+const description = 'UOT-IR routes multitrack symbolic music into fixed-budget representations. Explore audio previews, MIDI examples, piano rolls, and per-example metrics.';
 const trackCount = demoCases.reduce((count, demoCase) => count + demoCase.tracks.length, 0);
+const audioCount = demoCases.reduce((count, demoCase) => count + demoCase.tracks.filter((track) => track.audioUrl).length, 0);
 const metricCount = demoCases.reduce((count, demoCase) => count + demoCase.outputs.length, 0);
 const exampleLabel = (index: number) => `Example ${String(index + 1).padStart(2, '0')}`;
 const citation = `@misc{kang2026uotir,
@@ -46,7 +47,7 @@ const citation = `@misc{kang2026uotir,
 
     <section id="visual-results" class="project-section">
       <div class="section-heading"><h2>Examples</h2><span>Template standardization</span></div>
-      <p class="section-description">Compare the original score with UOT-IR. Select a piano roll for a closer look.</p>
+      <p class="section-description">Compare the original score with UOT-IR. Full-length audio previews accompany the input, UOT-IR, and selected baselines. Select a piano roll for a closer look.</p>
       <div class="example-list">
         {demoCases.map((demoCase, index) => (
           <CaseGroup summary={exampleLabel(index)} meta="Input & UOT-IR" open={index === 0}>
@@ -75,9 +76,18 @@ const citation = `@misc{kang2026uotir,
     </section>
 
     <section id="midi-examples" class="project-section">
-      <div class="section-heading"><h2>Downloads</h2><span>{trackCount} MIDI files · {metricCount} metric files</span></div>
-      <p class="section-description">Each piano roll includes a MIDI download. Browse all files by example below.</p>
+      <div class="section-heading"><h2>Downloads</h2><span>{trackCount} MIDI · {audioCount} MP3 · {metricCount} metrics</span></div>
+      <p class="section-description">Each piano roll includes a MIDI download, with MP3 downloads alongside audio previews. Browse all files by example below.</p>
       <div id="downloads">
+        <CaseGroup summary="Audio previews (MP3)" meta={`${audioCount} files`}>
+          {demoCases.map((demoCase, index) => (
+            <CaseGroup summary={exampleLabel(index)}>
+              <div class="resource-list audio-downloads">
+                {demoCase.tracks.filter((track) => track.audioUrl).map((track) => <a href={track.audioUrl} download>{track.label} <span aria-hidden="true">↓</span></a>)}
+              </div>
+            </CaseGroup>
+          ))}
+        </CaseGroup>
         <CaseGroup summary="MIDI files" meta={`${trackCount} files`}>
           {demoCases.map((demoCase, index) => (
             <CaseGroup summary={exampleLabel(index)}>

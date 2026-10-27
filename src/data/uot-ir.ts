@@ -1,3 +1,5 @@
+import audioManifest from './uot-ir-audio.json';
+
 export const metricColumns = [
   'Note_F1',
   'FTED',
@@ -23,6 +25,7 @@ export interface DemoTrack {
   label: string;
   imageUrl: string;
   midiUrl: string;
+  audioUrl?: string;
   metricsUrl?: string;
   metrics?: MetricFile;
 }
@@ -50,6 +53,7 @@ const metricFiles = import.meta.glob<MetricFile>(
 
 const assetRoot = '/projects/uot-ir/assets/';
 const pad = (value: number, width = 4) => String(value).padStart(width, '0');
+const audioFiles: Record<string, Record<string, { filename: string }>> = audioManifest;
 
 export const demoCases = Array.from({ length: 6 }, (_, caseIndex) => {
   const id = `case_${pad(caseIndex + 1, 3)}`;
@@ -61,6 +65,9 @@ export const demoCases = Array.from({ length: 6 }, (_, caseIndex) => {
       imageUrl: `${assetRoot}image_${assetIndex}.png`,
       midiUrl: `${assetRoot}midi_${assetIndex}.mid`,
     };
+
+    const audio = audioFiles[id]?.[method.id];
+    if (audio) track.audioUrl = assetRoot + audio.filename;
 
     if (methodIndex > 0) {
       const filename = `metric_file_${pad(caseIndex * (methods.length - 1) + methodIndex)}.json`;
@@ -87,6 +94,9 @@ export const demoAssets = demoCases.flatMap(({ id, tracks }) =>
     ];
     if (track.metricsUrl) {
       assets.push({ url: track.metricsUrl, type: 'metric', description: `${id} ${track.label} metrics file` });
+    }
+    if (track.audioUrl) {
+      assets.push({ url: track.audioUrl, type: 'audio', description: `${id} ${track.label} audio preview` });
     }
     return assets.map((asset) => ({ ...asset, filename: asset.url.split('/').pop()! }));
   }),
