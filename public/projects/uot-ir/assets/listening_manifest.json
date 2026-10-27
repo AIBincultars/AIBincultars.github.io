@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "selection": {
+    "purpose": "Curated listening examples prioritizing note and instrument preservation. These selections are individual examples, rather than an aggregate quality estimate.",
+    "metricRowsScreened": 5000,
+    "candidatesMeetingMetricThresholds": 514,
+    "midiPairsInspected": 36,
+    "renderedCandidatePairs": 6,
+    "candidateThresholds": {
+      "Note_F1_min": 0.94,
+      "Fam_Acc_min": 0.85,
+      "Stability_min": 0.7,
+      "IOI_JSD_max": 0.05
+    },
+    "windowSelection": "Bar-aligned passages of 26\u201340 seconds, chosen from input continuity and moderate note density; the refined 5996488 passage includes at least eight active input instrument parts.",
+    "noteCheckDefinition": "One-to-one matching by pitch and onset rounded to 0.01 seconds, with end-time error at most 0.15 seconds. This is an excerpt diagnostic, distinct from the benchmark Note-F1.",
+    "partCountDefinition": "PrettyMIDI instrument groups containing notes overlapping the excerpt, counted across the entire excerpt.",
+    "listeningStatus": "Selected using symbolic and audio consistency checks; subjective preference is left to listening."
+  },
+  "rendering": {
+    "engine": "FluidSynth 2.2.5",
+    "binding": "pyfluidsynth 1.4.0",
+    "soundfont": "FluidR3_GM.sf2",
+    "soundfontSha256": "74594e8f4250680adf590507a306655a299935343583256f3b722c48a1bc1cb0",
+    "sampleRate": 44100,
+    "channels": 2,
+    "synthGain": 0.05,
+    "reverb": false,
+    "chorus": false,
+    "polyphony": 1024,
+    "instrumentRouting": "Each parsed MIDI instrument uses an independent synthesizer channel; program, percussion bank, velocity, controller and pitch-bend events come from its own MIDI.",
+    "timing": "Render from the beginning of each MIDI through the end of the excerpt, then crop both versions to the same source times.",
+    "gain": "One shared linear gain per input/output pair, with maximum pair peak set to 0.78 before encoding.",
+    "edgeFadeSeconds": 0.12,
+    "encoding": "MP3 via libmp3lame, quality 2"
+  },
+  "cases": [
+    {
+      "id": "listening_1589901",
+      "title": "Piano & strings",
+      "sampleId": "SymphonyNet_Dataset/contemporary/1589901.mid",
+      "taskType": "standardization",
+      "startSeconds": 32.0,
+      "endSeconds": 60.0,
+      "durationSeconds": 28.0,
+      "startBar": 9,
+      "endBar": 24,
+      "tracks": [
+        {
+          "method": "Input",
+          "label": "Input",
+          "imageUrl": "/projects/uot-ir/assets/listening_1589901_input.png",
+          "midiUrl": "/projects/uot-ir/assets/listening_1589901_input.mid",
+          "audioUrl": "/projects/uot-ir/assets/listening_1589901_input.mp3",
+          "isExcerpt": true,
+          "midiSha256": "cac850d7176ee0a470bd27af4f13aa43aa6f502af343de9f899a50f765b2bbcf",
+          "audioSha256": "d0ea1637f6014cb8ad4e54e9546f4fe5e4b0f6469ff64b136b26d416997b69cb",
+          "excerptInstrumentParts": 8,
+          "wholePieceInstrumentParts": 21
+        },
+        {
+          "method": "UOTIR",
+          "label": "UOT-IR",
+          "imageUrl": "/projects/uot-ir/assets/listening_1589901_uotir.png",
+          "midiUrl": "/projects/uot-ir/assets/listening_1589901_uotir.mid",
+          "audioUrl": "/projects/uot-ir/assets/listening_1589901_uotir.mp3",
+          "isExcerpt": true,
+          "midiSha256": "18aa311d6b511409396869d8b73700ad4cbdb2946dd56a89ddad88f97d669c09",
+          "audioSha256": "ba7b4c4e7919b32dd4cc43c8bff4f56ef0f23f7185cf592e4ea5ad359a2a6a5f",
+          "excerptInstrumentParts": 7,
+          "wholePieceInstrumentParts": 14,
+          "metricsUrl": "/projects/uot-ir/assets/listening_1589901_metrics.json"
+        }
+      ],
+      "renderGain": 16.55378238341969,
+      "presetFallbacks": [
+        [],
+        []
+      ],
+      "excerptChecks": {
+        "inputNotes": 213,
+        "outputNotes": 213,
+        "onsetPitchDurationF1": 1.0,
+        "matchedProgramFraction": 1.0,
+        "matchedFamilyFraction": 1.0
+      },
+      "audioChecks": {
+        "spectralCosine": 0.9714763760566711,
+        "rmsDifferenceDb": -0.19485198880596583
+      }
+    },
+    {
+      "id": "listening_5996488",
+      "title": "Strings & ensemble",
+      "sampleId": "SymphonyNet_Dataset/contemporary/5996488.mid",
+      "taskType": "standardization",
+      "startSeconds": 40.42111999999998,
+      "endSeconds": 70.73695999999997,
+      "durationSeconds": 30.315839999999987,
+      "startBar": 17,
+      "endBar": 28,
+      "tracks": [
+        {
+          "method": "Input",
+          "label": "Input",
+          "imageUrl": "/projects/uot-ir/assets/listening_5996488_input.png",
+          "midiUrl": "/projects/uot-ir/assets/listening_5996488_input.mid",
+          "audioUrl": "/projects/uot-ir/assets/listening_5996488_input.mp3",
+          "isExcerpt": true,
+          "midiSha256": "dad0571e6308eeee8ea0be43834a50cebb4a7644c2b548b86810eeaa002a8010",
+          "audioSha256": "988e5567b94a5bcb03dc6ffa1bff786d60d68439d4cb665f68fbccc11fc2a34b",
+          "excerptInstrumentParts": 16,
+          "wholePieceInstrumentParts": 21
+        },
+        {
+          "method": "UOTIR",
+          "label": "UOT-IR",
+          "imageUrl": "/projects/uot-ir/assets/listening_5996488_uotir.png",
+          "midiUrl": "/projects/uot-ir/assets/listening_5996488_uotir.mid",
+          "audioUrl": "/projects/uot-ir/assets/listening_5996488_uotir.mp3",
+          "isExcerpt": true,
+          "midiSha256": "2286a145ed30f61fac149368560471085c4aa3ad1c413349a9521715f4e06673",
+          "audioSha256": "9d7d1bd5aa0d645ffce78a38f01398bf99b2ee29ed7ba0862e065f32b8f41972",
+          "excerptInstrumentParts": 12,
+          "wholePieceInstrumentParts": 13,
+          "metricsUrl": "/projects/uot-ir/assets/listening_5996488_metrics.json"
+        }
+      ],
+      "renderGain": 15.632440366972478,
+      "presetFallbacks": [
+        [],
+        []
+      ],
+      "excerptChecks": {
+        "inputNotes": 344,
+        "outputNotes": 344,
+        "onsetPitchDurationF1": 0.997093023255814,
+        "matchedProgramFraction": 0.9329446064139941,
+        "matchedFamilyFraction": 1.0
+      },
+      "audioChecks": {
+        "spectralCosine": 0.9625016450881958,
+        "rmsDifferenceDb": -0.4895079992608151
+      }
+    },
+    {
+      "id": "listening_1497021",
+      "title": "Orchestral ensemble",
+      "sampleId": "SymphonyNet_Dataset/contemporary/1497021.mid",
+      "taskType": "standardization",
+      "startSeconds": 8.0,
+      "endSeconds": 38.0,
+      "durationSeconds": 30.0,
+      "startBar": 5,
+      "endBar": 20,
+      "tracks": [
+        {
+          "method": "Input",
+          "label": "Input",
+          "imageUrl": "/projects/uot-ir/assets/listening_1497021_input.png",
+          "midiUrl": "/projects/uot-ir/assets/listening_1497021_input.mid",
+          "audioUrl": "/projects/uot-ir/assets/listening_1497021_input.mp3",
+          "isExcerpt": true,
+          "midiSha256": "b03c37c7afec5d8b84bf6877651f0944a5a3a345a80b13691b70898ad750b946",
+          "audioSha256": "345738bb804b75489002bf233b8070d9a3fffe2a893cf265176267adb93f7a02",
+          "excerptInstrumentParts": 19,
+          "wholePieceInstrumentParts": 20
+        },
+        {
+          "method": "UOTIR",
+          "label": "UOT-IR",
+          "imageUrl": "/projects/uot-ir/assets/listening_1497021_uotir.png",
+          "midiUrl": "/projects/uot-ir/assets/listening_1497021_uotir.mid",
+          "audioUrl": "/projects/uot-ir/assets/listening_1497021_uotir.mp3",
+          "isExcerpt": true,
+          "midiSha256": "9554d2eb5bf16338ed25ef60ec6f10bf00c83080e4800036d8200b58322844e6",
+          "audioSha256": "6527c3813ab0141ef501435cb226f152bc3b304e1964c58f8d8ec40354d94aa3",
+          "excerptInstrumentParts": 13,
+          "wholePieceInstrumentParts": 14,
+          "metricsUrl": "/projects/uot-ir/assets/listening_1497021_metrics.json"
+        }
+      ],
+      "renderGain": 5.643417973062486,
+      "presetFallbacks": [
+        [],
+        []
+      ],
+      "excerptChecks": {
+        "inputNotes": 1443,
+        "outputNotes": 1443,
+        "onsetPitchDurationF1": 1.0,
+        "matchedProgramFraction": 0.975051975051975,
+        "matchedFamilyFraction": 1.0
+      },
+      "audioChecks": {
+        "spectralCosine": 0.9710220098495483,
+        "rmsDifferenceDb": -2.4068506098579165
+      }
+    }
+  ]
+}

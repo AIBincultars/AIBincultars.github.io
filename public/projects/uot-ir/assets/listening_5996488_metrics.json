@@ -1,0 +1,27 @@
+{
+  "method_name": "UOTIR",
+  "task_type": "standardization",
+  "sample_id": "SymphonyNet_Dataset/contemporary/5996488.mid",
+  "metric_scope": "complete MIDI, as recorded in the existing benchmark table",
+  "metric_source_csv": "outputs/metrics/benchmark_table_standardization.csv",
+  "metrics": {
+    "Note_F1": 0.9990389235944258,
+    "Note_P": 0.9990389235944258,
+    "Note_R": 0.9990389235944258,
+    "PC_JSD": 0.0,
+    "Dur_JSD": 0.0032558114717261286,
+    "IOI_JSD": 0.0,
+    "PolyRate_AbsDiff": 0.0008141818156938707,
+    "PitchRange_AbsDiff": 0.0,
+    "PCEntropy_AbsDiff": 0.0,
+    "FTED": 0.006094704733179454,
+    "Fam_MacroF1": 0.9523495751690655,
+    "Fam_Acc": 0.9538239538239538,
+    "Stability": 1.0,
+    "Violation_Pre": 0.0,
+    "Edit_Rate": 0.0,
+    "Violation_Post": 0.0,
+    "BadConf_Rate": 0.05194805194805195,
+    "Avg_StructCost": 1.1054541862257516
+  }
+}

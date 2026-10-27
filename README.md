@@ -19,7 +19,8 @@ I am an M.S. student in Control Science and Engineering at Xi'an Jiaotong Univer
 ## 项目网页 | Project Pages
 
 - [UOT-IR](https://aibincultars.github.io/projects/uot-ir/)：页面使用 Astro，入口为 `src/pages/projects/uot-ir/index.astro`，组件位于 `src/components/uot-ir/`，案例定义位于 `src/data/uot-ir.ts`。MIDI、MP3、图片与指标 JSON 维护在 `public/projects/uot-ir/assets/`，算法代码维护在 [UOT-IR 仓库](https://github.com/AIBincultars/UOT-IR)。
-- 音频来自现有案例的 WAV 渲染，经 MP3 转码后按需加载。`src/data/uot-ir-audio.json` 记录案例、方法、音频文件、时长与对应 MIDI 的 SHA-256，供资源更新时核对。每个案例提供输入、UOT-IR 与三个选定基线的完整音频。
+- 试听区提供三组约 30 秒的输入／UOT-IR 对照，优先展示音符与乐器保留较完整的段落。两版使用统一的 FluidSynth／FluidR3 GM 音源、同一时间范围与每组共享增益；播放器按需加载。完整 MIDI 下载对应原始实验文件。
+- `public/projects/uot-ir/assets/listening_manifest.json` 记录筛选范围、片段时间与小节、渲染设置、音符核对结果和文件 SHA-256。片段核对与整曲 benchmark 指标分别标注，听感由试听判断。原有六组 MIDI、钢琴卷帘图及十一种方法的指标继续提供完整对照。
 - `src/pages/UOT-IR/index.astro` 为旧项目地址提供跳转。项目与论文入口分别维护在 `src/data/site-content.ts` 和 `src/content/publications/uot-ir.md`。
 - 项目页通过 `src/layouts/ResearchProjectLayout.astro` 复用主页导航、页脚、字体与 `src/styles/global.css` 中的主题变量。
 

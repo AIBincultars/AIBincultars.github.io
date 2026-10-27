@@ -4,13 +4,15 @@ import CaseGroup from '../../../components/uot-ir/CaseGroup.astro';
 import ImagePreview from '../../../components/uot-ir/ImagePreview.astro';
 import MetricTable from '../../../components/uot-ir/MetricTable.astro';
 import PianoRoll from '../../../components/uot-ir/PianoRoll.astro';
-import { demoAssets, demoCases } from '../../../data/uot-ir';
+import { demoAssets, demoCases, listeningCases, listeningManifestUrl } from '../../../data/uot-ir';
 
 const description = 'UOT-IR routes multitrack symbolic music into fixed-budget representations. Explore audio previews, MIDI examples, piano rolls, and per-example metrics.';
-const trackCount = demoCases.reduce((count, demoCase) => count + demoCase.tracks.length, 0);
-const audioCount = demoCases.reduce((count, demoCase) => count + demoCase.tracks.filter((track) => track.audioUrl).length, 0);
-const metricCount = demoCases.reduce((count, demoCase) => count + demoCase.outputs.length, 0);
+const downloadCases = [...listeningCases, ...demoCases];
+const trackCount = downloadCases.reduce((count, demoCase) => count + demoCase.tracks.length, 0);
+const audioCount = listeningCases.reduce((count, demoCase) => count + demoCase.tracks.length, 0);
+const metricCount = demoAssets.filter((asset) => asset.type === 'metric').length;
 const exampleLabel = (index: number) => `Example ${String(index + 1).padStart(2, '0')}`;
+const clockLabel = (seconds: number) => `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${(seconds % 60).toFixed(1).padStart(4, '0')}`;
 const citation = `@misc{kang2026uotir,
   title = {{UOT-IR}: Structured Routing of High-Polyphony Symbolic Music into Fixed-Budget Representations},
   author = {Ziyue Kang and Nan Nan and Chenhao Lin and Xiaohong Guan},
@@ -35,22 +37,43 @@ const citation = `@misc{kang2026uotir,
         <a href="https://arxiv.org/abs/2608.00576">Read the paper <span aria-hidden="true">↗</span></a>
         <a href="https://github.com/AIBincultars/UOT-IR">View code <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="project-facts">{demoCases.length} examples <span aria-hidden="true">·</span> {demoCases[0].outputs.length} methods <span aria-hidden="true">·</span> 16 slots by default</p>
+      <p class="project-facts">{listeningCases.length} listening pairs <span aria-hidden="true">·</span> {demoCases.length} comparison cases <span aria-hidden="true">·</span> 16 slots by default</p>
     </header>
 
     <nav class="project-navigation" aria-label="On this page">
+      <a href="#listening">Listen</a>
       <a href="#visual-results">Examples</a>
       <a href="#metrics">Results</a>
       <a href="#midi-examples">Downloads</a>
       <a href="#paper">Citation</a>
     </nav>
 
+    <section id="listening" class="project-section">
+      <div class="section-heading"><h2>Listening selections</h2><span>Around 30 seconds per pair</span></div>
+      <p class="section-description">Selected passages with close note and instrument preservation. Each pair uses the same passage, instrument SoundFont, and playback gain.</p>
+      {listeningCases.map((entry, index) => (
+        <CaseGroup summary={`${String(index + 1).padStart(2, '0')} · ${entry.title}`} meta={`${entry.durationSeconds.toFixed(1)} s`} open={index === 0}>
+          <p class="listening-context">Bars {entry.startBar}–{entry.endBar} · {clockLabel(entry.startSeconds)}–{clockLabel(entry.endSeconds)} in the full MIDI · {entry.input.excerptInstrumentParts} → {entry.output.excerptInstrumentParts} instrument parts in this excerpt</p>
+          <div class="featured-gallery">
+            <PianoRoll caseId={entry.id} track={entry.input} />
+            <PianoRoll caseId={entry.id} track={entry.output} />
+          </div>
+          <p class="listening-source">SymphonyNet · {entry.sampleId.split('/').pop()} · Template standardization · <a href={entry.output.metricsUrl} download>Full-piece metrics</a></p>
+        </CaseGroup>
+      ))}
+      <CaseGroup summary="About these selections">
+        <p class="listening-context">Selection prioritizes retained notes, instrument continuity, and moderate density. These are curated examples from existing outputs. The full MIDI downloads preserve the original input and output files.</p>
+        <p class="listening-context">Both versions use FluidSynth with FluidR3 GM, a shared gain within each pair, and a short fade at the excerpt boundaries. Instrument parts are counted across each excerpt. Full-piece metric files describe the complete MIDI.</p>
+        <a class="listening-protocol" href={listeningManifestUrl} download>Selection and rendering details ↓</a>
+      </CaseGroup>
+    </section>
+
     <section id="visual-results" class="project-section">
       <div class="section-heading"><h2>Examples</h2><span>Template standardization</span></div>
-      <p class="section-description">Compare the original score with UOT-IR. Full-length audio previews accompany the input, UOT-IR, and selected baselines. Select a piano roll for a closer look.</p>
+      <p class="section-description">Explore six additional cases across all eleven methods. Select a piano roll for a closer look, and download each complete MIDI for comparison.</p>
       <div class="example-list">
         {demoCases.map((demoCase, index) => (
-          <CaseGroup summary={exampleLabel(index)} meta="Input & UOT-IR" open={index === 0}>
+          <CaseGroup summary={exampleLabel(index)} meta="Input & UOT-IR">
             <div class="featured-gallery">
               <PianoRoll caseId={demoCase.id} track={demoCase.input} />
               <PianoRoll caseId={demoCase.id} track={demoCase.outputs[0]} />
@@ -80,8 +103,8 @@ const citation = `@misc{kang2026uotir,
       <p class="section-description">Each piano roll includes a MIDI download, with MP3 downloads alongside audio previews. Browse all files by example below.</p>
       <div id="downloads">
         <CaseGroup summary="Audio previews (MP3)" meta={`${audioCount} files`}>
-          {demoCases.map((demoCase, index) => (
-            <CaseGroup summary={exampleLabel(index)}>
+          {listeningCases.map((demoCase) => (
+            <CaseGroup summary={demoCase.title}>
               <div class="resource-list audio-downloads">
                 {demoCase.tracks.filter((track) => track.audioUrl).map((track) => <a href={track.audioUrl} download>{track.label} <span aria-hidden="true">↓</span></a>)}
               </div>
@@ -89,8 +112,8 @@ const citation = `@misc{kang2026uotir,
           ))}
         </CaseGroup>
         <CaseGroup summary="MIDI files" meta={`${trackCount} files`}>
-          {demoCases.map((demoCase, index) => (
-            <CaseGroup summary={exampleLabel(index)}>
+          {downloadCases.map((demoCase, index) => (
+            <CaseGroup summary={'title' in demoCase ? demoCase.title : exampleLabel(index - listeningCases.length)}>
               <div class="resource-list midi-downloads">
                 {demoCase.tracks.map((track) => <a href={track.midiUrl} download>{track.label} <span aria-hidden="true">↓</span></a>)}
               </div>
@@ -98,6 +121,11 @@ const citation = `@misc{kang2026uotir,
           ))}
         </CaseGroup>
         <CaseGroup summary="Metric JSON files" meta={`${metricCount} files`}>
+          {listeningCases.map((entry) => (
+            <CaseGroup summary={entry.title}>
+              <div class="resource-list metric-downloads"><a href={entry.output.metricsUrl} download>UOT-IR · complete MIDI <span aria-hidden="true">↓</span></a></div>
+            </CaseGroup>
+          ))}
           {demoCases.map((demoCase, index) => (
             <CaseGroup summary={exampleLabel(index)}>
               <div class="resource-list metric-downloads">
@@ -164,6 +192,8 @@ const citation = `@misc{kang2026uotir,
     top: 70px;
     z-index: 20;
     display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
     gap: 28px;
     padding: 15px 0;
     border-top: 1px solid var(--line);
@@ -181,6 +211,9 @@ const citation = `@misc{kang2026uotir,
   .section-heading > span, .section-heading > a { color: var(--text-tertiary); font-size: 11px; }
   .section-heading > a:hover { color: var(--accent); }
   .section-description { margin-bottom: 22px; color: var(--text-secondary); font-size: 13px; }
+  .listening-context { margin: 0 0 16px; color: var(--text-secondary); font-size: 12px; line-height: 1.8; }
+  .listening-source { margin: 12px 0 0; color: var(--text-tertiary); font-size: 11px; }
+  .listening-protocol { font-size: 12px; }
   .research-project .case-group { border-top: 1px solid var(--line); }
   .research-project .case-group:last-child { border-bottom: 1px solid var(--line); }
   .research-project .case-summary {
@@ -234,7 +267,7 @@ const citation = `@misc{kang2026uotir,
     .project-description { font-size: 13px; }
     .project-authors { max-width: 310px; line-height: 1.8; }
     .project-facts span { padding-inline: 5px; }
-    .project-navigation { top: 64px; gap: 24px; }
+    .project-navigation { top: 64px; gap: 16px; font-size: 11px; }
     .project-section { padding-top: 34px; scroll-margin-top: 130px; }
     #downloads { scroll-margin-top: 130px; }
     .section-heading { flex-wrap: wrap; gap: 4px 16px; }
