@@ -18,6 +18,7 @@ I am an M.S. student in Control Science and Engineering at Xi'an Jiaotong Univer
 
 ## 项目网页 | Project Pages
 
+- [SymphonyGen](https://symphonygen.github.io/)：中英文主页、项目列表和论文条目均链接至团队现有项目网站。
 - [UOT-IR](https://aibincultars.github.io/projects/uot-ir/)：页面使用 Astro，入口为 `src/pages/projects/uot-ir/index.astro`，组件位于 `src/components/uot-ir/`，案例定义位于 `src/data/uot-ir.ts`。MIDI、MP3、图片与指标 JSON 维护在 `public/projects/uot-ir/assets/`，算法代码维护在 [UOT-IR 仓库](https://github.com/AIBincultars/UOT-IR)。
 - 试听区提供三组约 30 秒的输入／UOT-IR 对照，优先展示音符与乐器保留较完整的段落。两版使用统一的 FluidSynth／FluidR3 GM 音源、同一时间范围与每组共享增益；播放器按需加载。完整 MIDI 下载对应原始实验文件。
 - `public/projects/uot-ir/assets/listening_manifest.json` 记录筛选范围、片段时间与小节、渲染设置、音符核对结果和文件 SHA-256。片段核对与整曲 benchmark 指标分别标注，听感由试听判断。原有六组 MIDI、钢琴卷帘图及十一种方法的指标继续提供完整对照。

@@ -19,6 +19,17 @@ const publicProjects: PublicProject[] = [
     },
     publicUrl: 'https://aibincultars.github.io/projects/uot-ir/',
   },
+  {
+    title: {
+      zh: 'SymphonyGen：可控和声骨架驱动的管弦乐生成',
+      en: 'SymphonyGen: Orchestral generation with a controllable harmony skeleton',
+    },
+    description: {
+      zh: '以可控和声骨架为条件的三维层次化管弦乐生成。项目网站提供创作、改编与基线音频示例。',
+      en: '3D hierarchical orchestral generation conditioned on a controllable harmony skeleton. Explore composition, arrangement, and baseline audio examples on the project website.',
+    },
+    publicUrl: 'https://symphonygen.github.io/',
+  },
 ];
 
 // 日常修改个人信息和中英文页面文案时，只需要编辑这个文件。
